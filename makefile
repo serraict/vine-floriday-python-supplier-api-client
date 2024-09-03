@@ -1,4 +1,4 @@
-.phony : all
+.phony : tests
 
 VERSION := $(shell git describe --tags)
 ifeq ($(VERSION),)
@@ -14,7 +14,7 @@ update:
 	python -m pip install -r test-requirements.txt
 	pip install -e .
 console:
-test:
+tests:
 	nosetests
 build:
 	python -m build
