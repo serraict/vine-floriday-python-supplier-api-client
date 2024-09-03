@@ -2,8 +2,8 @@ import os
 from pprint import pprint
 import requests
 
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 CLIENT_ID = os.getenv("FLORIDAY_CLIENT_ID")
@@ -36,13 +36,15 @@ if __name__ == "__main__":
     print("base url: ", BASE_URL)
     print("Auth url: ", AUTH_URL)
 
-    access_token = et_access_token()
-    configuration = swagger_client.Configuration()
+    access_token = get_access_token()
+    configuration = floriday_supplier_client.Configuration()
     configuration.api_key["Authorization"] = access_token
     configuration.api_key_prefix["Authorization"] = "Bearer"
-    configuration = swagger_client.Configuration()
+    configuration = floriday_supplier_client.Configuration()
     configuration.api_key["X-Api-Key"] = API_KEY
-    api_instance = swagger_client.TradeItemsApi(swagger_client.ApiClient(configuration))
+    api_instance = floriday_supplier_client.TradeItemsApi(
+        floriday_supplier_client.ApiClient(configuration)
+    )
 
     try:
         print("\n=== Get trade items by id ===\n")
