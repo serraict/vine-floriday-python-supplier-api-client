@@ -5,3 +5,4 @@ py>=1.4.31
 randomize>=0.13
 pytest>=3.0.3
 requests
+setuptools_scm
