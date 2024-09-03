@@ -2,7 +2,6 @@ import os
 from pprint import pprint
 import requests
 
-import time
 import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
@@ -33,25 +32,31 @@ def get_access_token():
 
 
 if __name__ == "__main__":
-    access_token = get_access_token()
-    print(access_token)
-    # Configure API key authorization: JWT Token
+    print("=== Example ===\n")
+    print("base url: ", BASE_URL)
+    print("Auth url: ", AUTH_URL)
+
+    access_token = et_access_token()
     configuration = swagger_client.Configuration()
     configuration.api_key["Authorization"] = access_token
     configuration.api_key_prefix["Authorization"] = "Bearer"
     configuration = swagger_client.Configuration()
     configuration.api_key["X-Api-Key"] = API_KEY
-
-    # create an instance of the API class
-    api_instance = swagger_client.AdditionalServicesApi(
-        swagger_client.ApiClient(configuration)
-    )
-    additional_service_id = "38400000-8cf0-11bd-b23e-10b96e4ef00d"  # str |
+    api_instance = swagger_client.TradeItemsApi(swagger_client.ApiClient(configuration))
 
     try:
-        # catalog:read - Returns an additional service.
-        api_response = api_instance.get_additional_service_by_id(additional_service_id)
+        print("\n=== Get trade items by id ===\n")
+        api_response = api_instance.get_trade_items_summary(
+            trade_item_ids=["1987a15c-2c28-4ba6-89a1-3780e585b42c"]
+        )
         pprint(api_response)
+
+        print("\n=== Get trade items by supplier organization id ===\n")
+        api_response = api_instance.get_trade_items_summary(
+            supplier_organization_id="64a03e85-7792-3ce9-b5be-70b5ee7fa96c"
+        )
+        pprint(api_response)
+
     except ApiException as e:
         print(
             "Exception when calling AdditionalServicesApi->get_additional_service_by_id: %s\n"
