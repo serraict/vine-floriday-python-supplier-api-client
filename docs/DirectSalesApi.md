@@ -1,4 +1,4 @@
-# swagger_client.DirectSalesApi
+# floriday_supplier_client.DirectSalesApi
 
 All URIs are relative to *https://api.staging.floriday.io/suppliers-api-2024v1*
 
@@ -23,24 +23,24 @@ supply:write - Create a supply line with type BATCH_PRICE
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DirectSalesApi(swagger_client.ApiClient(configuration))
-body = swagger_client.SupplyLineCreate() # SupplyLineCreate | 
+api_instance = floriday_supplier_client.DirectSalesApi(floriday_supplier_client.ApiClient(configuration))
+body = floriday_supplier_client.SupplyLineCreate() # SupplyLineCreate | 
 
 try:
     # supply:write - Create a supply line with type BATCH_PRICE
@@ -79,23 +79,23 @@ supply:write - Delete a supply line
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DirectSalesApi(swagger_client.ApiClient(configuration))
+api_instance = floriday_supplier_client.DirectSalesApi(floriday_supplier_client.ApiClient(configuration))
 supply_line_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
 
 try:
@@ -137,24 +137,24 @@ After entering the base price, Floriday will create multiple supply lines based 
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DirectSalesApi(swagger_client.ApiClient(configuration))
-body = swagger_client.BaseSupply() # BaseSupply | 
+api_instance = floriday_supplier_client.DirectSalesApi(floriday_supplier_client.ApiClient(configuration))
+body = floriday_supplier_client.BaseSupply() # BaseSupply | 
 batch_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
 
 try:
@@ -195,23 +195,23 @@ supply:read - Returns a supply line.
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DirectSalesApi(swagger_client.ApiClient(configuration))
+api_instance = floriday_supplier_client.DirectSalesApi(floriday_supplier_client.ApiClient(configuration))
 supply_line_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
 
 try:
@@ -252,23 +252,23 @@ supply:read - rate limit: 3.4 per second - burst limit: 1000 - Returns supply li
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DirectSalesApi(swagger_client.ApiClient(configuration))
+api_instance = floriday_supplier_client.DirectSalesApi(floriday_supplier_client.ApiClient(configuration))
 start_date_time = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
 end_date_time = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
 batch_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str |  (optional)
@@ -317,23 +317,23 @@ supply:read - rate limit: 3.4 per second - burst limit: 1000 - Returns a list of
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DirectSalesApi(swagger_client.ApiClient(configuration))
+api_instance = floriday_supplier_client.DirectSalesApi(floriday_supplier_client.ApiClient(configuration))
 sequence_number = 789 # int | 
 limit_result = 1000 # int |  (optional) (default to 1000)
 
@@ -376,23 +376,23 @@ supply:read - rate limit: 3.4 per second - burst limit: 1000 - Returns the maxim
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DirectSalesApi(swagger_client.ApiClient(configuration))
+api_instance = floriday_supplier_client.DirectSalesApi(floriday_supplier_client.ApiClient(configuration))
 
 try:
     # supply:read - rate limit: 3.4 per second - burst limit: 1000 - Returns the maximum sequence number found in supply lines.
@@ -429,24 +429,24 @@ supply:write - Update the price of the supply line with type BATCH_PRICE.
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DirectSalesApi(swagger_client.ApiClient(configuration))
-body = swagger_client.SupplyLinePriceUpdate() # SupplyLinePriceUpdate | 
+api_instance = floriday_supplier_client.DirectSalesApi(floriday_supplier_client.ApiClient(configuration))
+body = floriday_supplier_client.SupplyLinePriceUpdate() # SupplyLinePriceUpdate | 
 supply_line_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
 
 try:
@@ -487,24 +487,24 @@ supply:write - Update the status of the supply line with type BATCH_PRICE.
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DirectSalesApi(swagger_client.ApiClient(configuration))
-body = swagger_client.SupplyAvailabilityStatus() # SupplyAvailabilityStatus | 
+api_instance = floriday_supplier_client.DirectSalesApi(floriday_supplier_client.ApiClient(configuration))
+body = floriday_supplier_client.SupplyAvailabilityStatus() # SupplyAvailabilityStatus | 
 supply_line_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
 
 try:

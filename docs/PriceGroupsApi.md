@@ -1,4 +1,4 @@
-# swagger_client.PriceGroupsApi
+# floriday_supplier_client.PriceGroupsApi
 
 All URIs are relative to *https://api.staging.floriday.io/suppliers-api-2024v1*
 
@@ -17,23 +17,23 @@ supply:read - Returns a price group.
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.PriceGroupsApi(swagger_client.ApiClient(configuration))
+api_instance = floriday_supplier_client.PriceGroupsApi(floriday_supplier_client.ApiClient(configuration))
 price_group_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
 
 try:
@@ -76,23 +76,23 @@ supply:read - rate limit: 3.4 per second - burst limit: 1000 - Returns a list of
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.PriceGroupsApi(swagger_client.ApiClient(configuration))
+api_instance = floriday_supplier_client.PriceGroupsApi(floriday_supplier_client.ApiClient(configuration))
 sequence_number = 789 # int | 
 limit = 1000 # int |  (optional) (default to 1000)
 
@@ -135,23 +135,23 @@ supply:read - rate limit: 3.4 per second - burst limit: 1000 - Returns the maxim
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.PriceGroupsApi(swagger_client.ApiClient(configuration))
+api_instance = floriday_supplier_client.PriceGroupsApi(floriday_supplier_client.ApiClient(configuration))
 
 try:
     # supply:read - rate limit: 3.4 per second - burst limit: 1000 - Returns the maximum sequence number found in price groups.

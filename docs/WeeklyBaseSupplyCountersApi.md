@@ -1,4 +1,4 @@
-# swagger_client.WeeklyBaseSupplyCountersApi
+# floriday_supplier_client.WeeklyBaseSupplyCountersApi
 
 All URIs are relative to *https://api.staging.floriday.io/suppliers-api-2024v1*
 
@@ -22,24 +22,24 @@ supply:write - Add WeeklyBaseSupplyCounterTemplate to trade item.
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.WeeklyBaseSupplyCountersApi(swagger_client.ApiClient(configuration))
-body = swagger_client.WeeklyBaseSupplyCounterTemplateToTradeItem() # WeeklyBaseSupplyCounterTemplateToTradeItem | 
+api_instance = floriday_supplier_client.WeeklyBaseSupplyCountersApi(floriday_supplier_client.ApiClient(configuration))
+body = floriday_supplier_client.WeeklyBaseSupplyCounterTemplateToTradeItem() # WeeklyBaseSupplyCounterTemplateToTradeItem | 
 weekly_base_supply_counter_template_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
 
 try:
@@ -80,24 +80,24 @@ supply:write - Claim NumberOfPieces from weekly base supply counter.
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.WeeklyBaseSupplyCountersApi(swagger_client.ApiClient(configuration))
-body = swagger_client.ClaimFromWeeklyBaseSupplyCounter() # ClaimFromWeeklyBaseSupplyCounter | 
+api_instance = floriday_supplier_client.WeeklyBaseSupplyCountersApi(floriday_supplier_client.ApiClient(configuration))
+body = floriday_supplier_client.ClaimFromWeeklyBaseSupplyCounter() # ClaimFromWeeklyBaseSupplyCounter | 
 weekly_base_supply_counter_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
 
 try:
@@ -138,23 +138,23 @@ supply:write - Delete weekly base supply counter template.
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.WeeklyBaseSupplyCountersApi(swagger_client.ApiClient(configuration))
+api_instance = floriday_supplier_client.WeeklyBaseSupplyCountersApi(floriday_supplier_client.ApiClient(configuration))
 weekly_base_supply_counter_template_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
 
 try:
@@ -194,23 +194,23 @@ supply:read - Returns a weekly base supply counter.
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.WeeklyBaseSupplyCountersApi(swagger_client.ApiClient(configuration))
+api_instance = floriday_supplier_client.WeeklyBaseSupplyCountersApi(floriday_supplier_client.ApiClient(configuration))
 weekly_base_supply_counter_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
 
 try:
@@ -251,23 +251,23 @@ supply:read - Returns weekly base supply counters by templateId.
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.WeeklyBaseSupplyCountersApi(swagger_client.ApiClient(configuration))
+api_instance = floriday_supplier_client.WeeklyBaseSupplyCountersApi(floriday_supplier_client.ApiClient(configuration))
 weekly_base_supply_counter_template_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
 
 try:
@@ -308,23 +308,23 @@ supply:read - Returns a weekly base supply counter template.
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.WeeklyBaseSupplyCountersApi(swagger_client.ApiClient(configuration))
+api_instance = floriday_supplier_client.WeeklyBaseSupplyCountersApi(floriday_supplier_client.ApiClient(configuration))
 weekly_base_supply_counter_template_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
 
 try:
@@ -365,23 +365,23 @@ supply:read - Returns weekly base supply counter templates.
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.WeeklyBaseSupplyCountersApi(swagger_client.ApiClient(configuration))
+api_instance = floriday_supplier_client.WeeklyBaseSupplyCountersApi(floriday_supplier_client.ApiClient(configuration))
 
 try:
     # supply:read - Returns weekly base supply counter templates.
@@ -418,24 +418,24 @@ supply:write - Upsert weekly base supply counter template.
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.WeeklyBaseSupplyCountersApi(swagger_client.ApiClient(configuration))
-body = swagger_client.EditWeeklyBaseSupplyCounterTemplate() # EditWeeklyBaseSupplyCounterTemplate | 
+api_instance = floriday_supplier_client.WeeklyBaseSupplyCountersApi(floriday_supplier_client.ApiClient(configuration))
+body = floriday_supplier_client.EditWeeklyBaseSupplyCounterTemplate() # EditWeeklyBaseSupplyCounterTemplate | 
 
 try:
     # supply:write - Upsert weekly base supply counter template.

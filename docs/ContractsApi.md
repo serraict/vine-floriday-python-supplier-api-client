@@ -1,4 +1,4 @@
-# swagger_client.ContractsApi
+# floriday_supplier_client.ContractsApi
 
 All URIs are relative to *https://api.staging.floriday.io/suppliers-api-2024v1*
 
@@ -31,24 +31,24 @@ contract:write - Creates a draft contract
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.ContractsApi(swagger_client.ApiClient(configuration))
-body = swagger_client.AddContract() # AddContract | 
+api_instance = floriday_supplier_client.ContractsApi(floriday_supplier_client.ApiClient(configuration))
+body = floriday_supplier_client.AddContract() # AddContract | 
 
 try:
     # contract:write - Creates a draft contract
@@ -87,24 +87,24 @@ contract:write - Creates a new version for an existing contract
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.ContractsApi(swagger_client.ApiClient(configuration))
-body = swagger_client.AddContractVersion() # AddContractVersion | 
+api_instance = floriday_supplier_client.ContractsApi(floriday_supplier_client.ApiClient(configuration))
+body = floriday_supplier_client.AddContractVersion() # AddContractVersion | 
 contract_reference = 'contract_reference_example' # str | 
 
 try:
@@ -145,23 +145,23 @@ contract:write - Sets the state of the contract to 'APPROVED' if already finaliz
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.ContractsApi(swagger_client.ApiClient(configuration))
+api_instance = floriday_supplier_client.ContractsApi(floriday_supplier_client.ApiClient(configuration))
 contract_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
 
 try:
@@ -201,23 +201,23 @@ contract:write - Sets the state of the contract to 'APPROVED' if already finaliz
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.ContractsApi(swagger_client.ApiClient(configuration))
+api_instance = floriday_supplier_client.ContractsApi(floriday_supplier_client.ApiClient(configuration))
 contract_reference = 'contract_reference_example' # str | 
 
 try:
@@ -257,23 +257,23 @@ contract:write - Approves contract delete request created by customer
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.ContractsApi(swagger_client.ApiClient(configuration))
+api_instance = floriday_supplier_client.ContractsApi(floriday_supplier_client.ApiClient(configuration))
 contract_reference = 'contract_reference_example' # str | 
 
 try:
@@ -313,24 +313,24 @@ contract:write - Sets the state of the contract to 'DECLINED' if already finaliz
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.ContractsApi(swagger_client.ApiClient(configuration))
-body = swagger_client.DeclineContract() # DeclineContract | 
+api_instance = floriday_supplier_client.ContractsApi(floriday_supplier_client.ApiClient(configuration))
+body = floriday_supplier_client.DeclineContract() # DeclineContract | 
 contract_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
 
 try:
@@ -371,24 +371,24 @@ contract:write - Sets the state of the contract to 'DECLINED' if already finaliz
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.ContractsApi(swagger_client.ApiClient(configuration))
-body = swagger_client.DeclineContract() # DeclineContract | 
+api_instance = floriday_supplier_client.ContractsApi(floriday_supplier_client.ApiClient(configuration))
+body = floriday_supplier_client.DeclineContract() # DeclineContract | 
 contract_reference = 'contract_reference_example' # str | 
 
 try:
@@ -429,23 +429,23 @@ contract:write - Declines contract delete request created by customer
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.ContractsApi(swagger_client.ApiClient(configuration))
+api_instance = floriday_supplier_client.ContractsApi(floriday_supplier_client.ApiClient(configuration))
 contract_reference = 'contract_reference_example' # str | 
 
 try:
@@ -485,24 +485,24 @@ contract:write - Updates a draft contract
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.ContractsApi(swagger_client.ApiClient(configuration))
-body = swagger_client.EditContract() # EditContract | 
+api_instance = floriday_supplier_client.ContractsApi(floriday_supplier_client.ApiClient(configuration))
+body = floriday_supplier_client.EditContract() # EditContract | 
 contract_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
 
 try:
@@ -543,24 +543,24 @@ contract:write - Updates a draft contract
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.ContractsApi(swagger_client.ApiClient(configuration))
-body = swagger_client.EditContract() # EditContract | 
+api_instance = floriday_supplier_client.ContractsApi(floriday_supplier_client.ApiClient(configuration))
+body = floriday_supplier_client.EditContract() # EditContract | 
 contract_reference = 'contract_reference_example' # str | 
 
 try:
@@ -601,23 +601,23 @@ contract:write - Sets the contract status to 'FINALIZED' and offers the contract
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.ContractsApi(swagger_client.ApiClient(configuration))
+api_instance = floriday_supplier_client.ContractsApi(floriday_supplier_client.ApiClient(configuration))
 contract_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
 
 try:
@@ -657,23 +657,23 @@ contract:write - Sets the contract status to 'FINALIZED' and offers the contract
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.ContractsApi(swagger_client.ApiClient(configuration))
+api_instance = floriday_supplier_client.ContractsApi(floriday_supplier_client.ApiClient(configuration))
 contract_reference = 'contract_reference_example' # str | 
 
 try:
@@ -713,23 +713,23 @@ contract:read - Returns a contract attachment.
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.ContractsApi(swagger_client.ApiClient(configuration))
+api_instance = floriday_supplier_client.ContractsApi(floriday_supplier_client.ApiClient(configuration))
 attachment_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
 
 try:
@@ -770,23 +770,23 @@ contract:read - Returns a contract.
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.ContractsApi(swagger_client.ApiClient(configuration))
+api_instance = floriday_supplier_client.ContractsApi(floriday_supplier_client.ApiClient(configuration))
 contract_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
 
 try:
@@ -829,23 +829,23 @@ contract:read - rate limit: 3.4 per second - burst limit: 1000 - Returns a list 
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.ContractsApi(swagger_client.ApiClient(configuration))
+api_instance = floriday_supplier_client.ContractsApi(floriday_supplier_client.ApiClient(configuration))
 sequence_number = 789 # int | 
 limit_result = 100 # int |  (optional) (default to 100)
 
@@ -888,23 +888,23 @@ contract:read - rate limit: 3.4 per second - burst limit: 1000 - Returns the max
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.ContractsApi(swagger_client.ApiClient(configuration))
+api_instance = floriday_supplier_client.ContractsApi(floriday_supplier_client.ApiClient(configuration))
 
 try:
     # contract:read - rate limit: 3.4 per second - burst limit: 1000 - Returns the maximum sequence number found in contracts.
@@ -941,23 +941,23 @@ contract:write - Deletes contract if contract is not yet approved. Requests dele
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.ContractsApi(swagger_client.ApiClient(configuration))
+api_instance = floriday_supplier_client.ContractsApi(floriday_supplier_client.ApiClient(configuration))
 contract_reference = 'contract_reference_example' # str | 
 
 try:

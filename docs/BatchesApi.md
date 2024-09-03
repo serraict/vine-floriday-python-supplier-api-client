@@ -1,4 +1,4 @@
-# swagger_client.BatchesApi
+# floriday_supplier_client.BatchesApi
 
 All URIs are relative to *https://api.staging.floriday.io/suppliers-api-2024v1*
 
@@ -25,24 +25,24 @@ fulfillment:write - rate limit: 3.4 per second - burst limit: 1000 - Creates a b
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.BatchesApi(swagger_client.ApiClient(configuration))
-body = swagger_client.AddBatch() # AddBatch | 
+api_instance = floriday_supplier_client.BatchesApi(floriday_supplier_client.ApiClient(configuration))
+body = floriday_supplier_client.AddBatch() # AddBatch | 
 
 try:
     # fulfillment:write - rate limit: 3.4 per second - burst limit: 1000 - Creates a batch.
@@ -81,24 +81,24 @@ fulfillment:write - rate limit: 3.4 per second - burst limit: 1000 - Merge and t
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.BatchesApi(swagger_client.ApiClient(configuration))
-body = swagger_client.CombineAndTransformBatchesRequest() # CombineAndTransformBatchesRequest | 
+api_instance = floriday_supplier_client.BatchesApi(floriday_supplier_client.ApiClient(configuration))
+body = floriday_supplier_client.CombineAndTransformBatchesRequest() # CombineAndTransformBatchesRequest | 
 
 try:
     # fulfillment:write - rate limit: 3.4 per second - burst limit: 1000 - Merge and transform multiple existing batches into a single new batch with the given modifications.
@@ -137,24 +137,24 @@ fulfillment:write - rate limit: 3.4 per second - burst limit: 1000 - Update the 
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.BatchesApi(swagger_client.ApiClient(configuration))
-body = swagger_client.QuantityCorrection() # QuantityCorrection | 
+api_instance = floriday_supplier_client.BatchesApi(floriday_supplier_client.ApiClient(configuration))
+body = floriday_supplier_client.QuantityCorrection() # QuantityCorrection | 
 batch_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
 
 try:
@@ -195,23 +195,23 @@ fulfillment:read - Returns a batch.
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.BatchesApi(swagger_client.ApiClient(configuration))
+api_instance = floriday_supplier_client.BatchesApi(floriday_supplier_client.ApiClient(configuration))
 batch_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
 
 try:
@@ -254,23 +254,23 @@ fulfillment:read - rate limit: 3.4 per second - burst limit: 1000 - Returns a li
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.BatchesApi(swagger_client.ApiClient(configuration))
+api_instance = floriday_supplier_client.BatchesApi(floriday_supplier_client.ApiClient(configuration))
 sequence_number = 789 # int | 
 limit_result = 1000 # int |  (optional) (default to 1000)
 
@@ -313,23 +313,23 @@ fulfillment:read - Returns the maximum sequence number found in batch mutations.
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.BatchesApi(swagger_client.ApiClient(configuration))
+api_instance = floriday_supplier_client.BatchesApi(floriday_supplier_client.ApiClient(configuration))
 
 try:
     # fulfillment:read - Returns the maximum sequence number found in batch mutations.
@@ -366,23 +366,23 @@ fulfillment:read - rate limit: 3.4 per second - burst limit: 1000 - Returns batc
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.BatchesApi(swagger_client.ApiClient(configuration))
+api_instance = floriday_supplier_client.BatchesApi(floriday_supplier_client.ApiClient(configuration))
 warehouse_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str |  (optional)
 minimum_number_of_pieces = 56 # int |  (optional)
 limit_result = 1000 # int |  (optional) (default to 1000)
@@ -429,23 +429,23 @@ fulfillment:read - rate limit: 3.4 per second - burst limit: 1000 - Returns a li
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.BatchesApi(swagger_client.ApiClient(configuration))
+api_instance = floriday_supplier_client.BatchesApi(floriday_supplier_client.ApiClient(configuration))
 sequence_number = 789 # int | 
 limit_result = 1000 # int |  (optional) (default to 1000)
 
@@ -488,23 +488,23 @@ fulfillment:read - Returns the maximum sequence number found in batches.
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.BatchesApi(swagger_client.ApiClient(configuration))
+api_instance = floriday_supplier_client.BatchesApi(floriday_supplier_client.ApiClient(configuration))
 
 try:
     # fulfillment:read - Returns the maximum sequence number found in batches.
@@ -541,23 +541,23 @@ fulfillment:read - Returns tray stickers as pdf for batches.
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.BatchesApi(swagger_client.ApiClient(configuration))
+api_instance = floriday_supplier_client.BatchesApi(floriday_supplier_client.ApiClient(configuration))
 batch_ids = 'batch_ids_example' # str | 
 single_sticker_per_batch = true # bool |  (optional)
 
@@ -600,24 +600,24 @@ fulfillment:write - rate limit: 3.4 per second - burst limit: 1000 - Transform a
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.BatchesApi(swagger_client.ApiClient(configuration))
-body = swagger_client.TransformBatchRequest() # TransformBatchRequest | 
+api_instance = floriday_supplier_client.BatchesApi(floriday_supplier_client.ApiClient(configuration))
+body = floriday_supplier_client.TransformBatchRequest() # TransformBatchRequest | 
 batch_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
 
 try:

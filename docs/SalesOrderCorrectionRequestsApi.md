@@ -1,4 +1,4 @@
-# swagger_client.SalesOrderCorrectionRequestsApi
+# floriday_supplier_client.SalesOrderCorrectionRequestsApi
 
 All URIs are relative to *https://api.staging.floriday.io/suppliers-api-2024v1*
 
@@ -21,24 +21,24 @@ sales-order:write - Accept sales order correction request.
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.SalesOrderCorrectionRequestsApi(swagger_client.ApiClient(configuration))
-body = swagger_client.SalesOrderCorrectionRequestAccept() # SalesOrderCorrectionRequestAccept | 
+api_instance = floriday_supplier_client.SalesOrderCorrectionRequestsApi(floriday_supplier_client.ApiClient(configuration))
+body = floriday_supplier_client.SalesOrderCorrectionRequestAccept() # SalesOrderCorrectionRequestAccept | 
 sales_order_correction_request_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
 
 try:
@@ -79,24 +79,24 @@ sales-order:write - Creates a new sales order correction request.
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.SalesOrderCorrectionRequestsApi(swagger_client.ApiClient(configuration))
-body = swagger_client.AddSalesOrderCorrectionRequest() # AddSalesOrderCorrectionRequest | 
+api_instance = floriday_supplier_client.SalesOrderCorrectionRequestsApi(floriday_supplier_client.ApiClient(configuration))
+body = floriday_supplier_client.AddSalesOrderCorrectionRequest() # AddSalesOrderCorrectionRequest | 
 
 try:
     # sales-order:write - Creates a new sales order correction request.
@@ -135,24 +135,24 @@ sales-order:write - Decline sales order correction request.
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.SalesOrderCorrectionRequestsApi(swagger_client.ApiClient(configuration))
-body = swagger_client.SalesOrderCorrectionRequestDecline() # SalesOrderCorrectionRequestDecline | 
+api_instance = floriday_supplier_client.SalesOrderCorrectionRequestsApi(floriday_supplier_client.ApiClient(configuration))
+body = floriday_supplier_client.SalesOrderCorrectionRequestDecline() # SalesOrderCorrectionRequestDecline | 
 sales_order_correction_request_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
 
 try:
@@ -193,23 +193,23 @@ sales-order:write - Delete a sales order correction request.
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.SalesOrderCorrectionRequestsApi(swagger_client.ApiClient(configuration))
+api_instance = floriday_supplier_client.SalesOrderCorrectionRequestsApi(floriday_supplier_client.ApiClient(configuration))
 sales_order_correction_request_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
 
 try:
@@ -249,23 +249,23 @@ sales-order:read - Returns a sales order correction request.
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.SalesOrderCorrectionRequestsApi(swagger_client.ApiClient(configuration))
+api_instance = floriday_supplier_client.SalesOrderCorrectionRequestsApi(floriday_supplier_client.ApiClient(configuration))
 sales_order_correction_request_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
 
 try:
@@ -308,23 +308,23 @@ sales-order:read - rate limit: 3.4 per second - burst limit: 1000 - Returns a li
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.SalesOrderCorrectionRequestsApi(swagger_client.ApiClient(configuration))
+api_instance = floriday_supplier_client.SalesOrderCorrectionRequestsApi(floriday_supplier_client.ApiClient(configuration))
 sequence_number = 789 # int | 
 limit_result = 1000 # int |  (optional) (default to 1000)
 
@@ -367,23 +367,23 @@ sales-order:read - rate limit: 3.4 per second - burst limit: 1000 -  Returns the
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: JWT Token
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 # Configure API key authorization: X-Api-Key
-configuration = swagger_client.Configuration()
+configuration = floriday_supplier_client.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.SalesOrderCorrectionRequestsApi(swagger_client.ApiClient(configuration))
+api_instance = floriday_supplier_client.SalesOrderCorrectionRequestsApi(floriday_supplier_client.ApiClient(configuration))
 
 try:
     # sales-order:read - rate limit: 3.4 per second - burst limit: 1000 -  Returns the maximum sequence number found in sales order correction requests.
