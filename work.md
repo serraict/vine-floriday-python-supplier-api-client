@@ -2,15 +2,12 @@
 
 ## Doing
 
-Update documentation.
-
-Write an example script.
+how to rename the swagger_client on generation
 
 ## Next
 
-* how to rename the swagger_client on generation
-
 ## Backlog
 
+* import the client in 
 * How will we do versioning?
 * Setup a ci build.
