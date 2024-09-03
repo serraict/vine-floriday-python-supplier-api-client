@@ -42,4 +42,4 @@ url := https://api.staging.floriday.io/suppliers-api-$(api_version)/swagger/UUID
 target_dir := .
 
 generate:
-    swagger-codegen generate -i $(url) -l python -o $(target_dir)
+	swagger-codegen generate -i $(url) -l python -o $(target_dir)
