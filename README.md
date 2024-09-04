@@ -60,7 +60,7 @@ python setup.py install --user
 Then import the package:
 
 ```python
-import swagger_client
+import floriday_supplier_client
 ```
 
 ## Getting Started
