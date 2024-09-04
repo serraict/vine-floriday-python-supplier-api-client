@@ -11,7 +11,6 @@
 """
 
 from setuptools import setup, find_packages  # noqa: H301
-import setuptools_scm  # noqa: H301
 
 NAME = "floriday-supplier-client"
 # To install the library, run the following
