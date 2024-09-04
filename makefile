@@ -1,4 +1,4 @@
-.phony : tests, bootstrap, update, console, build, documentation, printversion, release
+.phony : tests, bootstrap, update, console, build, documentation, printversion, release, local_specs, client
 
 VERSION := $(shell git describe --tags)
 ifeq ($(VERSION),)
@@ -40,9 +40,14 @@ release:
 api_version := 2024v1
 url := https://api.staging.floriday.io/suppliers-api-$(api_version)/swagger/UUID/swagger.json
 target_dir := .
+spec_file := ./specs/floriday-suppliers-api-$(api_version)-swagger-UUID.json
 
-api_client:
-	swagger-codegen generate -i $(url) -l python -o $(target_dir) -DpackageName=floriday_supplier_client
-	rm -f git_push.sh
-	rm -f .travis.yml
-	rm -f tox.ini
+local_specs:
+	mkdir -p ./specs
+	curl $(url) > $(spec_file)
+
+floriday_supplier_client/api_client.py: $(spec_file)
+	swagger-codegen generate -i $(spec_file) -l python -o $(target_dir) -DpackageName=floriday_supplier_client
+	rm -f git_push.sh .travis.yml -f tox.ini
+
+client: floriday_supplier_client/api_client.py

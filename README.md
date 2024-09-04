@@ -76,6 +76,21 @@ All the code in `floriday_supplier_client` and `test` are generated.
 Files that should not be overwritten on generation, should be included in [`.swagger-codegen-ignore`](./.swagger-codegen-ignore).
 We maintain a single [minimal working example](./example.py).
 
+```bash
+swagger-codegen version     # verify you have swagger-codegen installed and available
+make local_specs            # get a local copy of the swagger specification
+make client                 # generate the client
+```
+
+To start customization, experimenting, and testing the `floriday_supplier_client` package:
+
+```bash
+make bootstrap
+./venv/bin/activate
+make update
+python example.py
+```
+
 ## Documentation for API Endpoints
 
 All URIs are relative to _<https://api.staging.floriday.io/suppliers-api-2024v1>_
