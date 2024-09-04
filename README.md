@@ -1,4 +1,4 @@
-# florida-supplier-client
+# floriday-supplier-client
 
 ﻿Every endpoint requires at least the `role:app` scope and the header `X-Api-Key` populated with your given API-key. Most endpoints also require an additional scope which is listed in their descriptions.
 
