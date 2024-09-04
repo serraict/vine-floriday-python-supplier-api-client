@@ -10,7 +10,8 @@ from pprint import pprint
 
 if __name__ == "__main__":
     factory = ApiFactory()
-    api_instance = factory.get_api_instance(TradeItemsApi)
+    client = factory.get_api_client()
+    api_instance = TradeItemsApi(client)
 
     try:
         print("\n=== Get trade items by id ===\n")

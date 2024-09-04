@@ -45,4 +45,7 @@ class ApiFactory:
         return configuration
 
     def get_api_instance(self, api_class):
-        return api_class(floriday_supplier_client.ApiClient(self.configuration))
+        return api_class(self.get_api_client())
+
+    def get_api_client(self):
+        return floriday_supplier_client.ApiClient(self.configuration)
