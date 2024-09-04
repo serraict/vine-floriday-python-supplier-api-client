@@ -43,3 +43,6 @@ target_dir := .
 
 generate:
 	swagger-codegen generate -i $(url) -l python -o $(target_dir) -DpackageName=floriday_supplier_client
+	rm git_push.sh
+	rm .travis.yml
+	rm tox.ini
