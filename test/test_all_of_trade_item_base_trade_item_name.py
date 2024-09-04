@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.models.all_of_trade_item_base_trade_item_name import AllOfTradeItemBaseTradeItemName  # noqa: E501
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.models.all_of_trade_item_base_trade_item_name import AllOfTradeItemBaseTradeItemName  # noqa: E501
+from floriday_supplier_client.rest import ApiException
 
 
 class TestAllOfTradeItemBaseTradeItemName(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestAllOfTradeItemBaseTradeItemName(unittest.TestCase):
     def testAllOfTradeItemBaseTradeItemName(self):
         """Test AllOfTradeItemBaseTradeItemName"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.all_of_trade_item_base_trade_item_name.AllOfTradeItemBaseTradeItemName()  # noqa: E501
+        # model = floriday_supplier_client.models.all_of_trade_item_base_trade_item_name.AllOfTradeItemBaseTradeItemName()  # noqa: E501
         pass
 
 

@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.models.customer_trade_settings import CustomerTradeSettings  # noqa: E501
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.models.customer_trade_settings import CustomerTradeSettings  # noqa: E501
+from floriday_supplier_client.rest import ApiException
 
 
 class TestCustomerTradeSettings(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestCustomerTradeSettings(unittest.TestCase):
     def testCustomerTradeSettings(self):
         """Test CustomerTradeSettings"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.customer_trade_settings.CustomerTradeSettings()  # noqa: E501
+        # model = floriday_supplier_client.models.customer_trade_settings.CustomerTradeSettings()  # noqa: E501
         pass
 
 

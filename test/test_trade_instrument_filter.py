@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.models.trade_instrument_filter import TradeInstrumentFilter  # noqa: E501
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.models.trade_instrument_filter import TradeInstrumentFilter  # noqa: E501
+from floriday_supplier_client.rest import ApiException
 
 
 class TestTradeInstrumentFilter(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestTradeInstrumentFilter(unittest.TestCase):
     def testTradeInstrumentFilter(self):
         """Test TradeInstrumentFilter"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.trade_instrument_filter.TradeInstrumentFilter()  # noqa: E501
+        # model = floriday_supplier_client.models.trade_instrument_filter.TradeInstrumentFilter()  # noqa: E501
         pass
 
 

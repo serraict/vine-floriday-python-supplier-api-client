@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.models.transform_batch_request import TransformBatchRequest  # noqa: E501
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.models.transform_batch_request import TransformBatchRequest  # noqa: E501
+from floriday_supplier_client.rest import ApiException
 
 
 class TestTransformBatchRequest(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestTransformBatchRequest(unittest.TestCase):
     def testTransformBatchRequest(self):
         """Test TransformBatchRequest"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.transform_batch_request.TransformBatchRequest()  # noqa: E501
+        # model = floriday_supplier_client.models.transform_batch_request.TransformBatchRequest()  # noqa: E501
         pass
 
 

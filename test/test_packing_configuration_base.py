@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.models.packing_configuration_base import PackingConfigurationBase  # noqa: E501
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.models.packing_configuration_base import PackingConfigurationBase  # noqa: E501
+from floriday_supplier_client.rest import ApiException
 
 
 class TestPackingConfigurationBase(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestPackingConfigurationBase(unittest.TestCase):
     def testPackingConfigurationBase(self):
         """Test PackingConfigurationBase"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.packing_configuration_base.PackingConfigurationBase()  # noqa: E501
+        # model = floriday_supplier_client.models.packing_configuration_base.PackingConfigurationBase()  # noqa: E501
         pass
 
 

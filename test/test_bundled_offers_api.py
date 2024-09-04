@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.api.bundled_offers_api import BundledOffersApi  # noqa: E501
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.api.bundled_offers_api import BundledOffersApi  # noqa: E501
+from floriday_supplier_client.rest import ApiException
 
 
 class TestBundledOffersApi(unittest.TestCase):

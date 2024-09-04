@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.models.collection_trade_item_ids import CollectionTradeItemIds  # noqa: E501
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.models.collection_trade_item_ids import CollectionTradeItemIds  # noqa: E501
+from floriday_supplier_client.rest import ApiException
 
 
 class TestCollectionTradeItemIds(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestCollectionTradeItemIds(unittest.TestCase):
     def testCollectionTradeItemIds(self):
         """Test CollectionTradeItemIds"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.collection_trade_item_ids.CollectionTradeItemIds()  # noqa: E501
+        # model = floriday_supplier_client.models.collection_trade_item_ids.CollectionTradeItemIds()  # noqa: E501
         pass
 
 

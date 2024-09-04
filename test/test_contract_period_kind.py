@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.models.contract_period_kind import ContractPeriodKind  # noqa: E501
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.models.contract_period_kind import ContractPeriodKind  # noqa: E501
+from floriday_supplier_client.rest import ApiException
 
 
 class TestContractPeriodKind(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestContractPeriodKind(unittest.TestCase):
     def testContractPeriodKind(self):
         """Test ContractPeriodKind"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.contract_period_kind.ContractPeriodKind()  # noqa: E501
+        # model = floriday_supplier_client.models.contract_period_kind.ContractPeriodKind()  # noqa: E501
         pass
 
 

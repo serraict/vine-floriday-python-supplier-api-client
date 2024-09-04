@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.models.sync_result_of_commercial_service_type import SyncResultOfCommercialServiceType  # noqa: E501
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.models.sync_result_of_commercial_service_type import SyncResultOfCommercialServiceType  # noqa: E501
+from floriday_supplier_client.rest import ApiException
 
 
 class TestSyncResultOfCommercialServiceType(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestSyncResultOfCommercialServiceType(unittest.TestCase):
     def testSyncResultOfCommercialServiceType(self):
         """Test SyncResultOfCommercialServiceType"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.sync_result_of_commercial_service_type.SyncResultOfCommercialServiceType()  # noqa: E501
+        # model = floriday_supplier_client.models.sync_result_of_commercial_service_type.SyncResultOfCommercialServiceType()  # noqa: E501
         pass
 
 

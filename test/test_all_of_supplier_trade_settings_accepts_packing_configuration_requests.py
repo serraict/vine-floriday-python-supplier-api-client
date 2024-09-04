@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.models.all_of_supplier_trade_settings_accepts_packing_configuration_requests import AllOfSupplierTradeSettingsAcceptsPackingConfigurationRequests  # noqa: E501
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.models.all_of_supplier_trade_settings_accepts_packing_configuration_requests import AllOfSupplierTradeSettingsAcceptsPackingConfigurationRequests  # noqa: E501
+from floriday_supplier_client.rest import ApiException
 
 
 class TestAllOfSupplierTradeSettingsAcceptsPackingConfigurationRequests(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestAllOfSupplierTradeSettingsAcceptsPackingConfigurationRequests(unittest
     def testAllOfSupplierTradeSettingsAcceptsPackingConfigurationRequests(self):
         """Test AllOfSupplierTradeSettingsAcceptsPackingConfigurationRequests"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.all_of_supplier_trade_settings_accepts_packing_configuration_requests.AllOfSupplierTradeSettingsAcceptsPackingConfigurationRequests()  # noqa: E501
+        # model = floriday_supplier_client.models.all_of_supplier_trade_settings_accepts_packing_configuration_requests.AllOfSupplierTradeSettingsAcceptsPackingConfigurationRequests()  # noqa: E501
         pass
 
 

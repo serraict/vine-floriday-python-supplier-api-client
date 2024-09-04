@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.models.price_group import PriceGroup  # noqa: E501
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.models.price_group import PriceGroup  # noqa: E501
+from floriday_supplier_client.rest import ApiException
 
 
 class TestPriceGroup(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestPriceGroup(unittest.TestCase):
     def testPriceGroup(self):
         """Test PriceGroup"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.price_group.PriceGroup()  # noqa: E501
+        # model = floriday_supplier_client.models.price_group.PriceGroup()  # noqa: E501
         pass
 
 

@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.api.packing_configuration_requests_api import PackingConfigurationRequestsApi  # noqa: E501
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.api.packing_configuration_requests_api import PackingConfigurationRequestsApi  # noqa: E501
+from floriday_supplier_client.rest import ApiException
 
 
 class TestPackingConfigurationRequestsApi(unittest.TestCase):

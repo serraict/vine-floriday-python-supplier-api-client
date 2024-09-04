@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.api.trade_item_requests_api import TradeItemRequestsApi  # noqa: E501
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.api.trade_item_requests_api import TradeItemRequestsApi  # noqa: E501
+from floriday_supplier_client.rest import ApiException
 
 
 class TestTradeItemRequestsApi(unittest.TestCase):

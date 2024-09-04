@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.models.edit_contract import EditContract  # noqa: E501
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.models.edit_contract import EditContract  # noqa: E501
+from floriday_supplier_client.rest import ApiException
 
 
 class TestEditContract(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestEditContract(unittest.TestCase):
     def testEditContract(self):
         """Test EditContract"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.edit_contract.EditContract()  # noqa: E501
+        # model = floriday_supplier_client.models.edit_contract.EditContract()  # noqa: E501
         pass
 
 

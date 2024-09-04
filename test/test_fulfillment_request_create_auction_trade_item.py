@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.models.fulfillment_request_create_auction_trade_item import FulfillmentRequestCreateAuctionTradeItem  # noqa: E501
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.models.fulfillment_request_create_auction_trade_item import FulfillmentRequestCreateAuctionTradeItem  # noqa: E501
+from floriday_supplier_client.rest import ApiException
 
 
 class TestFulfillmentRequestCreateAuctionTradeItem(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestFulfillmentRequestCreateAuctionTradeItem(unittest.TestCase):
     def testFulfillmentRequestCreateAuctionTradeItem(self):
         """Test FulfillmentRequestCreateAuctionTradeItem"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.fulfillment_request_create_auction_trade_item.FulfillmentRequestCreateAuctionTradeItem()  # noqa: E501
+        # model = floriday_supplier_client.models.fulfillment_request_create_auction_trade_item.FulfillmentRequestCreateAuctionTradeItem()  # noqa: E501
         pass
 
 

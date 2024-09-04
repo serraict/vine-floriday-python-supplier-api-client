@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.models.all_of_customer_trade_settings_accepts_transport_cost import AllOfCustomerTradeSettingsAcceptsTransportCost  # noqa: E501
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.models.all_of_customer_trade_settings_accepts_transport_cost import AllOfCustomerTradeSettingsAcceptsTransportCost  # noqa: E501
+from floriday_supplier_client.rest import ApiException
 
 
 class TestAllOfCustomerTradeSettingsAcceptsTransportCost(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestAllOfCustomerTradeSettingsAcceptsTransportCost(unittest.TestCase):
     def testAllOfCustomerTradeSettingsAcceptsTransportCost(self):
         """Test AllOfCustomerTradeSettingsAcceptsTransportCost"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.all_of_customer_trade_settings_accepts_transport_cost.AllOfCustomerTradeSettingsAcceptsTransportCost()  # noqa: E501
+        # model = floriday_supplier_client.models.all_of_customer_trade_settings_accepts_transport_cost.AllOfCustomerTradeSettingsAcceptsTransportCost()  # noqa: E501
         pass
 
 

@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.models.packing_configuration_request import PackingConfigurationRequest  # noqa: E501
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.models.packing_configuration_request import PackingConfigurationRequest  # noqa: E501
+from floriday_supplier_client.rest import ApiException
 
 
 class TestPackingConfigurationRequest(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestPackingConfigurationRequest(unittest.TestCase):
     def testPackingConfigurationRequest(self):
         """Test PackingConfigurationRequest"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.packing_configuration_request.PackingConfigurationRequest()  # noqa: E501
+        # model = floriday_supplier_client.models.packing_configuration_request.PackingConfigurationRequest()  # noqa: E501
         pass
 
 

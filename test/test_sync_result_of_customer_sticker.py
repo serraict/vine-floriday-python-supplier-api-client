@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.models.sync_result_of_customer_sticker import SyncResultOfCustomerSticker  # noqa: E501
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.models.sync_result_of_customer_sticker import SyncResultOfCustomerSticker  # noqa: E501
+from floriday_supplier_client.rest import ApiException
 
 
 class TestSyncResultOfCustomerSticker(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestSyncResultOfCustomerSticker(unittest.TestCase):
     def testSyncResultOfCustomerSticker(self):
         """Test SyncResultOfCustomerSticker"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.sync_result_of_customer_sticker.SyncResultOfCustomerSticker()  # noqa: E501
+        # model = floriday_supplier_client.models.sync_result_of_customer_sticker.SyncResultOfCustomerSticker()  # noqa: E501
         pass
 
 

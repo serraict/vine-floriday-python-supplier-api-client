@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.models.add_batch_packing_configuration import AddBatchPackingConfiguration  # noqa: E501
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.models.add_batch_packing_configuration import AddBatchPackingConfiguration  # noqa: E501
+from floriday_supplier_client.rest import ApiException
 
 
 class TestAddBatchPackingConfiguration(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestAddBatchPackingConfiguration(unittest.TestCase):
     def testAddBatchPackingConfiguration(self):
         """Test AddBatchPackingConfiguration"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.add_batch_packing_configuration.AddBatchPackingConfiguration()  # noqa: E501
+        # model = floriday_supplier_client.models.add_batch_packing_configuration.AddBatchPackingConfiguration()  # noqa: E501
         pass
 
 

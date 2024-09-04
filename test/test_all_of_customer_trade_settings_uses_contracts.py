@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.models.all_of_customer_trade_settings_uses_contracts import AllOfCustomerTradeSettingsUsesContracts  # noqa: E501
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.models.all_of_customer_trade_settings_uses_contracts import AllOfCustomerTradeSettingsUsesContracts  # noqa: E501
+from floriday_supplier_client.rest import ApiException
 
 
 class TestAllOfCustomerTradeSettingsUsesContracts(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestAllOfCustomerTradeSettingsUsesContracts(unittest.TestCase):
     def testAllOfCustomerTradeSettingsUsesContracts(self):
         """Test AllOfCustomerTradeSettingsUsesContracts"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.all_of_customer_trade_settings_uses_contracts.AllOfCustomerTradeSettingsUsesContracts()  # noqa: E501
+        # model = floriday_supplier_client.models.all_of_customer_trade_settings_uses_contracts.AllOfCustomerTradeSettingsUsesContracts()  # noqa: E501
         pass
 
 

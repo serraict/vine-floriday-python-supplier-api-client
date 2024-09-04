@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.models.media_body import MediaBody  # noqa: E501
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.models.media_body import MediaBody  # noqa: E501
+from floriday_supplier_client.rest import ApiException
 
 
 class TestMediaBody(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestMediaBody(unittest.TestCase):
     def testMediaBody(self):
         """Test MediaBody"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.media_body.MediaBody()  # noqa: E501
+        # model = floriday_supplier_client.models.media_body.MediaBody()  # noqa: E501
         pass
 
 

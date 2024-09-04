@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.models.combine_and_transform_batches_request import CombineAndTransformBatchesRequest  # noqa: E501
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.models.combine_and_transform_batches_request import CombineAndTransformBatchesRequest  # noqa: E501
+from floriday_supplier_client.rest import ApiException
 
 
 class TestCombineAndTransformBatchesRequest(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestCombineAndTransformBatchesRequest(unittest.TestCase):
     def testCombineAndTransformBatchesRequest(self):
         """Test CombineAndTransformBatchesRequest"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.combine_and_transform_batches_request.CombineAndTransformBatchesRequest()  # noqa: E501
+        # model = floriday_supplier_client.models.combine_and_transform_batches_request.CombineAndTransformBatchesRequest()  # noqa: E501
         pass
 
 

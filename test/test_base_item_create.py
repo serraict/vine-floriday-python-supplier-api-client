@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.models.base_item_create import BaseItemCreate  # noqa: E501
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.models.base_item_create import BaseItemCreate  # noqa: E501
+from floriday_supplier_client.rest import ApiException
 
 
 class TestBaseItemCreate(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestBaseItemCreate(unittest.TestCase):
     def testBaseItemCreate(self):
         """Test BaseItemCreate"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.base_item_create.BaseItemCreate()  # noqa: E501
+        # model = floriday_supplier_client.models.base_item_create.BaseItemCreate()  # noqa: E501
         pass
 
 

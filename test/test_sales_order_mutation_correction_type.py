@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.models.sales_order_mutation_correction_type import SalesOrderMutationCorrectionType  # noqa: E501
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.models.sales_order_mutation_correction_type import SalesOrderMutationCorrectionType  # noqa: E501
+from floriday_supplier_client.rest import ApiException
 
 
 class TestSalesOrderMutationCorrectionType(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestSalesOrderMutationCorrectionType(unittest.TestCase):
     def testSalesOrderMutationCorrectionType(self):
         """Test SalesOrderMutationCorrectionType"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.sales_order_mutation_correction_type.SalesOrderMutationCorrectionType()  # noqa: E501
+        # model = floriday_supplier_client.models.sales_order_mutation_correction_type.SalesOrderMutationCorrectionType()  # noqa: E501
         pass
 
 

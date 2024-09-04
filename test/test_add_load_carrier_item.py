@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.models.add_load_carrier_item import AddLoadCarrierItem  # noqa: E501
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.models.add_load_carrier_item import AddLoadCarrierItem  # noqa: E501
+from floriday_supplier_client.rest import ApiException
 
 
 class TestAddLoadCarrierItem(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestAddLoadCarrierItem(unittest.TestCase):
     def testAddLoadCarrierItem(self):
         """Test AddLoadCarrierItem"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.add_load_carrier_item.AddLoadCarrierItem()  # noqa: E501
+        # model = floriday_supplier_client.models.add_load_carrier_item.AddLoadCarrierItem()  # noqa: E501
         pass
 
 

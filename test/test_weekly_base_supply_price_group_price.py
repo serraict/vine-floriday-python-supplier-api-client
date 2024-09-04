@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.models.weekly_base_supply_price_group_price import WeeklyBaseSupplyPriceGroupPrice  # noqa: E501
-from swagger_client.rest import ApiException
+import floriday_supplier_client
+from floriday_supplier_client.models.weekly_base_supply_price_group_price import WeeklyBaseSupplyPriceGroupPrice  # noqa: E501
+from floriday_supplier_client.rest import ApiException
 
 
 class TestWeeklyBaseSupplyPriceGroupPrice(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestWeeklyBaseSupplyPriceGroupPrice(unittest.TestCase):
     def testWeeklyBaseSupplyPriceGroupPrice(self):
         """Test WeeklyBaseSupplyPriceGroupPrice"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.weekly_base_supply_price_group_price.WeeklyBaseSupplyPriceGroupPrice()  # noqa: E501
+        # model = floriday_supplier_client.models.weekly_base_supply_price_group_price.WeeklyBaseSupplyPriceGroupPrice()  # noqa: E501
         pass
 
 
