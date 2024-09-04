@@ -2,9 +2,10 @@
 
 ## Doing
 
+* How will we do versioning?
+
 ## Next
 
-* How will we do versioning?
 * Setup a ci build.
 * import the client in Serra Vine
 
