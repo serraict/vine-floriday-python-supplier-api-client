@@ -15,7 +15,7 @@ update:
 	pip install -e .
 console:
 tests:
-	nosetests
+	pytest
 build:
 	python -m build
 documentation:
