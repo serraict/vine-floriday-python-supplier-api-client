@@ -91,6 +91,12 @@ make update
 python example.py
 ```
 
+To make a new release, do:
+
+```release
+make release
+```
+
 ## Documentation for API Endpoints
 
 All URIs are relative to _<https://api.staging.floriday.io/suppliers-api-2024v1>_
