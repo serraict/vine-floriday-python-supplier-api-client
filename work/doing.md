@@ -1,29 +1,27 @@
 # Doing
 
 ## Goal
-Prepare repository documentation to support effective development and usage of the Floriday Supplier API client.
+Fix the hardcoded staging URL in Configuration class to ensure the API client uses the correct base URL from environment variables.
 
 ## Analysis
-- Project is a Python client for Floriday Supplier API
-- Uses Swagger Codegen for API client generation
-- Requires specific environment variables for configuration
-- Has clear contributing guidelines
-- Documentation needs organization
+- The `Configuration` class in the `floriday_supplier_client` package has a hardcoded staging URL as the default host
+- This causes issues when using the client in a production environment as API calls will be directed to the staging API
+- The `ApiFactory` class reads the base URL from environment variables but doesn't set it in the configuration
+- Current workaround requires manually setting the host after client initialization
 
 ## Design
-Create two key documentation files:
-1. readme.md - Focus on usage and getting started
-2. architecture.md - Focus on technical design and patterns
+Modify the `_configure_client` method in the `ApiFactory` class to set the host in the configuration to the base URL from environment variables.
 
 ## Steps
 1. Update doing.md with current work (this file)
-2. Create about/readme.md
-3. Create about/architecture.md
-4. Review documentation for completeness
+2. Modify api_factory.py to set configuration.host = self.base_url
+3. Add test to verify host configuration
+4. Test the changes with both staging and production URLs
+5. Create commit with descriptive message
 
 ## Progress
 - [x] Update doing.md
-- [x] Create about/readme.md
-- [x] Create about/architecture.md
-- [x] Create CONTRIBUTING-AI.md
-- [x] Review and finalize
+- [x] Modify api_factory.py to set configuration.host = self.base_url
+- [x] Add test to verify host configuration
+- [x] Test the changes with both staging and production URLs
+- [x] Create commit with descriptive message

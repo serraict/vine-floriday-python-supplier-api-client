@@ -42,6 +42,8 @@ class ApiFactory:
         configuration.api_key["Authorization"] = self.access_token
         configuration.api_key_prefix["Authorization"] = "Bearer"
         configuration.api_key["X-Api-Key"] = self.api_key
+        # Set the host to the base URL from the environment variable
+        configuration.host = self.base_url
         return configuration
 
     def get_api_instance(self, api_class):
