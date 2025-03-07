@@ -25,4 +25,5 @@ Create two key documentation files:
 - [x] Update doing.md
 - [x] Create about/readme.md
 - [x] Create about/architecture.md
-- [ ] Review and finalize
+- [x] Create CONTRIBUTING-AI.md
+- [x] Review and finalize
