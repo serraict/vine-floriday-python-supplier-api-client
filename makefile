@@ -16,8 +16,12 @@ update:
 console:
 tests:
 	pytest
+test-integration: tests
+	# only run tests for now
 build:
 	python -m build
+quality: tests
+	# only run tests for now
 documentation:
 printversion:
 	@python -m setuptools_scm
