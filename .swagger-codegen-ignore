@@ -26,3 +26,5 @@ README.md
 test-requirements.txt
 .gitignore
 setup.py
+floriday_supplier_client/api_factory.py
+test/test_api_factory.py
