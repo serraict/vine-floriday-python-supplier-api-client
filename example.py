@@ -41,8 +41,15 @@ def print_original_examples():
         )
 
 
-def sync_trade_items(start_seq_number=None, limit_result=50):
-    """Sync trade items using our new sync_entities function."""
+def sync_trade_items(start_seq_number=None, limit_result=50, batch_size=None, rate_limit=None):
+    """Sync trade items using our new sync_entities function.
+    
+    Args:
+        start_seq_number: Optional starting sequence number.
+        limit_result: Limit for the API call (not used directly in sync_entities).
+        batch_size: Optional batch size for each API call. Default is 50.
+        rate_limit: Optional rate limit delay in seconds. Default is 0.5s.
+    """
     factory = ApiFactory()
     client = factory.get_api_client()
     api_instance = TradeItemsApi(client)
@@ -53,12 +60,23 @@ def sync_trade_items(start_seq_number=None, limit_result=50):
         return item.trade_item_id
 
     print("\n=== Syncing trade items ===\n")
-    result = sync_entities(
-        entity_type="trade_items",
-        get_by_sequence=api_instance.get_trade_items_by_sequence_number,
-        persist_entity=persist_item,
-        start_seq_number=start_seq_number,
-    )
+    
+    # Build sync parameters
+    sync_params = {
+        "entity_type": "trade_items",
+        "get_by_sequence": api_instance.get_trade_items_by_sequence_number,
+        "persist_entity": persist_item,
+        "start_seq_number": start_seq_number,
+    }
+    
+    # Add optional configuration parameters if provided
+    if batch_size is not None:
+        sync_params["batch_size"] = batch_size
+    if rate_limit is not None:
+        sync_params["rate_limit_delay"] = rate_limit
+    
+    # Call sync_entities with parameters
+    result = sync_entities(**sync_params)
     
     print("\n=== Sync result ===\n")
     pprint(result)
@@ -68,5 +86,13 @@ if __name__ == "__main__":
     # Run original examples
     print_original_examples()
     
-    # Run sync example
+    # Run sync example with default configuration
     sync_trade_items(start_seq_number=0, limit_result=10)
+    
+    # Uncomment to run with custom configuration
+    # sync_trade_items(
+    #     start_seq_number=0,
+    #     limit_result=10,
+    #     batch_size=25,  # Smaller batch size
+    #     rate_limit=1.0  # Slower rate limit (1 second between requests)
+    # )

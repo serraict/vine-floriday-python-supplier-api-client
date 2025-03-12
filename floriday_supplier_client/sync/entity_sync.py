@@ -38,6 +38,8 @@ def sync_entities(
     persist_entity: Optional[Callable[[T], Any]] = None,
     start_seq_number: Optional[int] = None,
     get_max_sequence_number: Optional[Callable[[str], int]] = None,
+    batch_size: int = 50,
+    rate_limit_delay: float = 0.5,
 ) -> dict:
     """Synchronize entities from Floriday API using sequence numbers.
 
@@ -51,6 +53,8 @@ def sync_entities(
             is provided, it will be used to retrieve the starting sequence number.
         get_max_sequence_number: Optional function to retrieve the maximum sequence number
             for the given entity type from persistence. Required if start_seq_number is None.
+        batch_size: Number of entities to retrieve in each API call. Default is 50.
+        rate_limit_delay: Delay in seconds between API calls to avoid rate limiting. Default is 0.5s.
 
     Returns:
         A dictionary containing sync statistics.
@@ -73,9 +77,10 @@ def sync_entities(
         f"Syncing {entity_type} from sequence number {next_sequence_start_number}"
     )
 
-    # Fixed values for batch size and rate limiting
-    batch_size = 50  # Default batch size
-    rate_limit_delay = 0.5  # 0.5s delay between requests (120 calls/minute)
+    # Log configuration settings
+    logger.debug(
+        f"Sync configuration: batch_size={batch_size}, rate_limit_delay={rate_limit_delay}s"
+    )
 
     try:
         while True:

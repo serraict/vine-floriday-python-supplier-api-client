@@ -87,6 +87,44 @@ def test_sync_entities_basic(mock_sleep):
     mock_sleep.assert_called_with(0.5)
 
 
+@patch("time.sleep")  # Mock sleep to speed up tests
+def test_sync_entities_with_custom_config(mock_sleep):
+    """Test sync_entities with custom batch size and rate limit."""
+    # Setup test data
+    entity_type = "test_entity"
+    custom_batch_size = 25
+    custom_rate_limit = 1.0
+
+    # Create mock entities with sequence numbers
+    entities = [MockEntity(f"id_{i}", i) for i in range(1, 6)]
+
+    # Create mock sync results - need two results to complete the sync
+    # First result with entities, second with same max sequence to signal end
+    result1 = MockSyncResult(5, entities)
+    result2 = MockSyncResult(5, [])  # Empty result with same max sequence to end sync
+
+    # Mock get_by_sequence function
+    mock_get_by_sequence = Mock()
+    mock_get_by_sequence.side_effect = [result1, result2]
+
+    # Call sync_entities with custom configuration
+    sync_entities(
+        entity_type=entity_type,
+        get_by_sequence=mock_get_by_sequence,
+        start_seq_number=0,
+        batch_size=custom_batch_size,
+        rate_limit_delay=custom_rate_limit,
+    )
+
+    # Verify custom batch size was used
+    mock_get_by_sequence.assert_any_call(
+        sequence_number=0, limit_result=custom_batch_size
+    )
+
+    # Verify custom rate limit was used
+    mock_sleep.assert_called_with(custom_rate_limit)
+
+
 def test_sync_entities_no_persistence():
     """Test sync_entities without persistence."""
     # Setup test data
