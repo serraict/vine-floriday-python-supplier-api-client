@@ -41,14 +41,14 @@ def print_original_examples():
         )
 
 
-def sync_trade_items(start_seq_number=None, limit_result=50, batch_size=None, rate_limit=None):
+def sync_trade_items(start_seq_number=None, limit_result=50, batch_size=None, rate_limit_delay=None):
     """Sync trade items using our new sync_entities function.
     
     Args:
         start_seq_number: Optional starting sequence number.
         limit_result: Limit for the API call (not used directly in sync_entities).
         batch_size: Optional batch size for each API call. Default is 50.
-        rate_limit: Optional rate limit delay in seconds. Default is 0.5s.
+        rate_limit_delay: Optional delay in seconds between API calls to avoid rate limiting. Default is 0.5s.
     """
     factory = ApiFactory()
     client = factory.get_api_client()
@@ -72,8 +72,8 @@ def sync_trade_items(start_seq_number=None, limit_result=50, batch_size=None, ra
     # Add optional configuration parameters if provided
     if batch_size is not None:
         sync_params["batch_size"] = batch_size
-    if rate_limit is not None:
-        sync_params["rate_limit_delay"] = rate_limit
+    if rate_limit_delay is not None:
+        sync_params["rate_limit_delay"] = rate_limit_delay
     
     # Call sync_entities with parameters
     result = sync_entities(**sync_params)
@@ -94,5 +94,5 @@ if __name__ == "__main__":
     #     start_seq_number=0,
     #     limit_result=10,
     #     batch_size=25,  # Smaller batch size
-    #     rate_limit=1.0  # Slower rate limit (1 second between requests)
+    #     rate_limit_delay=1.0  # Slower rate (1 second delay between requests)
     # )

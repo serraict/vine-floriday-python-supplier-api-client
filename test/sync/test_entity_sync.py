@@ -89,11 +89,11 @@ def test_sync_entities_basic(mock_sleep):
 
 @patch("time.sleep")  # Mock sleep to speed up tests
 def test_sync_entities_with_custom_config(mock_sleep):
-    """Test sync_entities with custom batch size and rate limit."""
+    """Test sync_entities with custom batch size and rate limit delay."""
     # Setup test data
     entity_type = "test_entity"
     custom_batch_size = 25
-    custom_rate_limit = 1.0
+    custom_rate_limit_delay = 1.0
 
     # Create mock entities with sequence numbers
     entities = [MockEntity(f"id_{i}", i) for i in range(1, 6)]
@@ -113,7 +113,7 @@ def test_sync_entities_with_custom_config(mock_sleep):
         get_by_sequence=mock_get_by_sequence,
         start_seq_number=0,
         batch_size=custom_batch_size,
-        rate_limit_delay=custom_rate_limit,
+        rate_limit_delay=custom_rate_limit_delay,
     )
 
     # Verify custom batch size was used
@@ -121,8 +121,8 @@ def test_sync_entities_with_custom_config(mock_sleep):
         sequence_number=0, limit_result=custom_batch_size
     )
 
-    # Verify custom rate limit was used
-    mock_sleep.assert_called_with(custom_rate_limit)
+    # Verify custom rate limit delay was used
+    mock_sleep.assert_called_with(custom_rate_limit_delay)
 
 
 def test_sync_entities_no_persistence():
