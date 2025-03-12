@@ -1,9 +1,18 @@
+import logging
 from pprint import pprint
 
 from floriday_supplier_client import TradeItemsApi
 from floriday_supplier_client.api_factory import ApiFactory
 from floriday_supplier_client.rest import ApiException
 from floriday_supplier_client.sync import sync_entities
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+)
+# Set specific logger levels if needed
+# logging.getLogger("floriday_supplier_client.sync").setLevel(logging.DEBUG)
 
 
 def print_original_examples():
