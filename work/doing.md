@@ -1,5 +1,7 @@
 # Doing
 
+Issue reference on Github: https://github.com/serraict/vine-floriday-python-supplier-api-client/issues/3
+
 ## Goal
 
 Move the generic entity synchronization code from vine-floriday-adapter to floriday-supplier-client to make it available for other projects using the client library.
@@ -64,7 +66,7 @@ Proposed solution:
 ## Progress
 
 - [x] Step 1: Minimal sync implementation
-- [ ] Step 2: Add logging
+- [x] Step 2: Add logging
 - [ ] Step 3: Add configuration options
 - [ ] Step 4: Add retry logic
 - [ ] Step 5: Update documentation
