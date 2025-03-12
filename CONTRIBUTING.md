@@ -10,9 +10,10 @@ It serves as a checklist for developers and AI agents to ensure quality and cons
 
 We organize our work on Github, using our [github project].
 AI agents can use the command line tool `gh` to access this project's issues.
+The workflow is: Backlog > Next > Doing > Done.
 Tip: use `gh issue --help` and `gh project --help` if you are not familiar with the `gh` cli.
 Only work on a single item at a time.
-For this active work item, organize our in [doing.md](./work/doing.md).
+For the active work item, organize our in [doing.md](./work/doing.md).
 Use the following outline:
 
 ```text
