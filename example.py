@@ -1,14 +1,13 @@
-import os
 from pprint import pprint
-import requests
 
 from floriday_supplier_client import TradeItemsApi
 from floriday_supplier_client.api_factory import ApiFactory
 from floriday_supplier_client.rest import ApiException
-from pprint import pprint
+from floriday_supplier_client.sync import sync_entities
 
 
-if __name__ == "__main__":
+def print_original_examples():
+    """Run the original examples to verify connection to the staging server."""
     factory = ApiFactory()
     client = factory.get_api_client()
     api_instance = TradeItemsApi(client)
@@ -31,3 +30,34 @@ if __name__ == "__main__":
             "Exception when calling AdditionalServicesApi->get_additional_service_by_id: %s\n"
             % e
         )
+
+
+def sync_trade_items(start_seq_number=None, limit_result=50):
+    """Sync trade items using our new sync_entities function."""
+    factory = ApiFactory()
+    client = factory.get_api_client()
+    api_instance = TradeItemsApi(client)
+
+    def persist_item(item):
+        """Simple persistence function that just prints the item name."""
+        print(f"Would persist trade item: {item.trade_item_id} - {item.trade_item_name}")
+        return item.trade_item_id
+
+    print("\n=== Syncing trade items ===\n")
+    result = sync_entities(
+        entity_type="trade_items",
+        get_by_sequence=api_instance.get_trade_items_by_sequence_number,
+        persist_entity=persist_item,
+        start_seq_number=start_seq_number,
+    )
+    
+    print("\n=== Sync result ===\n")
+    pprint(result)
+
+
+if __name__ == "__main__":
+    # Run original examples
+    print_original_examples()
+    
+    # Run sync example
+    sync_trade_items(start_seq_number=0, limit_result=10)
