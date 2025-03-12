@@ -17,7 +17,8 @@ console:
 tests:
 	pytest
 test-integration: tests
-	# only run tests for now
+	# Run example.py to test integration with Floriday API
+	python example.py
 build:
 	python -m build
 quality: tests
