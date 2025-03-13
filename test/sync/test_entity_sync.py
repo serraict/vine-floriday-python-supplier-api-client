@@ -101,7 +101,9 @@ def test_sync_entities_with_custom_config(mock_sleep):
     # Create mock sync results - need two results to complete the sync
     # First result with entities, second with same max sequence to signal end
     result1 = MockApiSyncResult(5, entities)
-    result2 = MockApiSyncResult(5, [])  # Empty result with same max sequence to end sync
+    result2 = MockApiSyncResult(
+        5, []
+    )  # Empty result with same max sequence to end sync
 
     # Mock fetch_entities_callback function
     mock_fetch_entities = Mock()
@@ -193,25 +195,27 @@ def test_sync_entities_logging():
     """Test that sync_entities logs correctly."""
     # Setup test data
     entity_type = "test_entity"
-    
+
     # Create mock entities with sequence numbers
     entities = [MockEntity(f"id_{i}", i) for i in range(1, 3)]
-    
+
     # Create mock sync result
     result = MockApiSyncResult(2, entities)
-    
+
     # Mock fetch_entities_callback function
     mock_fetch_entities = Mock()
     mock_fetch_entities.return_value = result
-    
+
     # Call sync_entities with mocked logger
-    with patch("time.sleep"), patch("floriday_supplier_client.sync.entity_sync.logger") as mock_logger:
+    with patch("time.sleep"), patch(
+        "floriday_supplier_client.sync.entity_sync.logger"
+    ) as mock_logger:
         sync_entities(
             entity_type=entity_type,
             fetch_entities_callback=mock_fetch_entities,
-            start_seq_number=0
+            start_seq_number=0,
         )
-    
+
     # Verify logger was called at least once for each level
     assert mock_logger.info.call_count > 0
     assert mock_logger.debug.call_count > 0
@@ -227,7 +231,9 @@ def test_sync_entities_error_handling():
     mock_fetch_entities.side_effect = Exception("Test error")
 
     # Call sync_entities with mocked logger
-    with patch("time.sleep"), patch("floriday_supplier_client.sync.entity_sync.logger") as mock_logger:
+    with patch("time.sleep"), patch(
+        "floriday_supplier_client.sync.entity_sync.logger"
+    ) as mock_logger:
         result = sync_entities(
             entity_type=entity_type,
             fetch_entities_callback=mock_fetch_entities,
@@ -240,7 +246,7 @@ def test_sync_entities_error_handling():
     assert result.entities_processed == 0
     assert result.success is False
     assert result.error == "Test error"
-    
+
     # Verify error was logged
     assert mock_logger.error.call_count > 0
 
@@ -253,9 +259,48 @@ def test_sync_entities_missing_parameters():
 
     # Call sync_entities without start_seq_number or get_max_sequence_number
     with pytest.raises(ValueError) as excinfo:
-        sync_entities(entity_type=entity_type, fetch_entities_callback=mock_fetch_entities)
+        sync_entities(
+            entity_type=entity_type, fetch_entities_callback=mock_fetch_entities
+        )
 
     # Verify error message
     assert "Either start_seq_number or get_max_sequence_number must be provided" in str(
         excinfo.value
     )
+
+
+def test_entity_sync_result_str_method():
+    """Test the __str__ method of EntitySyncResult."""
+    from floriday_supplier_client.sync.entity_sync import EntitySyncResult
+
+    # Test successful result
+    success_result = EntitySyncResult(
+        entity_type="test_entity",
+        start_sequence_number=100,
+        end_sequence_number=200,
+        entities_processed=50,
+        success=True,
+    )
+
+    success_str = str(success_result)
+    assert "SUCCESS" in success_str
+    assert "test_entity" in success_str
+    assert "50 entities" in success_str
+    assert "100 → 200" in success_str
+
+    # Test failed result
+    error_result = EntitySyncResult(
+        entity_type="test_entity",
+        start_sequence_number=100,
+        end_sequence_number=150,
+        entities_processed=25,
+        success=False,
+        error="Connection error",
+    )
+
+    error_str = str(error_result)
+    assert "FAILED" in error_str
+    assert "test_entity" in error_str
+    assert "25 entities" in error_str
+    assert "100 → 150" in error_str
+    assert "Connection error" in error_str

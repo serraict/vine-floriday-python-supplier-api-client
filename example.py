@@ -101,15 +101,8 @@ def example_1_basic_trade_items_sync():
     )
 
     # Step 4: Handle the result
-    print("\n=== Sync completed ===\n")
-    print(f"Started at sequence: {result.start_sequence_number}")
-    print(f"Ended at sequence: {result.end_sequence_number}")
-    print(f"Processed {result.entities_processed} trade items")
-    print(f"Success: {result.success}")
-
-    # If the sync failed, the result will include an error message
-    if not result.success:
-        print(f"Error: {result.error}")
+    # The EntitySyncResult class has a __str__ method for easy printing
+    print(result)
 
 
 if __name__ == "__main__":

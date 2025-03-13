@@ -63,6 +63,22 @@ class EntitySyncResult:
 
     error: Optional[str] = None
     """Error message if success is False, None otherwise."""
+    
+    def __str__(self) -> str:
+        """Return a human-readable string representation of the sync result."""
+        if self.success:
+            return (
+                f"Sync of {self.entity_type}: SUCCESS\n"
+                f"Processed {self.entities_processed} entities\n"
+                f"Sequence range: {self.start_sequence_number} → {self.end_sequence_number}"
+            )
+        else:
+            return (
+                f"Sync of {self.entity_type}: FAILED\n"
+                f"Processed {self.entities_processed} entities before failure\n"
+                f"Sequence range: {self.start_sequence_number} → {self.end_sequence_number}\n"
+                f"Error: {self.error}"
+            )
 
 
 def sync_entities(
