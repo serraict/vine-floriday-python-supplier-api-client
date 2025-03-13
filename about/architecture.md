@@ -15,9 +15,9 @@ The Floriday Supplier API Client is a Python library that provides a structured 
 │  └─────────────┘    └─────────────┘    └─────────────────┘  │
 │        │                                        │           │
 │        ▼                                        ▼           │
-│  ┌─────────────┐                       ┌─────────────────┐  │
-│  │ Auth Flow   │                       │ API Models      │  │
-│  └─────────────┘                       └─────────────────┘  │
+│  ┌─────────────┐    ┌─────────────┐    ┌─────────────────┐  │
+│  │ Auth Flow   │    │ Sync Module │    │ API Models      │  │
+│  └─────────────┘    └─────────────┘    └─────────────────┘  │
 │                                                             │
 └─────────────────────────────────────────────────────────────┘
             │                               │
@@ -70,7 +70,53 @@ The library provides specialized API clients for each endpoint group in the Flor
 
 Each API client provides methods corresponding to the API endpoints, with proper parameter typing and error handling.
 
-### 3. Authentication Flow
+### 3. Sync Module
+
+The `sync` module provides utilities for synchronizing entities from the Floriday API using sequence numbers. It handles pagination, rate limiting, and error handling to provide a robust synchronization mechanism.
+
+#### Key Components
+
+- `EntitySyncResult`: A data class that represents the result of a synchronization operation
+- `sync_entities`: A function that synchronizes entities from the Floriday API
+
+```python
+from floriday_supplier_client import TradeItemsApi
+from floriday_supplier_client.api_factory import ApiFactory
+from floriday_supplier_client.sync import sync_entities
+
+# Initialize API
+factory = ApiFactory()
+client = factory.get_api_client()
+api_instance = TradeItemsApi(client)
+
+# Define a persistence function
+def persist_item(item):
+    # Save the item to your database
+    print(f"Persisting item: {item.trade_item_id}")
+    return item.trade_item_id
+
+# Synchronize trade items
+result = sync_entities(
+    entity_type="trade_items",
+    fetch_entities_callback=api_instance.get_trade_items_by_sequence_number,
+    persist_entity_callback=persist_item,
+    start_seq_number=0
+)
+
+# Handle the result
+print(f"Processed {result.entities_processed} entities")
+print(f"Success: {result.success}")
+```
+
+#### Features
+
+- **Sequence-based synchronization**: Efficiently retrieve only new or updated entities
+- **Configurable rate limiting**: Avoid API throttling with customizable delay between requests
+- **Optional persistence**: Integrate with any storage system through callback functions
+- **Resumable synchronization**: Continue from where a previous sync left off
+- **Comprehensive error handling**: Detailed error information and logging
+
+### 4. Authentication Flow
 
 The client uses OAuth2 client credentials flow for authentication:
 
@@ -92,6 +138,43 @@ The client is configured through environment variables:
 | FLORIDAY_BASE_URL | Base URL for API requests |
 
 ## Integration Patterns
+
+### Entity Synchronization Pattern
+
+For synchronizing entities from the Floriday API:
+
+```python
+# 1. Create factory and client
+factory = ApiFactory()
+client = factory.get_api_client()
+
+# 2. Initialize specific API
+api_instance = TradeItemsApi(client)
+
+# 3. Define persistence function
+def persist_entity(entity):
+    # Save entity to database
+    return entity.id
+
+# 4. Get last processed sequence number (optional)
+def get_max_sequence_number(entity_type):
+    # Retrieve from database
+    return last_sequence_number
+
+# 5. Synchronize entities
+result = sync_entities(
+    entity_type="trade_items",
+    fetch_entities_callback=api_instance.get_trade_items_by_sequence_number,
+    persist_entity_callback=persist_entity,
+    get_max_sequence_number=get_max_sequence_number
+)
+
+# 6. Handle result
+if result.success:
+    print(f"Successfully processed {result.entities_processed} entities")
+else:
+    print(f"Sync failed: {result.error}")
+```
 
 ### Basic Usage Pattern
 

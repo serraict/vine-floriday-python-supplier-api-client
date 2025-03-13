@@ -14,6 +14,7 @@ This client library is automatically generated from the Floriday Supplier API Op
 - Environment-based configuration
 - OAuth2 authentication handling
 - Support for all Floriday Supplier API endpoints
+- Entity synchronization utilities for efficient data retrieval
 
 ## Installation
 
@@ -62,6 +63,8 @@ See `.env.example` in the repository root for a template.
 
 ## Basic Usage
 
+### Direct API Access
+
 ```python
 from floriday_supplier_client import TradeItemsApi
 from floriday_supplier_client.api_factory import ApiFactory
@@ -83,6 +86,40 @@ try:
     
 except ApiException as e:
     print(f"API Exception: {e}")
+```
+
+### Entity Synchronization
+
+The client includes utilities for efficiently synchronizing entities from the Floriday API:
+
+```python
+from floriday_supplier_client import TradeItemsApi
+from floriday_supplier_client.api_factory import ApiFactory
+from floriday_supplier_client.sync import sync_entities
+
+# Create API factory and client
+factory = ApiFactory()
+client = factory.get_api_client()
+api_instance = TradeItemsApi(client)
+
+# Define a persistence function
+def persist_trade_item(item):
+    # In a real application, save to database
+    print(f"Processing trade item: {item.trade_item_id}")
+    return item.trade_item_id
+
+# Synchronize trade items
+result = sync_entities(
+    entity_type="trade_items",
+    fetch_entities_callback=api_instance.get_trade_items_by_sequence_number,
+    persist_entity_callback=persist_trade_item,
+    start_seq_number=0
+)
+
+# Handle the result
+print(f"Processed {result.entities_processed} trade items")
+if not result.success:
+    print(f"Error: {result.error}")
 ```
 
 ## Documentation
