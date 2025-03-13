@@ -28,3 +28,21 @@ test-requirements.txt
 setup.py
 floriday_supplier_client/api_factory.py
 test/test_api_factory.py
+
+# Protect custom sync module
+floriday_supplier_client/sync/**
+test/sync/**
+
+# Protect version management
+floriday_supplier_client/_version.py
+
+# Protect project documentation and work tracking
+about/**
+work/**
+CONTRIBUTING.md
+CONTRIBUTING-AI.md
+
+# Additional project configuration files
+pyproject.toml
+requirements.txt
+example.py
