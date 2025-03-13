@@ -56,18 +56,38 @@ Proposed solution:
 1. Minimal sync implementation with fixed rate limiting and batch size
 2. Add logging
 3. Add configuration options for rate limiting and batch size
-4. Add retry logic
-5. Update documentation
+4. Update documentation:
+   - Add docstring examples showing how to resume a failed sync
+   - Document the error handling approach (why we don't need retry logic)
+   - Add example usage in README.md or about/readme.md
+   - Consider adding architecture documentation in about/architecture.md
+5. Refactor API for better usability:
+   - Use data classes for return values instead of dictionaries ✓
+   - Improve parameter names to be more descriptive ✓
+   - Add to string method to sync result ✓
+   - Consider a class-based approach for complex use cases
+   - Add context manager support for sync sessions
+   - Add async support for modern Python applications
+   - Provide simplified helper functions for common scenarios
+   - Consider using a generator pattern for large datasets
 6. Create issue in vine-floriday-adapter project:
    - Document how to migrate to the new sync function
    - Provide example code showing the migration path
    - Include any breaking changes and required updates
+   - Include error handling recommendations
 
 ## Progress
 
 - [x] Step 1: Minimal sync implementation
 - [x] Step 2: Add logging
 - [x] Step 3: Add configuration options
-- [ ] Step 4: Add retry logic
-- [ ] Step 5: Update documentation
+- [x] Step 4: Update documentation
+- [x] Step 5: Refactor API (initial improvements)
+- [ ] Step 5: Refactor API (advanced features)
 - [ ] Step 6: Create migration guide issue
+
+Note: After analysis, we decided to skip implementing retry logic since the current implementation already handles failures gracefully by:
+
+1. Returning the last successful sequence number in the result
+2. Logging errors with details
+3. Allowing syncs to resume from a specific sequence number using start_seq_number
