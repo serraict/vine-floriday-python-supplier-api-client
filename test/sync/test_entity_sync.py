@@ -18,8 +18,8 @@ class MockEntity:
         self.sequence_number = sequence_number
 
 
-class MockSyncResult:
-    """Mock SyncResult for testing."""
+class MockApiSyncResult:
+    """Mock ApiSyncResult for testing."""
 
     def __init__(self, maximum_sequence_number, results):
         self._maximum_sequence_number = maximum_sequence_number
@@ -45,39 +45,39 @@ def test_sync_entities_basic(mock_sleep):
     entities_batch2 = [MockEntity(f"id_{i}", i) for i in range(6, 11)]
 
     # Create mock sync results
-    result1 = MockSyncResult(5, entities_batch1)
-    result2 = MockSyncResult(10, entities_batch2)
+    result1 = MockApiSyncResult(5, entities_batch1)
+    result2 = MockApiSyncResult(10, entities_batch2)
     # Final result with no new entities and same max sequence number to signal end of sync
-    result3 = MockSyncResult(10, [])
+    result3 = MockApiSyncResult(10, [])
 
-    # Mock get_by_sequence function
-    mock_get_by_sequence = Mock()
-    mock_get_by_sequence.side_effect = [result1, result2, result3]
+    # Mock fetch_entities_callback function
+    mock_fetch_entities = Mock()
+    mock_fetch_entities.side_effect = [result1, result2, result3]
 
-    # Mock persist_entity function
+    # Mock persist_entity_callback function
     mock_persist_entity = Mock()
     mock_persist_entity.side_effect = lambda entity: entity.id
 
     # Call sync_entities
     result = sync_entities(
         entity_type=entity_type,
-        get_by_sequence=mock_get_by_sequence,
-        persist_entity=mock_persist_entity,
+        fetch_entities_callback=mock_fetch_entities,
+        persist_entity_callback=mock_persist_entity,
         start_seq_number=0,
     )
 
     # Verify results
-    assert result["entity_type"] == entity_type
-    assert result["start_sequence_number"] == 0
-    assert result["end_sequence_number"] == 10
-    assert result["entities_processed"] == 10
-    assert result["success"] is True
+    assert result.entity_type == entity_type
+    assert result.start_sequence_number == 0
+    assert result.end_sequence_number == 10
+    assert result.entities_processed == 10
+    assert result.success is True
 
     # Verify mock calls
-    assert mock_get_by_sequence.call_count == 3
-    mock_get_by_sequence.assert_any_call(sequence_number=0, limit_result=50)
-    mock_get_by_sequence.assert_any_call(sequence_number=5, limit_result=50)
-    mock_get_by_sequence.assert_any_call(sequence_number=10, limit_result=50)
+    assert mock_fetch_entities.call_count == 3
+    mock_fetch_entities.assert_any_call(sequence_number=0, limit_result=50)
+    mock_fetch_entities.assert_any_call(sequence_number=5, limit_result=50)
+    mock_fetch_entities.assert_any_call(sequence_number=10, limit_result=50)
 
     assert mock_persist_entity.call_count == 10
     for entity in entities_batch1 + entities_batch2:
@@ -100,24 +100,24 @@ def test_sync_entities_with_custom_config(mock_sleep):
 
     # Create mock sync results - need two results to complete the sync
     # First result with entities, second with same max sequence to signal end
-    result1 = MockSyncResult(5, entities)
-    result2 = MockSyncResult(5, [])  # Empty result with same max sequence to end sync
+    result1 = MockApiSyncResult(5, entities)
+    result2 = MockApiSyncResult(5, [])  # Empty result with same max sequence to end sync
 
-    # Mock get_by_sequence function
-    mock_get_by_sequence = Mock()
-    mock_get_by_sequence.side_effect = [result1, result2]
+    # Mock fetch_entities_callback function
+    mock_fetch_entities = Mock()
+    mock_fetch_entities.side_effect = [result1, result2]
 
     # Call sync_entities with custom configuration
     sync_entities(
         entity_type=entity_type,
-        get_by_sequence=mock_get_by_sequence,
+        fetch_entities_callback=mock_fetch_entities,
         start_seq_number=0,
         batch_size=custom_batch_size,
         rate_limit_delay=custom_rate_limit_delay,
     )
 
     # Verify custom batch size was used
-    mock_get_by_sequence.assert_any_call(
+    mock_fetch_entities.assert_any_call(
         sequence_number=0, limit_result=custom_batch_size
     )
 
@@ -134,23 +134,23 @@ def test_sync_entities_no_persistence():
     entities = [MockEntity(f"id_{i}", i) for i in range(1, 6)]
 
     # Create mock sync result
-    result = MockSyncResult(5, entities)
+    result = MockApiSyncResult(5, entities)
 
-    # Mock get_by_sequence function
-    mock_get_by_sequence = Mock()
-    mock_get_by_sequence.return_value = result
+    # Mock fetch_entities_callback function
+    mock_fetch_entities = Mock()
+    mock_fetch_entities.return_value = result
 
-    # Call sync_entities without persist_entity
+    # Call sync_entities without persist_entity_callback
     with patch("time.sleep"):  # Mock sleep to speed up tests
         sync_result = sync_entities(
             entity_type=entity_type,
-            get_by_sequence=mock_get_by_sequence,
+            fetch_entities_callback=mock_fetch_entities,
             start_seq_number=0,
         )
 
     # Verify results
-    assert sync_result["entities_processed"] == 5
-    assert sync_result["success"] is True
+    assert sync_result.entities_processed == 5
+    assert sync_result.success is True
 
 
 def test_sync_entities_with_get_max_sequence_number():
@@ -162,11 +162,11 @@ def test_sync_entities_with_get_max_sequence_number():
     entities = [MockEntity(f"id_{i}", i) for i in range(101, 106)]
 
     # Create mock sync result
-    result = MockSyncResult(105, entities)
+    result = MockApiSyncResult(105, entities)
 
-    # Mock get_by_sequence function
-    mock_get_by_sequence = Mock()
-    mock_get_by_sequence.return_value = result
+    # Mock fetch_entities_callback function
+    mock_fetch_entities = Mock()
+    mock_fetch_entities.return_value = result
 
     # Mock get_max_sequence_number function
     mock_get_max_sequence_number = Mock()
@@ -176,14 +176,14 @@ def test_sync_entities_with_get_max_sequence_number():
     with patch("time.sleep"):  # Mock sleep to speed up tests
         sync_result = sync_entities(
             entity_type=entity_type,
-            get_by_sequence=mock_get_by_sequence,
+            fetch_entities_callback=mock_fetch_entities,
             get_max_sequence_number=mock_get_max_sequence_number,
         )
 
     # Verify results
-    assert sync_result["start_sequence_number"] == 100
-    assert sync_result["entities_processed"] == 5
-    assert sync_result["success"] is True
+    assert sync_result.start_sequence_number == 100
+    assert sync_result.entities_processed == 5
+    assert sync_result.success is True
 
     # Verify get_max_sequence_number was called
     mock_get_max_sequence_number.assert_called_once_with(entity_type)
@@ -198,17 +198,17 @@ def test_sync_entities_logging():
     entities = [MockEntity(f"id_{i}", i) for i in range(1, 3)]
     
     # Create mock sync result
-    result = MockSyncResult(2, entities)
+    result = MockApiSyncResult(2, entities)
     
-    # Mock get_by_sequence function
-    mock_get_by_sequence = Mock()
-    mock_get_by_sequence.return_value = result
+    # Mock fetch_entities_callback function
+    mock_fetch_entities = Mock()
+    mock_fetch_entities.return_value = result
     
     # Call sync_entities with mocked logger
     with patch("time.sleep"), patch("floriday_supplier_client.sync.entity_sync.logger") as mock_logger:
         sync_entities(
             entity_type=entity_type,
-            get_by_sequence=mock_get_by_sequence,
+            fetch_entities_callback=mock_fetch_entities,
             start_seq_number=0
         )
     
@@ -222,24 +222,24 @@ def test_sync_entities_error_handling():
     # Setup test data
     entity_type = "test_entity"
 
-    # Mock get_by_sequence function that raises an exception
-    mock_get_by_sequence = Mock()
-    mock_get_by_sequence.side_effect = Exception("Test error")
+    # Mock fetch_entities_callback function that raises an exception
+    mock_fetch_entities = Mock()
+    mock_fetch_entities.side_effect = Exception("Test error")
 
     # Call sync_entities with mocked logger
     with patch("time.sleep"), patch("floriday_supplier_client.sync.entity_sync.logger") as mock_logger:
         result = sync_entities(
             entity_type=entity_type,
-            get_by_sequence=mock_get_by_sequence,
+            fetch_entities_callback=mock_fetch_entities,
             start_seq_number=0,
         )
 
     # Verify results
-    assert result["entity_type"] == entity_type
-    assert result["start_sequence_number"] == 0
-    assert result["entities_processed"] == 0
-    assert result["success"] is False
-    assert result["error"] == "Test error"
+    assert result.entity_type == entity_type
+    assert result.start_sequence_number == 0
+    assert result.entities_processed == 0
+    assert result.success is False
+    assert result.error == "Test error"
     
     # Verify error was logged
     assert mock_logger.error.call_count > 0
@@ -249,11 +249,11 @@ def test_sync_entities_missing_parameters():
     """Test sync_entities with missing parameters."""
     # Setup test data
     entity_type = "test_entity"
-    mock_get_by_sequence = Mock()
+    mock_fetch_entities = Mock()
 
     # Call sync_entities without start_seq_number or get_max_sequence_number
     with pytest.raises(ValueError) as excinfo:
-        sync_entities(entity_type=entity_type, get_by_sequence=mock_get_by_sequence)
+        sync_entities(entity_type=entity_type, fetch_entities_callback=mock_fetch_entities)
 
     # Verify error message
     assert "Either start_seq_number or get_max_sequence_number must be provided" in str(

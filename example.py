@@ -86,29 +86,30 @@ def example_1_basic_trade_items_sync():
     print("Starting synchronization of trade items...")
 
     # Step 3: Call sync_entities with basic parameters
+    # The result will be an EntitySyncResult object
     result = sync_entities(
         # Type of entity being synchronized (for logging and tracking)
         entity_type="trade_items",
         # Function that retrieves entities by sequence number
         # This should be a method from the appropriate API class
-        get_by_sequence=api_instance.get_trade_items_by_sequence_number,
+        fetch_entities_callback=api_instance.get_trade_items_by_sequence_number,
         # Function to persist each entity (optional)
         # If omitted, entities will be retrieved but not persisted
-        persist_entity=persist_item,
+        persist_entity_callback=persist_item,
         # Starting sequence number (0 to start from the beginning)
         start_seq_number=0,
     )
 
     # Step 4: Handle the result
     print("\n=== Sync completed ===\n")
-    print(f"Started at sequence: {result['start_sequence_number']}")
-    print(f"Ended at sequence: {result['end_sequence_number']}")
-    print(f"Processed {result['entities_processed']} trade items")
-    print(f"Success: {result['success']}")
+    print(f"Started at sequence: {result.start_sequence_number}")
+    print(f"Ended at sequence: {result.end_sequence_number}")
+    print(f"Processed {result.entities_processed} trade items")
+    print(f"Success: {result.success}")
 
     # If the sync failed, the result will include an error message
-    if not result["success"]:
-        print(f"Error: {result['error']}")
+    if not result.success:
+        print(f"Error: {result.error}")
 
 
 if __name__ == "__main__":

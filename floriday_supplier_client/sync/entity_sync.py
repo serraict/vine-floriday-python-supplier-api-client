@@ -9,6 +9,7 @@ using sequence numbers.
 
 import logging
 import time
+from dataclasses import dataclass
 from typing import TypeVar, Generic, Callable, List, Optional, Any, Protocol
 
 # Configure logger
@@ -27,7 +28,7 @@ DEFAULT_RATE_LIMIT_DELAY = 0.5  # seconds between calls (2 calls/second)
 DEFAULT_BATCH_SIZE = 50
 
 
-class SyncResult(Protocol, Generic[T]):
+class ApiSyncResult(Protocol, Generic[T]):
     """Protocol defining the structure of a SyncResult object returned by Floriday API."""
 
     @property
@@ -41,22 +42,45 @@ class SyncResult(Protocol, Generic[T]):
         ...
 
 
+@dataclass
+class EntitySyncResult:
+    """Result of a sync_entities operation."""
+
+    entity_type: str
+    """The type of entity that was synchronized."""
+
+    start_sequence_number: int
+    """The sequence number the sync started from."""
+
+    end_sequence_number: int
+    """The highest sequence number processed."""
+
+    entities_processed: int
+    """The number of entities processed during the sync."""
+
+    success: bool
+    """Whether the sync completed successfully."""
+
+    error: Optional[str] = None
+    """Error message if success is False, None otherwise."""
+
+
 def sync_entities(
     entity_type: str,
-    get_by_sequence: Callable[[int, int], SyncResult[T]],
-    persist_entity: Optional[Callable[[T], Any]] = None,
+    fetch_entities_callback: Callable[[int, int], ApiSyncResult[T]],
+    persist_entity_callback: Optional[Callable[[T], Any]] = None,
     start_seq_number: Optional[int] = None,
     get_max_sequence_number: Optional[Callable[[str], int]] = None,
     batch_size: int = DEFAULT_BATCH_SIZE,
     rate_limit_delay: float = DEFAULT_RATE_LIMIT_DELAY,
-) -> dict:
+) -> EntitySyncResult:
     """Synchronize entities from Floriday API using sequence numbers.
 
     Args:
         entity_type: A string identifier for the type of entity being synchronized.
-        get_by_sequence: A function that retrieves entities by sequence number.
-            It should accept a sequence number and limit, and return a SyncResult.
-        persist_entity: Optional function to persist each entity. If None, entities
+        fetch_entities_callback: A function that retrieves entities by sequence number.
+            It should accept a sequence number and limit, and return an ApiSyncResult.
+        persist_entity_callback: Optional function to persist each entity. If None, entities
             will not be persisted.
         start_seq_number: Optional starting sequence number. If None and get_max_sequence_number
             is provided, it will be used to retrieve the starting sequence number.
@@ -69,7 +93,7 @@ def sync_entities(
             A warning will be logged if the specified delay could exceed Floriday's rate limits.
 
     Returns:
-        A dictionary containing sync statistics.
+        An EntitySyncResult containing sync statistics.
 
     Raises:
         ValueError: If both start_seq_number and get_max_sequence_number are None.
@@ -107,7 +131,7 @@ def sync_entities(
 
     try:
         while True:
-            sync_result = get_by_sequence(
+            sync_result = fetch_entities_callback(
                 sequence_number=next_sequence_start_number, limit_result=batch_size
             )
 
@@ -125,8 +149,8 @@ def sync_entities(
             for entity in sync_result.results:
                 entities_processed += 1
 
-                if persist_entity:
-                    result_id = persist_entity(entity)
+                if persist_entity_callback:
+                    result_id = persist_entity_callback(entity)
                     logger.debug(
                         f"Seq nr {getattr(entity, 'sequence_number', 'N/A')}: "
                         f"Persisted {entity_type} {result_id}"
@@ -140,24 +164,24 @@ def sync_entities(
 
     except Exception as e:
         logger.error(f"Error during {entity_type} sync: {str(e)}", exc_info=True)
-        return {
-            "entity_type": entity_type,
-            "start_sequence_number": start_seq_number,
-            "end_sequence_number": next_sequence_start_number,
-            "entities_processed": entities_processed,
-            "success": False,
-            "error": str(e),
-        }
+        return EntitySyncResult(
+            entity_type=entity_type,
+            start_sequence_number=start_seq_number,
+            end_sequence_number=next_sequence_start_number,
+            entities_processed=entities_processed,
+            success=False,
+            error=str(e),
+        )
 
     logger.info(
         f"Done syncing {entity_type}. "
         f"Processed {entities_processed} entities from {start_seq_number} to {next_sequence_start_number}"
     )
 
-    return {
-        "entity_type": entity_type,
-        "start_sequence_number": start_seq_number,
-        "end_sequence_number": next_sequence_start_number,
-        "entities_processed": entities_processed,
-        "success": True,
-    }
+    return EntitySyncResult(
+        entity_type=entity_type,
+        start_sequence_number=start_seq_number,
+        end_sequence_number=next_sequence_start_number,
+        entities_processed=entities_processed,
+        success=True,
+    )
