@@ -5,15 +5,6 @@ from floriday_supplier_client import TradeItemsApi
 from floriday_supplier_client.api_factory import ApiFactory
 from floriday_supplier_client.rest import ApiException
 from floriday_supplier_client.sync import sync_entities
-from floriday_supplier_client.sync.entity_sync import (
-    DEFAULT_BATCH_SIZE,
-    DEFAULT_RATE_LIMIT_DELAY,
-    FLORIDAY_RATE_LIMIT_CALLS_PER_SECOND,
-)
-
-# Calculate minimum safe delay based on Floriday's rate limit
-# This is used in the commented example below
-MIN_SAFE_DELAY = 1.0 / FLORIDAY_RATE_LIMIT_CALLS_PER_SECOND
 
 # Configure logging
 logging.basicConfig(
@@ -21,6 +12,11 @@ logging.basicConfig(
 )
 # Set specific logger levels if needed
 # logging.getLogger("floriday_supplier_client.sync").setLevel(logging.DEBUG)
+
+
+# ============================================================================
+# ORIGINAL EXAMPLES
+# ============================================================================
 
 
 def print_original_examples():
@@ -49,73 +45,75 @@ def print_original_examples():
         )
 
 
-def sync_trade_items(
-    start_seq_number=None,
-    limit_result=50,
-    batch_size=DEFAULT_BATCH_SIZE,
-    rate_limit_delay=DEFAULT_RATE_LIMIT_DELAY,
-):
-    """Sync trade items using our new sync_entities function.
+# ============================================================================
+# SYNC EXAMPLES
+# ============================================================================
 
-    Args:
-        start_seq_number: Optional starting sequence number.
-        limit_result: Limit for the API call (not used directly in sync_entities).
-        batch_size: Optional batch size for each API call. Default is DEFAULT_BATCH_SIZE (50).
-        rate_limit_delay: Optional delay in seconds between API calls to avoid rate limiting.
-            Default is DEFAULT_RATE_LIMIT_DELAY (0.5s).
+
+def example_1_basic_trade_items_sync():
     """
+    Example 1: Basic synchronization of trade items.
+
+    This example demonstrates the simplest way to use sync_entities to synchronize
+    trade items from the Floriday API. It shows:
+
+    1. How to initialize the API client
+    2. How to create a simple persistence function
+    3. How to call sync_entities with basic parameters
+    4. How to handle the result
+    """
+    print("\n=== Example 1: Basic Trade Items Sync ===\n")
+
+    # Step 1: Initialize API client
     factory = ApiFactory()
     client = factory.get_api_client()
     api_instance = TradeItemsApi(client)
 
+    # Step 2: Define a persistence function
+    # This function will be called for each entity retrieved
     def persist_item(item):
-        """Simple persistence function that just prints the item name."""
+        """
+        Simple persistence function that just prints the item details.
+
+        In a real application, this would save the item to a database.
+        """
         print(
-            f"Would persist trade item: {item.trade_item_id} - {item.trade_item_name}"
+            f"Processing trade item: {item.trade_item_id} - {getattr(item, 'trade_item_name', 'N/A')}"
         )
+        # Return a unique identifier for the persisted entity
         return item.trade_item_id
 
-    print("\n=== Syncing trade items ===\n")
+    print("Starting synchronization of trade items...")
 
-    # Build sync parameters
-    sync_params = {
-        "entity_type": "trade_items",
-        "get_by_sequence": api_instance.get_trade_items_by_sequence_number,
-        "persist_entity": persist_item,
-        "start_seq_number": start_seq_number,
-    }
+    # Step 3: Call sync_entities with basic parameters
+    result = sync_entities(
+        # Type of entity being synchronized (for logging and tracking)
+        entity_type="trade_items",
+        # Function that retrieves entities by sequence number
+        # This should be a method from the appropriate API class
+        get_by_sequence=api_instance.get_trade_items_by_sequence_number,
+        # Function to persist each entity (optional)
+        # If omitted, entities will be retrieved but not persisted
+        persist_entity=persist_item,
+        # Starting sequence number (0 to start from the beginning)
+        start_seq_number=0,
+    )
 
-    # Add optional configuration parameters if provided
-    if batch_size is not None:
-        sync_params["batch_size"] = batch_size
-    if rate_limit_delay is not None:
-        sync_params["rate_limit_delay"] = rate_limit_delay
+    # Step 4: Handle the result
+    print("\n=== Sync completed ===\n")
+    print(f"Started at sequence: {result['start_sequence_number']}")
+    print(f"Ended at sequence: {result['end_sequence_number']}")
+    print(f"Processed {result['entities_processed']} trade items")
+    print(f"Success: {result['success']}")
 
-    # Call sync_entities with parameters
-    result = sync_entities(**sync_params)
-
-    print("\n=== Sync result ===\n")
-    pprint(result)
+    # If the sync failed, the result will include an error message
+    if not result["success"]:
+        print(f"Error: {result['error']}")
 
 
 if __name__ == "__main__":
-    # Run original examples
-    print_original_examples()
+    # Run the basic trade items sync example
+    example_1_basic_trade_items_sync()
 
-    # Run sync example with default configuration
-    sync_trade_items(start_seq_number=0, limit_result=10)
-
-    # Uncomment to run with custom configuration
-    # sync_trade_items(
-    #     start_seq_number=0,
-    #     limit_result=10,
-    #     batch_size=25,  # Smaller batch size
-    #     rate_limit_delay=1.0  # Slower rate (1 second delay between requests)
-    # )
-
-    # Example with faster rate (close to Floriday's limit)
-    # sync_trade_items(
-    #     start_seq_number=0,
-    #     batch_size=100,  # Larger batch size
-    #     rate_limit_delay=MIN_SAFE_DELAY  # Faster rate (minimum safe delay)
-    # )
+    # Original examples (uncomment to run)
+    # print_original_examples()
