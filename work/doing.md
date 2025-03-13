@@ -83,7 +83,11 @@ Proposed solution:
 - [x] Step 3: Add configuration options
 - [x] Step 4: Update documentation
 - [x] Step 5: Refactor API (initial improvements)
-- [ ] Step 5: Refactor API (advanced features)
+- [x] Step 5: Refactor API (advanced features - partial)
+  - [x] Add class-based approach with EntitySynchronizer
+  - [x] Add context manager support for sync sessions
+  - [ ] Add generator pattern for large datasets (planned in issue #5)
+  - [ ] Add async support for modern Python applications (planned in issue #5)
 - [ ] Step 6: Create migration guide issue
 
 Note: After analysis, we decided to skip implementing retry logic since the current implementation already handles failures gracefully by:
@@ -91,3 +95,5 @@ Note: After analysis, we decided to skip implementing retry logic since the curr
 1. Returning the last successful sequence number in the result
 2. Logging errors with details
 3. Allowing syncs to resume from a specific sequence number using start_seq_number
+
+We've also decided to implement the generator pattern and async support in a future update, as documented in GitHub issue #5.
