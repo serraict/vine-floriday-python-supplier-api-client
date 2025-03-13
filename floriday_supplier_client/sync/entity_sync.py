@@ -17,6 +17,15 @@ logger = logging.getLogger(__name__)
 # Type variables for generic typing
 T = TypeVar("T")
 
+# Rate limiting constants
+# Floriday API rate limits (as per documentation)
+FLORIDAY_RATE_LIMIT_CALLS_PER_SECOND = 3.4  # 204 per minute
+FLORIDAY_RATE_LIMIT_BURST_LIMIT = 1000
+
+# Default conservative rate limit used by this module
+DEFAULT_RATE_LIMIT_DELAY = 0.5  # seconds between calls (2 calls/second)
+DEFAULT_BATCH_SIZE = 50
+
 
 class SyncResult(Protocol, Generic[T]):
     """Protocol defining the structure of a SyncResult object returned by Floriday API."""
@@ -38,8 +47,8 @@ def sync_entities(
     persist_entity: Optional[Callable[[T], Any]] = None,
     start_seq_number: Optional[int] = None,
     get_max_sequence_number: Optional[Callable[[str], int]] = None,
-    batch_size: int = 50,
-    rate_limit_delay: float = 0.5,
+    batch_size: int = DEFAULT_BATCH_SIZE,
+    rate_limit_delay: float = DEFAULT_RATE_LIMIT_DELAY,
 ) -> dict:
     """Synchronize entities from Floriday API using sequence numbers.
 
@@ -53,8 +62,11 @@ def sync_entities(
             is provided, it will be used to retrieve the starting sequence number.
         get_max_sequence_number: Optional function to retrieve the maximum sequence number
             for the given entity type from persistence. Required if start_seq_number is None.
-        batch_size: Number of entities to retrieve in each API call. Default is 50.
-        rate_limit_delay: Delay in seconds between API calls to avoid rate limiting. Default is 0.5s.
+        batch_size: Number of entities to retrieve in each API call. Default is DEFAULT_BATCH_SIZE (50).
+        rate_limit_delay: Delay in seconds between API calls to avoid rate limiting.
+            Default is DEFAULT_RATE_LIMIT_DELAY (0.5s), which is more conservative than
+            Floriday's limit of FLORIDAY_RATE_LIMIT_CALLS_PER_SECOND (3.4 calls/second).
+            A warning will be logged if the specified delay could exceed Floriday's rate limits.
 
     Returns:
         A dictionary containing sync statistics.
@@ -77,9 +89,20 @@ def sync_entities(
         f"Syncing {entity_type} from sequence number {next_sequence_start_number}"
     )
 
+    # Validate rate limit delay to ensure we don't exceed Floriday's limits
+    min_safe_delay = 1.0 / FLORIDAY_RATE_LIMIT_CALLS_PER_SECOND
+    if rate_limit_delay < min_safe_delay:
+        logger.warning(
+            f"Specified rate_limit_delay ({rate_limit_delay}s) is faster than Floriday's "
+            f"limit of {FLORIDAY_RATE_LIMIT_CALLS_PER_SECOND} calls/second "
+            f"(minimum safe delay: {min_safe_delay:.2f}s). "
+            f"This may result in API rate limiting."
+        )
+
     # Log configuration settings
     logger.debug(
-        f"Sync configuration: batch_size={batch_size}, rate_limit_delay={rate_limit_delay}s"
+        f"Sync configuration: batch_size={batch_size}, rate_limit_delay={rate_limit_delay}s "
+        f"({1.0 / rate_limit_delay:.1f} calls/second)"
     )
 
     try:
