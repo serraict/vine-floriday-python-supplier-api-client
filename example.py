@@ -61,6 +61,7 @@ def ex3_context_manager_sync():
         entity_type="trade_items",
         fetch_entities_callback=api_instance.get_trade_items_by_sequence_number,
         persist_entity_callback=persist_item,
+        start_seq_number=0,  # Starting sequence number, set to 0 to start from the beginning
     ) as synchronizer:
         result = synchronizer.sync()
         print(result)

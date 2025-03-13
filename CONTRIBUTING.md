@@ -35,6 +35,33 @@ Enforced on merges to `main` by [`ci.yml` Github action](.github/workflows/ci.ym
 
 Measure: `make quality`
 
+### Code Style Guidelines
+
+In addition to our flake8 configuration, adhere to the following guidelines:
+
+1. **Conciseness**: Keep code and comments concise. Avoid unnecessary verbosity.
+   - Use short, descriptive function and variable names
+   - Minimize comments to what's truly necessary
+   - Avoid redundant explanations
+
+2. **Naming Conventions**:
+   - Use descriptive names that indicate purpose
+
+3. **Code Organization**:
+   - Extract reusable functions to module level
+   - Group related functionality together
+   - Minimize nesting levels
+
+4. **Documentation**:
+   - Docstrings should be concise and focus on what's not obvious
+   - For public APIs, include examples in docstrings
+   - Avoid step-by-step comments within function bodies
+
+5. **Simplicity**:
+   - Prefer simple, straightforward implementations
+   - Avoid complex parameter lists when possible
+   - Default parameters should be used sparingly
+
 ## Testing
 
 We validate our code by testing it.
