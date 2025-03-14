@@ -30,19 +30,20 @@ class MockApiFactory:
         return Mock()
 
 
-@patch("floriday_supplier_client.client.ApiFactory")
-def test_floriday_function(mock_api_factory):
+def test_floriday_function():
     """Test the floriday function."""
-    # Setup
-    mock_api_factory.return_value = MockApiFactory()
+    from floriday_supplier_client import TradeItemsApi
 
     # Test creating a client
     client = floriday()
     assert isinstance(client, Floriday)
 
     # Test creating an API instance directly
-    api = floriday(MockApiClass)
+    api = floriday(TradeItemsApi)
     assert isinstance(api, ApiWrapper)
+    assert hasattr(
+        api, "get_trade_items_summary"
+    )  # Verify it has the expected API methods
 
 
 @patch("floriday_supplier_client.client.ApiFactory")
@@ -135,14 +136,14 @@ def test_api_wrapper_sync(mock_sync_entities):
 
     # Create an API wrapper
     wrapper = ApiWrapper(mock_api_instance, mock_client)
-    
+
     # Mock the _find_sequence_method to return a mock function
     mock_fetch = Mock()
     wrapper._find_sequence_method = Mock(return_value=mock_fetch)
-    
+
     # Call sync
     wrapper.sync(start_seq=0, on_item=lambda x: x)
-    
+
     # Verify sync_entities was called
     mock_sync_entities.assert_called_once()
 
@@ -158,7 +159,7 @@ def test_api_wrapper_create_sync(mock_entity_synchronizer):
 
     # Create an API wrapper
     wrapper = ApiWrapper(mock_api_instance, mock_client)
-    
+
     # Mock the _find_sequence_method to return a mock function
     mock_fetch = Mock()
     wrapper._find_sequence_method = Mock(return_value=mock_fetch)
