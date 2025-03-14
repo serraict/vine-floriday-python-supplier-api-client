@@ -223,6 +223,31 @@ class EntitySynchronizer(Generic[T]):
         # Nothing to clean up for now
         pass
 
+    def execute(self) -> EntitySyncResult:
+        """
+        Execute the synchronization.
+
+        This method is an alias for sync() that provides a more intuitive API
+        when using the create_sync pattern.
+
+        Returns:
+            An EntitySyncResult containing sync statistics.
+
+        Example:
+            ```python
+            # Create a synchronizer with advanced options
+            sync = client.trade_items.create_sync(start_seq=0)
+
+            # Configure the synchronizer
+            sync.batch_size = 100
+            sync.rate_limit_delay = 0.2
+
+            # Execute the sync
+            result = sync.execute()
+            ```
+        """
+        return self.sync()
+
     def initialize(self) -> None:
         """
         Initialize the synchronizer.
