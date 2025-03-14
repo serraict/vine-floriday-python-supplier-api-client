@@ -163,35 +163,4 @@ def test_api_wrapper_create_sync(mock_entity_synchronizer):
     assert result is mock_synchronizer
 
 
-@patch("time.sleep")
-def test_api_wrapper_sync_iter(mock_sleep):
-    """Test ApiWrapper sync_iter method."""
-    # Setup
-    mock_api_instance = Mock()
-    mock_client = Mock()
-
-    # Mock the sequence method
-    mock_result = Mock()
-    mock_result.maximum_sequence_number = 10
-    mock_result.results = [Mock(), Mock()]
-    mock_api_instance.get_items_by_sequence_number = Mock(return_value=mock_result)
-
-    # Create an API wrapper
-    wrapper = ApiWrapper(mock_api_instance, mock_client)
-
-    # Override _find_sequence_method to return our mock method
-    wrapper._find_sequence_method = Mock(
-        return_value=mock_api_instance.get_items_by_sequence_number
-    )
-
-    # Call sync_iter
-    items = list(wrapper.sync_iter(start_seq=0))
-
-    # Verify items were yielded
-    assert len(items) == 2
-
-    # Verify the sequence method was called
-    mock_api_instance.get_items_by_sequence_number.assert_called_once()
-
-    # Verify sleep was called for rate limiting
-    mock_sleep.assert_called_once()
+# Test for sync_iter will be added in a future increment

@@ -4,7 +4,7 @@ Floriday client module providing a simplified API for interacting with the Flori
 This module implements the improved API design as outlined in the API improvement suggestions.
 """
 
-from typing import Any, Type, TypeVar, Optional, Callable, Iterator, Union
+from typing import Type, TypeVar, Optional, Callable, Union
 
 from floriday_supplier_client.api_factory import ApiFactory
 from floriday_supplier_client.sync import (
@@ -110,78 +110,7 @@ class ApiWrapper:
             rate_limit_delay=rate_limit,
         )
 
-    def sync_iter(
-        self,
-        start_seq: Optional[int] = None,
-        batch_size: int = 50,
-        rate_limit: float = 0.5,
-    ) -> Iterator[Any]:
-        """
-        Synchronize entities using sequence numbers and return an iterator.
-
-        This method provides a memory-efficient way to process large datasets
-        by yielding entities one at a time.
-
-        Args:
-            start_seq: Optional starting sequence number. If None, starts from the beginning.
-            batch_size: Number of entities to retrieve in each API call.
-            rate_limit: Delay in seconds between API calls to avoid rate limiting.
-
-        Yields:
-            Entities from the API, one at a time.
-
-        Example:
-            ```python
-            # Process trade items one at a time
-            for item in client.trade_items.sync_iter(start_seq=last_seq):
-                db.save_item(item)
-                last_seq = item.sequence_number
-            ```
-        """
-        # Find the appropriate method for fetching entities by sequence number
-        fetch_method = self._find_sequence_method()
-        if not fetch_method:
-            raise ValueError(f"Could not find sequence method for {self._entity_type}")
-
-        # Create a synchronizer to manage the synchronization
-        with EntitySynchronizer(
-            entity_type=self._entity_type,
-            fetch_entities_callback=fetch_method,
-            start_seq_number=start_seq,
-            batch_size=batch_size,
-            rate_limit_delay=rate_limit,
-        ) as synchronizer:
-            # Initialize the synchronizer
-            synchronizer.initialize()
-
-            # Track the next sequence number to fetch
-            next_seq = synchronizer.start_seq_number
-
-            # Continue fetching until we reach the end
-            while True:
-                # Fetch a batch of entities
-                sync_result = fetch_method(
-                    sequence_number=next_seq, limit_result=batch_size
-                )
-
-                # Check if we've reached the end
-                if (
-                    next_seq >= sync_result.maximum_sequence_number
-                    and not sync_result.results
-                ):
-                    break
-
-                # Yield each entity in the batch
-                for entity in sync_result.results:
-                    yield entity
-
-                # Update the next sequence number
-                next_seq = sync_result.maximum_sequence_number
-
-                # Apply rate limiting
-                import time
-
-                time.sleep(rate_limit)
+    # sync_iter method will be added in a future increment
 
     def create_sync(self, start_seq: Optional[int] = None) -> EntitySynchronizer:
         """
