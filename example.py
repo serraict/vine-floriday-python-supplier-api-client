@@ -1,7 +1,7 @@
 import logging
 from pprint import pprint
 
-from floriday_supplier_client import TradeItemsApi
+from floriday_supplier_client import TradeItemsApi, OrganizationsApi, DirectSalesApi
 from floriday_supplier_client.api_factory import ApiFactory
 from floriday_supplier_client.sync import sync_entities, EntitySynchronizer
 
