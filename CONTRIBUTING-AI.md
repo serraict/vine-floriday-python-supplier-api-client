@@ -55,3 +55,4 @@ This would show that issue #1 "Hardcoded Staging URL in Configuration Class" has
 - Document your work clearly for human collaborators
 - Commit changes with descriptive messages
 - Execute commands from the root working directory whenever possible
+- Add all files that should not be overwritten by swagger codegen to `.swagger-codegen-ignore`
