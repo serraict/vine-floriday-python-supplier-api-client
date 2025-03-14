@@ -100,7 +100,14 @@ For now, these require manual verification:
 - [ ] Application runs successfully on both development and production environments
 - [ ] Any new dependencies are added to `pyproject.toml` and are compatible with both Linux and macOS
 
-## Release and Deployment
+## Releasable (Done)
+
+An increment is ready to be released when:
+
+- There are no uncommitted changes
+- All tests pass
+- We can run example.py against the staging server successfully
+- Open work is finished
 
 Running `make release` will take care of:
 
@@ -108,6 +115,8 @@ Running `make release` will take care of:
 - [x] Release is identified using Semantic Versioning
 - [x] Release is tagged in the repository
 - [x] GitHub Actions package workflow successfully builds and publishes the package
+
+If the package was successfully published, then the increment is Done
 
 ## Final Checks
 
