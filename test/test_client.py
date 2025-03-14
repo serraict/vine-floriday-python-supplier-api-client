@@ -135,10 +135,14 @@ def test_api_wrapper_sync(mock_sync_entities):
 
     # Create an API wrapper
     wrapper = ApiWrapper(mock_api_instance, mock_client)
-
+    
+    # Mock the _find_sequence_method to return a mock function
+    mock_fetch = Mock()
+    wrapper._find_sequence_method = Mock(return_value=mock_fetch)
+    
     # Call sync
     wrapper.sync(start_seq=0, on_item=lambda x: x)
-
+    
     # Verify sync_entities was called
     mock_sync_entities.assert_called_once()
 
@@ -154,6 +158,10 @@ def test_api_wrapper_create_sync(mock_entity_synchronizer):
 
     # Create an API wrapper
     wrapper = ApiWrapper(mock_api_instance, mock_client)
+    
+    # Mock the _find_sequence_method to return a mock function
+    mock_fetch = Mock()
+    wrapper._find_sequence_method = Mock(return_value=mock_fetch)
 
     # Call create_sync
     result = wrapper.create_sync(start_seq=0)
