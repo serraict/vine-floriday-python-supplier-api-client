@@ -54,3 +54,4 @@ This would show that issue #1 "Hardcoded Staging URL in Configuration Class" has
 - Use the `work/doing.md` file to organize your approach to the current task
 - Document your work clearly for human collaborators
 - Commit changes with descriptive messages
+- Execute commands from the root working directory whenever possible
