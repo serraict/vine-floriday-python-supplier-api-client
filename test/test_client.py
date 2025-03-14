@@ -34,16 +34,17 @@ def test_floriday_function():
     """Test the floriday function."""
     from floriday_supplier_client import TradeItemsApi
 
-    # Test creating a client
-    client = floriday()
-    assert isinstance(client, Floriday)
+    # Test creating a client and use it as a context manager
+    with floriday() as client:
+        assert isinstance(client, Floriday)
 
-    # Test creating an API instance directly
-    api = floriday(TradeItemsApi)
-    assert isinstance(api, ApiWrapper)
-    assert hasattr(
-        api, "get_trade_items_summary"
-    )  # Verify it has the expected API methods
+    # Test creating an API instance directly and use it via the client context manager
+    with floriday() as client:
+        api = client.get_api(TradeItemsApi)
+        assert isinstance(api, ApiWrapper)
+        assert hasattr(
+            api, "get_trade_items_summary"
+        )  # Verify it has the expected API methods
 
 
 @patch("floriday_supplier_client.client.ApiFactory")
@@ -54,37 +55,44 @@ def test_floriday_client_init(mock_api_factory):
     mock_api_factory.return_value = mock_factory_instance
 
     # Test with default options
-    Floriday()
+    with Floriday():
+        pass
     mock_api_factory.assert_called_once()
 
     # Test with custom options
-    _ = Floriday(
+    with Floriday(
         client_id="test_id",
         client_secret="test_secret",
         api_key="test_key",
         auth_url="https://test.auth.url",
         base_url="https://test.base.url",
-    )
+    ):
+        pass
     assert mock_api_factory.call_count == 2
 
 
-@patch("floriday_supplier_client.client.ApiFactory")
-def test_get_api(mock_api_factory):
+def test_get_api():
     """Test get_api method."""
-    # Setup
-    mock_factory_instance = MockApiFactory()
-    mock_api_factory.return_value = mock_factory_instance
+    from floriday_supplier_client import TradeItemsApi, OrganizationsApi
 
-    # Create a client
-    client = Floriday()
+    # Use the client as a context manager
+    with Floriday() as client:
+        # Get an API instance
+        trade_items_api = client.get_api(TradeItemsApi)
+        assert isinstance(trade_items_api, ApiWrapper)
+        assert hasattr(trade_items_api, "get_trade_items_summary")
 
-    # Get an API instance
-    api = client.get_api(MockApiClass)
-    assert isinstance(api, ApiWrapper)
+        # Get the same API instance again (should be cached)
+        trade_items_api2 = client.get_api(TradeItemsApi)
+        assert trade_items_api is trade_items_api2
 
-    # Get the same API instance again (should be cached)
-    api2 = client.get_api(MockApiClass)
-    assert api is api2
+        # Get a different API instance
+        organizations_api = client.get_api(OrganizationsApi)
+        assert isinstance(organizations_api, ApiWrapper)
+        assert hasattr(organizations_api, "get_organization_by_id")
+
+        # Verify they are different instances
+        assert trade_items_api is not organizations_api
 
 
 @patch("floriday_supplier_client.client.ApiFactory")
@@ -94,21 +102,20 @@ def test_refresh_token(mock_api_factory):
     mock_factory_instance = Mock()
     mock_api_factory.return_value = mock_factory_instance
 
-    # Create a client
-    client = Floriday()
+    # Use the client as a context manager
+    with Floriday() as client:
+        # Get an API instance to populate the cache
+        client._api_cache["MockApiClass"] = Mock()
 
-    # Get an API instance to populate the cache
-    client._api_cache["MockApiClass"] = Mock()
+        # Refresh the token
+        client.refresh_token()
 
-    # Refresh the token
-    client.refresh_token()
+        # Verify the token was refreshed
+        assert mock_factory_instance._get_access_token.called
+        assert mock_factory_instance._configure_client.called
 
-    # Verify the token was refreshed
-    assert mock_factory_instance._get_access_token.called
-    assert mock_factory_instance._configure_client.called
-
-    # Verify the API cache was cleared
-    assert not client._api_cache
+        # Verify the API cache was cleared
+        assert not client._api_cache
 
 
 @patch("floriday_supplier_client.client.ApiFactory")
@@ -130,46 +137,40 @@ def test_context_manager(mock_api_factory):
 @patch("floriday_supplier_client.client.sync_entities")
 def test_api_wrapper_sync(mock_sync_entities):
     """Test ApiWrapper sync method."""
-    # Setup
-    mock_api_instance = MockApiClass(Mock())
-    mock_client = Mock()
+    from floriday_supplier_client import TradeItemsApi
 
-    # Create an API wrapper
-    wrapper = ApiWrapper(mock_api_instance, mock_client)
+    # Use the client as a context manager
+    with Floriday() as client:
+        # Get an API wrapper
+        wrapper = client.get_api(TradeItemsApi)
 
-    # Mock the _find_sequence_method to return a mock function
-    mock_fetch = Mock()
-    wrapper._find_sequence_method = Mock(return_value=mock_fetch)
+        # Call sync
+        wrapper.sync(start_seq=0, on_item=lambda x: x)
 
-    # Call sync
-    wrapper.sync(start_seq=0, on_item=lambda x: x)
-
-    # Verify sync_entities was called
-    mock_sync_entities.assert_called_once()
+        # Verify sync_entities was called
+        mock_sync_entities.assert_called_once()
 
 
 @patch("floriday_supplier_client.client.EntitySynchronizer")
 def test_api_wrapper_create_sync(mock_entity_synchronizer):
     """Test ApiWrapper create_sync method."""
+    from floriday_supplier_client import TradeItemsApi
+
     # Setup
-    mock_api_instance = MockApiClass(Mock())
-    mock_client = Mock()
     mock_synchronizer = Mock()
     mock_entity_synchronizer.return_value = mock_synchronizer
 
-    # Create an API wrapper
-    wrapper = ApiWrapper(mock_api_instance, mock_client)
+    # Use the client as a context manager
+    with Floriday() as client:
+        # Get an API wrapper
+        wrapper = client.get_api(TradeItemsApi)
 
-    # Mock the _find_sequence_method to return a mock function
-    mock_fetch = Mock()
-    wrapper._find_sequence_method = Mock(return_value=mock_fetch)
+        # Call create_sync
+        result = wrapper.create_sync(start_seq=0)
 
-    # Call create_sync
-    result = wrapper.create_sync(start_seq=0)
-
-    # Verify EntitySynchronizer was created
-    mock_entity_synchronizer.assert_called_once()
-    assert result is mock_synchronizer
+        # Verify EntitySynchronizer was created
+        mock_entity_synchronizer.assert_called_once()
+        assert result is mock_synchronizer
 
 
 # Test for sync_iter will be added in a future increment
