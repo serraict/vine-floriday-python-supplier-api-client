@@ -1,6 +1,6 @@
 # Migration Guide: Sync Module
 
-This guide provides instructions on migrating from the sync functionality in vine-floriday-adapter to the new sync module in floriday-supplier-client.
+This guide provides instructions on migrating from the sync functionality in vine-floriday-adapter to the new sync module in floriday-supplier-client v0.1.6.
 
 ## Background
 
