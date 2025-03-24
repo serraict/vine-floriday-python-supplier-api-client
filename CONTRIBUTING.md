@@ -74,6 +74,7 @@ Measure: `make tests`
 Our integration tests require access to a local database and a Floriday staging environment.
 These tests ensure our client works end-to-end.
 These tests as of now are not part of our CI job and need to be executed manually before creating a release.
+Developers should run integration tests often during development and always before creating a release to ensure the client works correctly with the Floriday API.
 
 Measure: `make test-integration`
 

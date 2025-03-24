@@ -48,3 +48,4 @@ requirements.txt
 example.py
 floriday_supplier_client/client.py
 test/test_client.py
+pytest.ini

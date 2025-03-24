@@ -15,8 +15,9 @@ update:
 	pip install -e .
 console:
 tests:
+	pytest -m "not integration"
+test-integration:
 	pytest
-test-integration: tests
 	# Run example.py to test integration with Floriday API
 	python example.py
 build:

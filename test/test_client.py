@@ -2,6 +2,7 @@
 Tests for the client module.
 """
 
+import pytest
 from unittest.mock import Mock, patch
 
 from floriday_supplier_client.client import Floriday, floriday, ApiWrapper
@@ -30,6 +31,7 @@ class MockApiFactory:
         return Mock()
 
 
+@pytest.mark.integration
 def test_floriday_function():
     """Test the floriday function."""
     from floriday_supplier_client import TradeItemsApi
@@ -71,6 +73,7 @@ def test_floriday_client_init(mock_api_factory):
     assert mock_api_factory.call_count == 2
 
 
+@pytest.mark.integration
 def test_get_api():
     """Test get_api method."""
     from floriday_supplier_client import TradeItemsApi, OrganizationsApi
@@ -135,6 +138,7 @@ def test_context_manager(mock_api_factory):
 
 
 @patch("floriday_supplier_client.client.sync_entities")
+@pytest.mark.integration
 def test_api_wrapper_sync(mock_sync_entities):
     """Test ApiWrapper sync method."""
     from floriday_supplier_client import TradeItemsApi
@@ -152,6 +156,7 @@ def test_api_wrapper_sync(mock_sync_entities):
 
 
 @patch("floriday_supplier_client.client.EntitySynchronizer")
+@pytest.mark.integration
 def test_api_wrapper_create_sync(mock_entity_synchronizer):
     """Test ApiWrapper create_sync method."""
     from floriday_supplier_client import TradeItemsApi
