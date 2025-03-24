@@ -88,14 +88,14 @@ Proposed solution:
 - [x] Step 5: Refactor API (advanced features - partial)
   - [x] Add class-based approach with EntitySynchronizer
   - [x] Add context manager support for sync sessions
-  - [ ] Add generator pattern for large datasets (planned in issue #5)
-  - [ ] Add async support for modern Python applications (planned in issue #5)
+  - [ ] (not now) Add generator pattern for large datasets (planned in issue #5)
+  - [ ] (not now) Add async support for modern Python applications (planned in issue #5)
 - [x] Step 6: Implement API improvement suggestions (see work/api_improvement_suggestions.md and work/api_comparison.md)
   - [x] Simplified Client Initialization
   - [x] Configuration Management
   - [x] Unified Synchronization API
   - [x] Resource Management
-- [ ] Step 7: Create migration guide issue
+- [x] Step 7: Create migration guide (see work/migration_guide.md)
 
 Note: After analysis, we decided to skip implementing retry logic since the current implementation already handles failures gracefully by:
 
