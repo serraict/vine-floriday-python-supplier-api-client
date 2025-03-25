@@ -42,7 +42,8 @@ release:
 	fi
 	@git tag v$$(python -m setuptools_scm --strip-dev)
 	@git tag -f floriday_api_v$(api_version)
-	@git push origin --tags
+	@git push origin v$$(python -m setuptools_scm --strip-dev)
+	@git push origin floriday_api_v$(api_version) --force
 
 api_version := 2024v2
 url := https://api.staging.floriday.io/suppliers-api-$(api_version)/swagger/UUID/swagger.json
