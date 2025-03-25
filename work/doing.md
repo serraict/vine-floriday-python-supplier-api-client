@@ -100,12 +100,12 @@ API Version Update:
 - [x] Add validation for API version in base URL
 
 Code Generation & Updates:
-- [ ] Regenerate client code
-- [ ] Review generated code
-- [ ] Update tests
+- [x] Regenerate client code
+- [x] Review generated code
+- [x] Update tests
 - [ ] Update documentation
 
 Testing & Release:
-- [ ] Run unit tests
-- [ ] Run integration tests
+- [x] Run unit tests
+- [x] Run integration tests
 - [ ] Create release with version and API tags
