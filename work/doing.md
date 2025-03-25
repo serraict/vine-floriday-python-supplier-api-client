@@ -70,6 +70,7 @@ After each step, commit all repository changes.
    - Check the current `.swagger-codegen-ignore` file to ensure custom code is preserved
    - Download the latest OpenAPI specification for v2024.2
    - Update the base URL in the client configuration to point to v2024.2
+   - Add validation to ensure the API version in the base URL matches the version the client code was generated for
 
 3. Code Generation & Updates
    - Regenerate the client code using swagger-codegen
@@ -96,6 +97,7 @@ API Version Update:
 - [x] Check `.swagger-codegen-ignore` file
 - [x] Download latest OpenAPI specification
 - [x] Update base URL in configuration
+- [x] Add validation for API version in base URL
 
 Code Generation & Updates:
 - [ ] Regenerate client code

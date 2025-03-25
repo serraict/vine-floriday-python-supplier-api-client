@@ -1,18 +1,50 @@
 import os
+import re
 import requests
 import floriday_supplier_client
-from floriday_supplier_client.rest import ApiException
 
 
 class ApiFactory:
+    # The API version this client was generated for
+    EXPECTED_API_VERSION = "2024v2"
+
     def __init__(self):
         self.client_id = os.getenv("FLORIDAY_CLIENT_ID")
         self.client_secret = os.getenv("FLORIDAY_CLIENT_SECRET")
         self.api_key = os.getenv("FLORIDAY_API_KEY")
         self.auth_url = os.getenv("FLORIDAY_AUTH_URL")
         self.base_url = os.getenv("FLORIDAY_BASE_URL")
+        self._validate_api_version()
         self.access_token = self._get_access_token()
         self.configuration = self._configure_client()
+
+    def _validate_api_version(self):
+        """
+        Validates that the API version in the base URL matches the version
+        this client was generated for.
+
+        Raises:
+            ValueError: If the API version in the base URL doesn't match the expected version.
+        """
+        if not self.base_url:
+            raise ValueError("FLORIDAY_BASE_URL environment variable is not set")
+
+        # Extract API version from the base URL using regex
+        match = re.search(r"suppliers-api-(\d+v\d+)", self.base_url)
+        if not match:
+            raise ValueError(
+                f"Invalid base URL format: {self.base_url}. "
+                f"Expected format containing 'suppliers-api-{self.EXPECTED_API_VERSION}'"
+            )
+
+        api_version = match.group(1)
+        if api_version != self.EXPECTED_API_VERSION:
+            raise ValueError(
+                f"API version mismatch. Base URL points to version {api_version}, "
+                f"but this client was generated for version {self.EXPECTED_API_VERSION}. "
+                f"Please update your FLORIDAY_BASE_URL environment variable to use "
+                f"'suppliers-api-{self.EXPECTED_API_VERSION}'"
+            )
 
     def _get_access_token(self):
         payload = {
