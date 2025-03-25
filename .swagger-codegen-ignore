@@ -22,7 +22,6 @@
 # Then explicitly reverse the ignore rule for a single file:
 #!docs/README.md
 makefile
-README.md
 test-requirements.txt
 .gitignore
 setup.py
