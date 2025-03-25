@@ -94,8 +94,8 @@ Version Tagging:
 API Version Update:
 - [x] Update makefile api_version and spec URL
 - [x] Check `.swagger-codegen-ignore` file
-- [ ] Download latest OpenAPI specification
-- [ ] Update base URL in configuration
+- [x] Download latest OpenAPI specification
+- [x] Update base URL in configuration
 
 Code Generation & Updates:
 - [ ] Regenerate client code
