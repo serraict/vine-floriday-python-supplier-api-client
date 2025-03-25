@@ -103,9 +103,9 @@ Code Generation & Updates:
 - [x] Regenerate client code
 - [x] Review generated code
 - [x] Update tests
-- [ ] Update documentation
+- [x] Update documentation
 
 Testing & Release:
 - [x] Run unit tests
 - [x] Run integration tests
-- [ ] Create release with version and API tags
+- [x] Create release with version and API tags
