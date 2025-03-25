@@ -34,4 +34,15 @@ This ensures that version tags are preserved while allowing the floriday_api tag
 ## Progress
 - [x] Analyzed the issue
 - [x] Updated the makefile
+- [x] Changes committed with message: "Fix release target to force-push floriday_api tag while preserving version tags"
+- [x] Changes pushed to the remote repository
 - [ ] Tested the changes
+
+## Testing
+To test these changes, you can run:
+
+```bash
+make release
+```
+
+This should now successfully push both the version tag and the floriday_api tag, with the latter being force-pushed.
