@@ -41,7 +41,10 @@ Name | Type | Description | Notes
 **last_modified_date_time** | **datetime** |  | [optional] 
 **created_by_supplier** | **bool** |  | 
 **created_by_user_name** | **str** | Name of the contact person responsible for the sales order | [optional] 
+**batch_id** | **str** |  | [optional] 
 **mutations** | [**list[SalesOrderMutation]**](SalesOrderMutation.md) |  | 
+**batch_reference** | **int** |  | [optional] 
+**is_paid** | **bool** | Is used for sales orders with payment provider RFH Afterpay and indicates if the sales order is already paid by the customer | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

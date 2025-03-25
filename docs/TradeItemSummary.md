@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **photos** | [**list[Photo]**](Photo.md) |  | 
 **is_customer_specific** | **bool** |  | 
 **supplier_organization_id** | **str** |  | 
+**seller_organization_id** | **str** |  | 
 **is_deleted** | **bool** |  | 
 **parent_id** | **str** |  | [optional] 
 

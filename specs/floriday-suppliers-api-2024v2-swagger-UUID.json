@@ -3,11 +3,11 @@
   "swagger": "2.0",
   "info": {
     "title": "Main - Floriday Suppliers API",
-    "description": "﻿Every endpoint requires at least the `role:app` scope and the header `X-Api-Key` populated with your given API-key. Most endpoints also require an additional scope which is listed in their descriptions.\n\n- 🗝 [Authorization server (staging)](https://idm.staging.floriday.io/oauth2/ausmw6b47z1BnlHkw0h7/.well-known/oauth-authorization-server)\n- 🗝 [Authorization server (live)](https://idm.floriday.io/oauth2/aus3testdcf2vyfs70i7/.well-known/oauth-authorization-server)\n- 📚 [Documentation](https://developer.floriday.io/docs/welcome)\n- ▶ [Coding screencast: getting started (NL)](https://www.youtube.com/watch?v=fdqzP7_Y_s8)\n\n---\n\n_The current state of this version 2024v1 is **Main**._\n* This version will be deprecated after October 2024.\n* This version will be removed after April 2025.\n\n---\n\n🔗 2023v2: [Customers API](https://api.staging.floriday.io/customers-api-2023v2/swagger/index.html) | [Suppliers API](https://api.staging.floriday.io/suppliers-api-2023v2/swagger/index.html)\n🔗 2024v1: [Customers API](https://api.staging.floriday.io/customers-api-2024v1/swagger/index.html) | [Suppliers API](https://api.staging.floriday.io/suppliers-api-2024v1/swagger/index.html)\n🔗 2024v2: [Customers API](https://api.staging.floriday.io/customers-api-2024v2/swagger/index.html) | [Suppliers API](https://api.staging.floriday.io/suppliers-api-2024v2/swagger/index.html)\n",
-    "version": "2024v1"
+    "description": "﻿Every endpoint requires at least the `role:app` scope and the header `X-Api-Key` populated with your given API-key. Most endpoints also require an additional scope which is listed in their descriptions.\n\n- 🗝 [Authorization server (staging)](https://idm.staging.floriday.io/oauth2/ausmw6b47z1BnlHkw0h7/.well-known/oauth-authorization-server)\n- 🗝 [Authorization server (live)](https://idm.floriday.io/oauth2/aus3testdcf2vyfs70i7/.well-known/oauth-authorization-server)\n- 📚 [Documentation](https://developer.floriday.io/docs/welcome)\n- ▶ [Coding screencast: getting started (NL)](https://www.youtube.com/watch?v=fdqzP7_Y_s8)\n\n---\n\n_The current state of this version 2024v2 is **Main**._\n* This version will be deprecated after April 2025.\n* This version will be removed after October 2025.\n\n---\n\n🔗 2024v1: [Customers API](https://api.staging.floriday.io/customers-api-2024v1/swagger/index.html) | [Suppliers API](https://api.staging.floriday.io/suppliers-api-2024v1/swagger/index.html)\n🔗 2024v2: [Customers API](https://api.staging.floriday.io/customers-api-2024v2/swagger/index.html) | [Suppliers API](https://api.staging.floriday.io/suppliers-api-2024v2/swagger/index.html)\n",
+    "version": "2024v2"
   },
   "host": "api.staging.floriday.io",
-  "basePath": "/suppliers-api-2024v1",
+  "basePath": "/suppliers-api-2024v2",
   "schemes": [
     "https"
   ],
@@ -1047,13 +1047,14 @@
         ]
       }
     },
-    "/clock-sales-from-nursery/supply-lines": {
+    "/clock-supply-lines": {
       "post": {
         "tags": [
           "Auction"
         ],
-        "summary": "supply:write - Creates a new clock sales from nursery supply line.",
-        "operationId": "AddClockSalesFromNurserySupplyLine",
+        "summary": "clock-supply:write - Adds a clock sales supply line with optional clock presales supply line.",
+        "description": "In the current phase, this endpoint is only intended to indicate clock supply that is already available at FloraHolland stock locations (V&O). So there is always a goods movement preceding this clock allocation.",
+        "operationId": "AddClockSupplyLine",
         "consumes": [
           "application/json-patch+json",
           "application/json",
@@ -1067,11 +1068,11 @@
         ],
         "parameters": [
           {
-            "name": "addClockSalesFromNurserySupplyLine",
+            "name": "addClockSupplyLine",
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/AddClockSalesFromNurserySupplyLine"
+              "$ref": "#/definitions/AddClockSupplyLine"
             },
             "x-nullable": false
           }
@@ -1087,94 +1088,7 @@
               "$ref": "#/definitions/ValidationProblemDetails"
             }
           },
-          "401": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/ValidationProblemDetails"
-            }
-          },
           "403": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/ValidationProblemDetails"
-            }
-          },
-          "423": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/ValidationProblemDetails"
-            }
-          },
-          "500": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/ValidationProblemDetails"
-            }
-          },
-          "501": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/ValidationProblemDetails"
-            }
-          },
-          "504": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/ValidationProblemDetails"
-            }
-          }
-        },
-        "security": [
-          {
-            "JWT Token": []
-          },
-          {
-            "X-Api-Key": []
-          }
-        ]
-      }
-    },
-    "/clock-sales-from-nursery/supply-lines/{clockSalesFromNurserySupplyLineId}": {
-      "delete": {
-        "tags": [
-          "Auction"
-        ],
-        "summary": "supply:write - Deletes a clock sales from nursery supply line.",
-        "operationId": "DeleteClockSalesFromNurserySupplyLine",
-        "produces": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "parameters": [
-          {
-            "type": "string",
-            "name": "clockSalesFromNurserySupplyLineId",
-            "in": "path",
-            "required": true,
-            "format": "uuid",
-            "x-nullable": false
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": ""
-          },
-          "400": {
-            "x-nullable": false,
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/ValidationProblemDetails"
-            }
-          },
-          "403": {
-            "x-nullable": false,
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/ValidationProblemDetails"
-            }
-          },
-          "404": {
             "x-nullable": false,
             "description": "",
             "schema": {
@@ -8354,6 +8268,174 @@
         ]
       }
     },
+    "/customer-offers/sync/{sequenceNumber}": {
+      "get": {
+        "tags": [
+          "CustomerOffers"
+        ],
+        "summary": "supply:read - rate limit: 3.4 per second - burst limit: 1000 - Returns a list of max 1000 customer offers starting from a specified sequence number.",
+        "description": "**Synchronization endpoint**\nFetches the succeeding modified records (including deleted records) based on `Limit` and the given `SequenceNumber`.\n\n**Note**\nYour data is up to date when your given `SequenceNumber` is equal to the received `MaximumSequenceNumber`.",
+        "operationId": "GetCustomerOffersBySequenceNumber",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "sequenceNumber",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "integer",
+            "name": "limitResult",
+            "in": "query",
+            "format": "int32",
+            "default": 1000,
+            "maximum": 1000.0,
+            "minimum": 1.0,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/SyncResultOfCustomerOffer"
+            }
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ValidationProblemDetails"
+            }
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ValidationProblemDetails"
+            }
+          },
+          "423": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ValidationProblemDetails"
+            }
+          },
+          "429": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ValidationProblemDetails"
+            }
+          },
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ValidationProblemDetails"
+            }
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ValidationProblemDetails"
+            }
+          },
+          "504": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ValidationProblemDetails"
+            }
+          }
+        },
+        "security": [
+          {
+            "JWT Token": []
+          },
+          {
+            "X-Api-Key": []
+          }
+        ]
+      }
+    },
+    "/customer-offers/current-max-sequence": {
+      "get": {
+        "tags": [
+          "CustomerOffers"
+        ],
+        "summary": "supply:read - rate limit: 3.4 per second - burst limit: 1000 - Returns the maximum sequence number found in customer offers.",
+        "operationId": "GetCustomerOffersMaxSequence",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ValidationProblemDetails"
+            }
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ValidationProblemDetails"
+            }
+          },
+          "423": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ValidationProblemDetails"
+            }
+          },
+          "429": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ValidationProblemDetails"
+            }
+          },
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ValidationProblemDetails"
+            }
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ValidationProblemDetails"
+            }
+          },
+          "504": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ValidationProblemDetails"
+            }
+          }
+        },
+        "security": [
+          {
+            "JWT Token": []
+          },
+          {
+            "X-Api-Key": []
+          }
+        ]
+      }
+    },
     "/customer-stickers": {
       "get": {
         "tags": [
@@ -10844,6 +10926,86 @@
         ]
       }
     },
+    "/batches/base-supply": {
+      "get": {
+        "tags": [
+          "DirectSales"
+        ],
+        "summary": "supply:read - Returns batch base supply from all batches with an order period within the give order date time.",
+        "operationId": "GetBatchBaseSupply",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "orderDateTime",
+            "in": "query",
+            "required": true,
+            "format": "date-time",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/BatchBaseSupply"
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ValidationProblemDetails"
+            }
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ValidationProblemDetails"
+            }
+          },
+          "423": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ValidationProblemDetails"
+            }
+          },
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ValidationProblemDetails"
+            }
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ValidationProblemDetails"
+            }
+          },
+          "504": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ValidationProblemDetails"
+            }
+          }
+        },
+        "security": [
+          {
+            "JWT Token": []
+          },
+          {
+            "X-Api-Key": []
+          }
+        ]
+      }
+    },
     "/batches/{batchId}/base-supply": {
       "put": {
         "tags": [
@@ -12215,6 +12377,102 @@
               "items": {
                 "$ref": "#/definitions/FulfillmentOrderCorrection"
               }
+            }
+          },
+          "404": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ValidationProblemDetails"
+            }
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ValidationProblemDetails"
+            }
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ValidationProblemDetails"
+            }
+          },
+          "423": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ValidationProblemDetails"
+            }
+          },
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ValidationProblemDetails"
+            }
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ValidationProblemDetails"
+            }
+          },
+          "504": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ValidationProblemDetails"
+            }
+          }
+        },
+        "security": [
+          {
+            "JWT Token": []
+          },
+          {
+            "X-Api-Key": []
+          }
+        ]
+      }
+    },
+    "/fulfillment-orders/{fulfillmentOrderId}/carrier": {
+      "patch": {
+        "tags": [
+          "FulfillmentOrders"
+        ],
+        "summary": "fulfillment:read - Set the missing carrier organization for a fulfillment order.",
+        "description": "Used to set the missing carrier organization for a fulfillment order. Currently it is not possible to change or remove an existing carrier from a fulfillment order.",
+        "operationId": "SetFulfillmentOrderCarrierOrganization",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "fulfillmentOrderId",
+            "in": "path",
+            "required": true,
+            "format": "uuid",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "carrierOrganizationId",
+            "in": "query",
+            "required": true,
+            "format": "uuid",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          },
+          "400": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ValidationProblemDetails"
             }
           },
           "404": {
@@ -15861,6 +16119,112 @@
             }
           },
           "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ValidationProblemDetails"
+            }
+          },
+          "423": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ValidationProblemDetails"
+            }
+          },
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ValidationProblemDetails"
+            }
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ValidationProblemDetails"
+            }
+          },
+          "504": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ValidationProblemDetails"
+            }
+          }
+        },
+        "security": [
+          {
+            "JWT Token": []
+          },
+          {
+            "X-Api-Key": []
+          }
+        ]
+      }
+    },
+    "/sales-orders/{salesOrderId}/additional-services": {
+      "patch": {
+        "tags": [
+          "SalesOrders"
+        ],
+        "summary": "sales-order:write - Sets additional services on a sales order that don't have a price associated with them. This feature is under early access, to sign up for this please contact us.",
+        "operationId": "SetAdditionalServicesOnSalesOrder",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "salesOrderId",
+            "in": "path",
+            "required": true,
+            "format": "uuid",
+            "x-nullable": false
+          },
+          {
+            "name": "addAdditionalServices",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AddAdditionalService"
+              }
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          },
+          "400": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ValidationProblemDetails"
+            }
+          },
+          "403": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ValidationProblemDetails"
+            }
+          },
+          "404": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ValidationProblemDetails"
+            }
+          },
+          "401": {
             "description": "",
             "schema": {
               "$ref": "#/definitions/ValidationProblemDetails"
@@ -20837,8 +21201,8 @@
       "properties": {
         "pricePerPiece": {
           "type": "number",
-          "format": "double",
-          "maximum": 10000000000000000.0,
+          "format": "decimal",
+          "maximum": 9999.999,
           "minimum": 0.001
         },
         "numberOfPieces": {
@@ -20847,127 +21211,122 @@
         }
       }
     },
-    "AddClockSalesFromNurserySupplyLine": {
+    "AddClockSupplyLine": {
       "type": "object",
       "required": [
-        "clockSalesFromNurserySupplyLineId",
-        "tradeItemId",
-        "imageUrl",
-        "auctionDate",
-        "despatchWarehouseId",
         "batchId",
-        "batchReference",
+        "auctionDate",
+        "minimumNumberOfPiecesReservedForAuction",
         "minimumPricePerPiece",
-        "currency",
         "numberOfPieces",
-        "loadCarrierType",
-        "vbnPackageCode",
-        "layersPerLoadCarrier",
-        "packagesPerLayer",
-        "piecesPerPackage"
+        "supplyLineId",
+        "photos"
       ],
       "properties": {
-        "clockSalesFromNurserySupplyLineId": {
+        "batchId": {
           "type": "string",
+          "description": "NB. batch should be allocated to RFH warehouse!",
           "format": "uuid"
-        },
-        "tradeItemId": {
-          "type": "string",
-          "format": "uuid"
-        },
-        "imageUrl": {
-          "type": "string",
-          "description": "Image URLs posted as Floriday media must conform with the following format https://image.floriday.io/.",
-          "maxLength": 200
         },
         "auctionDate": {
           "type": "string",
           "format": "date-time"
         },
-        "despatchWarehouseId": {
+        "auctionRemark": {
           "type": "string",
-          "format": "uuid"
+          "maxLength": 255,
+          "minLength": 1
         },
-        "batchId": {
-          "type": "string",
-          "format": "uuid"
-        },
-        "batchReference": {
-          "type": "string",
-          "maxLength": 13
-        },
-        "remarks": {
-          "type": "string",
-          "maxLength": 50
+        "minimumNumberOfPiecesReservedForAuction": {
+          "type": "integer",
+          "description": "The minimum quantity that should be sold at auction at the specified auctionDate.",
+          "format": "int32",
+          "maximum": 99999.0,
+          "minimum": 0.0
         },
         "minimumPricePerPiece": {
-          "type": "number",
-          "format": "decimal",
-          "minimum": 0.001
-        },
-        "currency": {
-          "$ref": "#/definitions/Currency"
+          "$ref": "#/definitions/AddPrice"
         },
         "numberOfPieces": {
           "type": "integer",
+          "description": "Quantity of the batch that is allocated for auction at the specified auctionDate.",
           "format": "int32",
-          "maximum": 2147483647.0,
+          "maximum": 99999.0,
           "minimum": 1.0
         },
-        "loadCarrierType": {
-          "$ref": "#/definitions/LoadCarrierType"
-        },
-        "vbnPackageCode": {
+        "auctionGroupCode": {
           "type": "integer",
           "format": "int32",
           "maximum": 999.0,
           "minimum": 1.0
         },
-        "layersPerLoadCarrier": {
-          "type": "integer",
-          "format": "int32",
-          "maximum": 2147483647.0,
-          "minimum": 1.0
+        "supplyLineId": {
+          "type": "string",
+          "description": "Generated by ERP.",
+          "format": "uuid"
         },
-        "packagesPerLayer": {
-          "type": "integer",
-          "format": "int32",
-          "maximum": 2147483647.0,
-          "minimum": 1.0
+        "clockPresales": {
+          "$ref": "#/definitions/AddClockPresales"
         },
-        "piecesPerPackage": {
-          "type": "integer",
-          "format": "int32",
-          "maximum": 2147483647.0,
-          "minimum": 1.0
+        "photos": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/AddClockSupplyLinePhoto"
+          }
         }
       }
     },
-    "LoadCarrierType": {
-      "type": "string",
-      "description": "",
-      "x-enumNames": [
-        "NONE",
-        "AUCTION_TROLLEY",
-        "DANISH_TROLLEY",
-        "EURO_TROLLEY",
-        "PALLET",
-        "EURO_PALLET",
-        "DANISH_TROLLEY_NON_CC_RFID",
-        "DANISH_TROLLEY_WATER_TRAY",
-        "WATERING_CONTAINER"
+    "AddPrice": {
+      "type": "object",
+      "required": [
+        "currency",
+        "value"
       ],
-      "enum": [
-        "NONE",
-        "AUCTION_TROLLEY",
-        "DANISH_TROLLEY",
-        "EURO_TROLLEY",
-        "PALLET",
-        "EURO_PALLET",
-        "DANISH_TROLLEY_NON_CC_RFID",
-        "DANISH_TROLLEY_WATER_TRAY",
-        "WATERING_CONTAINER"
-      ]
+      "properties": {
+        "currency": {
+          "$ref": "#/definitions/Currency"
+        },
+        "value": {
+          "type": "number",
+          "format": "decimal",
+          "maximum": 10000000000000000.0,
+          "minimum": 0.001
+        }
+      }
+    },
+    "AddClockPresales": {
+      "type": "object",
+      "required": [
+        "pricePerPiece",
+        "supplyLineId"
+      ],
+      "properties": {
+        "pricePerPiece": {
+          "$ref": "#/definitions/AddPrice"
+        },
+        "supplyLineId": {
+          "type": "string",
+          "description": "Generated by ERP.",
+          "format": "uuid"
+        }
+      }
+    },
+    "AddClockSupplyLinePhoto": {
+      "type": "object",
+      "required": [
+        "isPrimary",
+        "photoId"
+      ],
+      "properties": {
+        "isPrimary": {
+          "type": "boolean"
+        },
+        "photoId": {
+          "type": "string",
+          "format": "uuid"
+        }
+      }
     },
     "SyncResultOfBaseItem": {
       "type": "object",
@@ -21126,9 +21485,13 @@
         "batchId",
         "tradeItemId",
         "numberOfPieces",
+        "initialNumberOfPieces",
         "packingConfiguration",
         "warehouseId",
-        "sequenceNumber"
+        "batchReference",
+        "sequenceNumber",
+        "tradeItemVersion",
+        "isDeleted"
       ],
       "properties": {
         "batchDate": {
@@ -21289,7 +21652,7 @@
         "batchMutationId",
         "batchId",
         "deltaNumberOfPieces",
-        "addedOn",
+        "creationDateTime",
         "type",
         "sequenceNumber"
       ],
@@ -21313,7 +21676,7 @@
           "type": "string",
           "format": "uuid"
         },
-        "addedOn": {
+        "creationDateTime": {
           "type": "string",
           "format": "date-time"
         },
@@ -21559,6 +21922,44 @@
           "minimum": 1.0
         }
       }
+    },
+    "LoadCarrierType": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "NONE",
+        "AUCTION_TROLLEY",
+        "DANISH_TROLLEY",
+        "EURO_TROLLEY",
+        "PALLET",
+        "EURO_PALLET",
+        "DANISH_TROLLEY_NON_CC_RFID",
+        "DANISH_TROLLEY_WATER_TRAY",
+        "WATERING_CONTAINER",
+        "IFCO_PALLET",
+        "CHEP_PALLET_BLUE",
+        "CHEP_PALLET_RED",
+        "BLOCK_PALLET",
+        "HT_EURO_PALLET",
+        "ONE_THIRD_DANISH_TROLLEY"
+      ],
+      "enum": [
+        "NONE",
+        "AUCTION_TROLLEY",
+        "DANISH_TROLLEY",
+        "EURO_TROLLEY",
+        "PALLET",
+        "EURO_PALLET",
+        "DANISH_TROLLEY_NON_CC_RFID",
+        "DANISH_TROLLEY_WATER_TRAY",
+        "WATERING_CONTAINER",
+        "IFCO_PALLET",
+        "CHEP_PALLET_BLUE",
+        "CHEP_PALLET_RED",
+        "BLOCK_PALLET",
+        "HT_EURO_PALLET",
+        "ONE_THIRD_DANISH_TROLLEY"
+      ]
     },
     "CombineAndTransformBatchesRequest": {
       "type": "object",
@@ -22280,6 +22681,10 @@
             "type": "string",
             "format": "uuid"
           }
+        },
+        "floricodeVrsPackagingId": {
+          "type": "string",
+          "format": "uuid"
         }
       }
     },
@@ -23177,13 +23582,17 @@
         "NONE",
         "WEEK",
         "MONTH",
-        "QUARTER"
+        "QUARTER",
+        "HALF_YEAR",
+        "YEAR"
       ],
       "enum": [
         "NONE",
         "WEEK",
         "MONTH",
-        "QUARTER"
+        "QUARTER",
+        "HALF_YEAR",
+        "YEAR"
       ]
     },
     "ContractVersion": {
@@ -23274,7 +23683,8 @@
         "UNKNOWN",
         "OTHER",
         "RFH_E_WALLET",
-        "FX_SERVICES"
+        "FX_SERVICES",
+        "RFH_AFTERPAY"
       ],
       "enum": [
         "RFH",
@@ -23283,7 +23693,8 @@
         "UNKNOWN",
         "OTHER",
         "RFH_E_WALLET",
-        "FX_SERVICES"
+        "FX_SERVICES",
+        "RFH_AFTERPAY"
       ]
     },
     "ContractLine": {
@@ -24207,6 +24618,214 @@
         }
       }
     },
+    "SyncResultOfCustomerOffer": {
+      "type": "object",
+      "required": [
+        "maximumSequenceNumber",
+        "results"
+      ],
+      "properties": {
+        "maximumSequenceNumber": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "results": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CustomerOffer"
+          }
+        }
+      }
+    },
+    "CustomerOffer": {
+      "type": "object",
+      "required": [
+        "customerOfferId",
+        "creationDateTime",
+        "customerOfferLines",
+        "customerOfferType",
+        "customerOrganizationIds",
+        "isDraft",
+        "quantityUnitUsed",
+        "sequenceNumber"
+      ],
+      "properties": {
+        "customerOfferId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "supplyRequestId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "creationDateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "customerOfferLines": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CustomerOfferLine"
+          }
+        },
+        "customerOfferType": {
+          "$ref": "#/definitions/CustomerOfferType"
+        },
+        "customerOrganizationIds": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "agreementReference": {
+          "$ref": "#/definitions/AgreementReference"
+        },
+        "isDraft": {
+          "type": "boolean"
+        },
+        "imageUrl": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 800
+        },
+        "quantityUnitUsed": {
+          "$ref": "#/definitions/Unit"
+        },
+        "sequenceNumber": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "CustomerOfferLine": {
+      "type": "object",
+      "required": [
+        "customerOfferLineId",
+        "numberOfPieces",
+        "tradePeriod",
+        "tradeItemId",
+        "warehouseId",
+        "pricePerPiece",
+        "volumePrices",
+        "salesUnit",
+        "usesCatalogAvailability",
+        "includedServices"
+      ],
+      "properties": {
+        "customerOfferLineId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "supplyRequestLineId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "numberOfPieces": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "tradePeriod": {
+          "$ref": "#/definitions/TradePeriod"
+        },
+        "deliveryPeriod": {
+          "$ref": "#/definitions/TradePeriod"
+        },
+        "tradeItemId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "tradeItemVersion": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "warehouseId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "pricePerPiece": {
+          "$ref": "#/definitions/Price"
+        },
+        "volumePrices": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/VolumePrice"
+          }
+        },
+        "salesUnit": {
+          "$ref": "#/definitions/SalesUnit"
+        },
+        "usesCatalogAvailability": {
+          "type": "boolean"
+        },
+        "includedServices": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommercialService"
+          }
+        },
+        "packingConfiguration": {
+          "$ref": "#/definitions/PackingConfigurationBase"
+        },
+        "counterId": {
+          "type": "string",
+          "format": "uuid"
+        }
+      }
+    },
+    "VolumePrice": {
+      "type": "object",
+      "required": [
+        "unit",
+        "pricePerPiece"
+      ],
+      "properties": {
+        "unit": {
+          "$ref": "#/definitions/VolumePriceUnit"
+        },
+        "pricePerPiece": {
+          "type": "number",
+          "format": "double",
+          "minimum": 0.0
+        }
+      }
+    },
+    "VolumePriceUnit": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "PACKAGE",
+        "LAYER",
+        "LOAD_CARRIER"
+      ],
+      "enum": [
+        "PACKAGE",
+        "LAYER",
+        "LOAD_CARRIER"
+      ]
+    },
+    "CustomerOfferType": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "CUSTOMER_OFFER",
+        "PURCHASE_TIP",
+        "SUPPLY_REQUEST"
+      ],
+      "enum": [
+        "CUSTOMER_OFFER",
+        "PURCHASE_TIP",
+        "SUPPLY_REQUEST"
+      ]
+    },
     "SyncResultOfCustomerSticker": {
       "type": "object",
       "required": [
@@ -24236,6 +24855,7 @@
         "stickerType",
         "despatchWarehouseId",
         "isHandled",
+        "creationDateTime",
         "isDeleted",
         "sequenceNumber",
         "compositions"
@@ -24277,6 +24897,10 @@
         },
         "isHandled": {
           "type": "boolean"
+        },
+        "creationDateTime": {
+          "type": "string",
+          "format": "date-time"
         },
         "lastRequestedOn": {
           "type": "string",
@@ -24491,6 +25115,10 @@
         },
         "materialType": {
           "$ref": "#/definitions/MaterialType"
+        },
+        "floricodeVrsPackagingId": {
+          "type": "string",
+          "format": "uuid"
         }
       }
     },
@@ -24885,6 +25513,10 @@
         "sequenceNumber": {
           "type": "integer",
           "format": "int64"
+        },
+        "name": {
+          "type": "string",
+          "maxLength": 70
         }
       }
     },
@@ -25356,7 +25988,8 @@
         "tradeItemId",
         "newBatchId",
         "packingConfiguration",
-        "numberOfPackages"
+        "numberOfPackages",
+        "clockMinimumPrice"
       ],
       "properties": {
         "fulfillmentRequestId": {
@@ -25395,7 +26028,7 @@
           "type": "number",
           "format": "decimal",
           "maximum": 10000000000000000.0,
-          "minimum": 0.0
+          "minimum": 0.01
         },
         "deliveryRemark": {
           "type": "string",
@@ -25517,37 +26150,6 @@
         }
       }
     },
-    "VolumePrice": {
-      "type": "object",
-      "required": [
-        "unit",
-        "pricePerPiece"
-      ],
-      "properties": {
-        "unit": {
-          "$ref": "#/definitions/VolumePriceUnit"
-        },
-        "pricePerPiece": {
-          "type": "number",
-          "format": "double",
-          "minimum": 0.0
-        }
-      }
-    },
-    "VolumePriceUnit": {
-      "type": "string",
-      "description": "",
-      "x-enumNames": [
-        "PACKAGE",
-        "LAYER",
-        "LOAD_CARRIER"
-      ],
-      "enum": [
-        "PACKAGE",
-        "LAYER",
-        "LOAD_CARRIER"
-      ]
-    },
     "SupplyLinePackingConfiguration": {
       "type": "object",
       "required": [
@@ -25637,6 +26239,179 @@
           "items": {
             "$ref": "#/definitions/SupplyLine"
           }
+        }
+      }
+    },
+    "BatchBaseSupply": {
+      "type": "object",
+      "required": [
+        "batchId",
+        "batchDate",
+        "orderPeriod",
+        "creationDateTime",
+        "lastModifiedDateTime",
+        "tradeItemId",
+        "warehouseId",
+        "initialNumberOfPieces",
+        "currentNumberOfPieces",
+        "isSoldOut",
+        "isDeleted",
+        "packingConfigurations",
+        "priceGroupPrices"
+      ],
+      "properties": {
+        "batchReference": {
+          "type": "string"
+        },
+        "batchId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "batchDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "orderPeriod": {
+          "$ref": "#/definitions/TradePeriod"
+        },
+        "creationDateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "lastModifiedDateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "basePricePerPiece": {
+          "$ref": "#/definitions/Price"
+        },
+        "tradeItemId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "warehouseId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "initialNumberOfPieces": {
+          "type": "integer",
+          "format": "int32",
+          "maximum": 2147483647.0,
+          "minimum": 0.0
+        },
+        "currentNumberOfPieces": {
+          "type": "integer",
+          "format": "int32",
+          "maximum": 2147483647.0,
+          "minimum": 0.0
+        },
+        "isSoldOut": {
+          "type": "boolean"
+        },
+        "isDeleted": {
+          "type": "boolean"
+        },
+        "packingConfigurations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BatchBaseSupplyPackingConfiguration"
+          }
+        },
+        "priceGroupPrices": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BatchBaseSupplyPriceGroupPrice"
+          }
+        }
+      }
+    },
+    "BatchBaseSupplyPackingConfiguration": {
+      "type": "object",
+      "required": [
+        "isPrimary",
+        "piecesPerPackage",
+        "packagesPerLayer",
+        "layersPerLoadCarrier",
+        "package",
+        "loadCarrier",
+        "isDeleted"
+      ],
+      "properties": {
+        "isPrimary": {
+          "type": "boolean"
+        },
+        "piecesPerPackage": {
+          "type": "integer",
+          "format": "int32",
+          "maximum": 9999.0,
+          "minimum": 1.0
+        },
+        "packagesPerLayer": {
+          "type": "integer",
+          "format": "int32",
+          "maximum": 9999.0,
+          "minimum": 1.0
+        },
+        "layersPerLoadCarrier": {
+          "type": "integer",
+          "format": "int32",
+          "maximum": 9999.0,
+          "minimum": 1.0
+        },
+        "package": {
+          "$ref": "#/definitions/Package"
+        },
+        "loadCarrier": {
+          "$ref": "#/definitions/LoadCarrierType"
+        },
+        "photoUrl": {
+          "type": "string",
+          "description": "Image URLs posted as Floriday media must conform with the following format https://image.floriday.io/."
+        },
+        "allowedCustomerOrganizationIds": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalPricePerPiece": {
+          "$ref": "#/definitions/Price"
+        },
+        "isDeleted": {
+          "type": "boolean"
+        }
+      }
+    },
+    "BatchBaseSupplyPriceGroupPrice": {
+      "type": "object",
+      "required": [
+        "supplyLineId",
+        "priceGroupId",
+        "pricePerPiece",
+        "priceGroupType",
+        "pricePerPieceLastModified"
+      ],
+      "properties": {
+        "supplyLineId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "priceGroupId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "pricePerPiece": {
+          "$ref": "#/definitions/Price"
+        },
+        "priceGroupType": {
+          "$ref": "#/definitions/PriceGroupType"
+        },
+        "pricePerPieceLastModified": {
+          "type": "string",
+          "description": "This field is set when the price has been changed by the supplier.",
+          "format": "date-time"
         }
       }
     },
@@ -26817,7 +27592,15 @@
       "type": "object",
       "required": [
         "organizationId",
-        "sequenceNumber"
+        "name",
+        "organizationType",
+        "sequenceNumber",
+        "creationDateTime",
+        "lastModifiedDateTime",
+        "commercialName",
+        "paymentProviders",
+        "mailingAddress",
+        "physicalAddress"
       ],
       "properties": {
         "organizationId": {
@@ -26875,7 +27658,7 @@
         "paymentProviders": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/PaymentProviderCreate"
+            "$ref": "#/definitions/PaymentProvider"
           }
         },
         "mailingAddress": {
@@ -26910,26 +27693,6 @@
         "SUPPLIER",
         "AGENT",
         "CARRIER",
-        "OTHER"
-      ]
-    },
-    "PaymentProviderCreate": {
-      "type": "string",
-      "description": "",
-      "x-enumNames": [
-        "RFH",
-        "VRM",
-        "PLANTION",
-        "RFH_E_WALLET",
-        "FX_SERVICES",
-        "OTHER"
-      ],
-      "enum": [
-        "RFH",
-        "VRM",
-        "PLANTION",
-        "RFH_E_WALLET",
-        "FX_SERVICES",
         "OTHER"
       ]
     },
@@ -27209,6 +27972,9 @@
         "incoterm": {
           "$ref": "#/definitions/Incoterm"
         },
+        "shouldReturnPackages": {
+          "type": "boolean"
+        },
         "reason": {
           "type": "string",
           "maxLength": 1000
@@ -27297,6 +28063,10 @@
         "incoterm": {
           "$ref": "#/definitions/Incoterm"
         },
+        "shouldReturnPackages": {
+          "type": "boolean",
+          "description": "This field is not implemented yet.\nDetermines whether the packages are returned to the supplier; in previous API versions, the default value was true. Can only be used when the sales order correction request is a cancellation request."
+        },
         "reason": {
           "type": "string",
           "maxLength": 1000
@@ -27321,6 +28091,11 @@
         },
         "stockApplication": {
           "$ref": "#/definitions/SalesOrderCorrectionStockApplication"
+        },
+        "expiresAtDateTime": {
+          "type": "string",
+          "description": "Date time on which the sales order correction expires. By default, the expiry date is set to the next workday at 18:00.",
+          "format": "date-time"
         }
       }
     },
@@ -27510,11 +28285,23 @@
           "description": "Name of the contact person responsible for the sales order",
           "maxLength": 100
         },
+        "batchId": {
+          "type": "string",
+          "format": "uuid"
+        },
         "mutations": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/SalesOrderMutation"
           }
+        },
+        "batchReference": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "isPaid": {
+          "type": "boolean",
+          "description": "Is used for sales orders with payment provider RFH Afterpay and indicates if the sales order is already paid by the customer"
         }
       }
     },
@@ -27659,6 +28446,11 @@
           "type": "integer",
           "description": "Only used in combination with unit type 'LABEL'",
           "format": "int32"
+        },
+        "stickerId": {
+          "type": "string",
+          "description": "Only used in combination with unit type 'LABEL'",
+          "format": "uuid"
         }
       }
     },
@@ -28070,13 +28862,11 @@
           "$ref": "#/definitions/AddPrice"
         },
         "customerOrderId": {
-          "type": "string",
-          "maxLength": 26
+          "type": "string"
         },
         "createdByUser": {
           "type": "string",
-          "description": "Used to associate an existing Floriday account with the created sales order. The user will be shown within the Floriday portal as the created user.",
-          "maxLength": 60
+          "description": "Used to associate an existing Floriday account with the created sales order. The user will be shown within the Floriday portal as the created user."
         },
         "packingConfiguration": {
           "$ref": "#/definitions/SalesOrderPackingConfigurationCreate"
@@ -28091,6 +28881,7 @@
         },
         "additionalServices": {
           "type": "array",
+          "minItems": 1,
           "items": {
             "$ref": "#/definitions/OrderAdditionalService"
           }
@@ -28102,26 +28893,7 @@
           "$ref": "#/definitions/PaymentProviderCreate"
         },
         "deliveryRemarks": {
-          "type": "string",
-          "maxLength": 255
-        }
-      }
-    },
-    "AddPrice": {
-      "type": "object",
-      "required": [
-        "currency",
-        "value"
-      ],
-      "properties": {
-        "currency": {
-          "$ref": "#/definitions/Currency"
-        },
-        "value": {
-          "type": "number",
-          "format": "decimal",
-          "maximum": 10000000000000000.0,
-          "minimum": 0.001
+          "type": "string"
         }
       }
     },
@@ -28231,6 +29003,24 @@
         }
       }
     },
+    "PaymentProviderCreate": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "RFH",
+        "VRM",
+        "PLANTION",
+        "FX_SERVICES",
+        "OTHER"
+      ],
+      "enum": [
+        "RFH",
+        "VRM",
+        "PLANTION",
+        "FX_SERVICES",
+        "OTHER"
+      ]
+    },
     "SalesOrderExternalIntegrationRequest": {
       "type": "object",
       "required": [
@@ -28259,6 +29049,10 @@
           "format": "uuid"
         },
         "despatchWarehouseId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "batchId": {
           "type": "string",
           "format": "uuid"
         },
@@ -28310,6 +29104,24 @@
           "items": {
             "$ref": "#/definitions/CommercialService"
           }
+        }
+      }
+    },
+    "AddAdditionalService": {
+      "type": "object",
+      "required": [
+        "additionalServiceId"
+      ],
+      "properties": {
+        "additionalServiceId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "numberOfUnits": {
+          "type": "integer",
+          "format": "int32",
+          "maximum": 2147483647.0,
+          "minimum": 1.0
         }
       }
     },
@@ -28662,6 +29474,7 @@
       "type": "object",
       "required": [
         "tradeItemId",
+        "sellerOrganizationId",
         "supplierArticleCode",
         "vbnProductCode",
         "tradeItemName",
@@ -28676,6 +29489,10 @@
       ],
       "properties": {
         "tradeItemId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "sellerOrganizationId": {
           "type": "string",
           "format": "uuid"
         },
@@ -28781,6 +29598,14 @@
         },
         "hasInvalidFloricodeData": {
           "type": "boolean"
+        },
+        "additionalPackagingInformationFloricodeVrsPackagingIds": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          }
         }
       }
     },
@@ -29072,6 +29897,7 @@
         "photos",
         "isCustomerSpecific",
         "supplierOrganizationId",
+        "sellerOrganizationId",
         "isDeleted"
       ],
       "properties": {
@@ -29107,6 +29933,10 @@
           "type": "boolean"
         },
         "supplierOrganizationId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "sellerOrganizationId": {
           "type": "string",
           "format": "uuid"
         },
@@ -29592,7 +30422,10 @@
         "organizationId",
         "name",
         "location",
-        "sequenceNumber"
+        "sequenceNumber",
+        "creationDateTime",
+        "lastModifiedDateTime",
+        "isDeleted"
       ],
       "properties": {
         "warehouseId": {

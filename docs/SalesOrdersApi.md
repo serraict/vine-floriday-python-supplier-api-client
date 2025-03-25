@@ -1,6 +1,6 @@
 # floriday_supplier_client.SalesOrdersApi
 
-All URIs are relative to *https://api.staging.floriday.io/suppliers-api-2024v1*
+All URIs are relative to *https://api.staging.floriday.io/suppliers-api-2024v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**get_sales_orders**](SalesOrdersApi.md#get_sales_orders) | **GET** /sales-orders | sales-order:read - rate limit: 3.4 per second - burst limit: 1000 - Returns sales orders.
 [**get_sales_orders_by_sequence_number**](SalesOrdersApi.md#get_sales_orders_by_sequence_number) | **GET** /sales-orders/sync/{sequenceNumber} | sales-order:read - rate limit: 3.4 per second - burst limit: 1000 - Returns a list of max 1000 sales orders starting from a specified sequence number.
 [**get_sales_orders_max_sequence**](SalesOrdersApi.md#get_sales_orders_max_sequence) | **GET** /sales-orders/current-max-sequence | sales-order:read - Returns the maximum sequence number found in sales orders.
+[**set_additional_services_on_sales_order**](SalesOrdersApi.md#set_additional_services_on_sales_order) | **PATCH** /sales-orders/{salesOrderId}/additional-services | sales-order:write - Sets additional services on a sales order that don&#x27;t have a price associated with them. This feature is under early access, to sign up for this please contact us.
 [**set_sales_order_cancelled**](SalesOrdersApi.md#set_sales_order_cancelled) | **PATCH** /sales-orders/{salesOrderId}/cancel | sales-order:write - Cancel a sales order that is still in status ACCEPTED.
 [**set_sales_order_committed**](SalesOrdersApi.md#set_sales_order_committed) | **PATCH** /sales-orders/{salesOrderId}/commit | sales-order:write - Commit a sales order that is still in status ACCEPTED.
 
@@ -421,6 +422,64 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **set_additional_services_on_sales_order**
+> set_additional_services_on_sales_order(body, sales_order_id)
+
+sales-order:write - Sets additional services on a sales order that don't have a price associated with them. This feature is under early access, to sign up for this please contact us.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: JWT Token
+configuration = floriday_supplier_client.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure API key authorization: X-Api-Key
+configuration = floriday_supplier_client.Configuration()
+configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = floriday_supplier_client.SalesOrdersApi(floriday_supplier_client.ApiClient(configuration))
+body = [floriday_supplier_client.AddAdditionalService()] # list[AddAdditionalService] | 
+sales_order_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
+
+try:
+    # sales-order:write - Sets additional services on a sales order that don't have a price associated with them. This feature is under early access, to sign up for this please contact us.
+    api_instance.set_additional_services_on_sales_order(body, sales_order_id)
+except ApiException as e:
+    print("Exception when calling SalesOrdersApi->set_additional_services_on_sales_order: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**list[AddAdditionalService]**](AddAdditionalService.md)|  | 
+ **sales_order_id** | [**str**](.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[JWT Token](../README.md#JWT Token), [X-Api-Key](../README.md#X-Api-Key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
  - **Accept**: text/plain, application/json, text/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

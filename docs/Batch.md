@@ -7,16 +7,16 @@ Name | Type | Description | Notes
 **batch_id** | **str** |  | 
 **trade_item_id** | **str** |  | 
 **number_of_pieces** | **int** |  | 
-**initial_number_of_pieces** | **int** |  | [optional] 
+**initial_number_of_pieces** | **int** |  | 
 **packing_configuration** | [**BatchPackingConfiguration**](BatchPackingConfiguration.md) |  | 
 **warehouse_id** | **str** |  | 
 **image_url** | **str** |  | [optional] 
-**batch_reference** | **str** |  | [optional] 
+**batch_reference** | **str** |  | 
 **custom_reference** | **str** |  | [optional] 
 **sequence_number** | **int** |  | 
 **transit_status** | [**TransitStatus**](TransitStatus.md) |  | [optional] 
-**trade_item_version** | **int** |  | [optional] 
-**is_deleted** | **bool** |  | [optional] 
+**trade_item_version** | **int** |  | 
+**is_deleted** | **bool** |  | 
 **creation_date_time** | **datetime** |  | [optional] 
 **last_modified_date_time** | **datetime** |  | [optional] 
 

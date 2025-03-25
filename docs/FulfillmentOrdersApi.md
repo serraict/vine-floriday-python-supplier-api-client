@@ -1,6 +1,6 @@
 # floriday_supplier_client.FulfillmentOrdersApi
 
-All URIs are relative to *https://api.staging.floriday.io/suppliers-api-2024v1*
+All URIs are relative to *https://api.staging.floriday.io/suppliers-api-2024v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -15,6 +15,7 @@ Method | HTTP request | Description
 [**get_fulfillment_orders_max_sequence**](FulfillmentOrdersApi.md#get_fulfillment_orders_max_sequence) | **GET** /fulfillment-orders/current-max-sequence | supply:read - rate limit: 3.4 per second - burst limit: 1000 - Returns the maximum sequence number found in fulfillment orders.
 [**get_logistic_labels_by_id**](FulfillmentOrdersApi.md#get_logistic_labels_by_id) | **GET** /fulfillment-orders/{fulfillmentOrderId}/logistic-labels | fulfillment:read - rate limit: 1.0 per second - burst limit: 60 - Returns logistic labels (SSCC or delivery notes) as pdf for a fulfillment order.
 [**get_tray_labels_as_pdf_by_fulfillment_order_id**](FulfillmentOrdersApi.md#get_tray_labels_as_pdf_by_fulfillment_order_id) | **GET** /fulfillment-orders/{fulfillmentOrderId}/stickers | fulfillment:read - Returns tray stickers as pdf for a fulfillment order.
+[**set_fulfillment_order_carrier_organization**](FulfillmentOrdersApi.md#set_fulfillment_order_carrier_organization) | **PATCH** /fulfillment-orders/{fulfillmentOrderId}/carrier | fulfillment:read - Set the missing carrier organization for a fulfillment order.
 
 # **add_fulfillment_order**
 > add_fulfillment_order(body)
@@ -637,6 +638,66 @@ Name | Type | Description  | Notes
 ### Return type
 
 **str**
+
+### Authorization
+
+[JWT Token](../README.md#JWT Token), [X-Api-Key](../README.md#X-Api-Key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **set_fulfillment_order_carrier_organization**
+> set_fulfillment_order_carrier_organization(fulfillment_order_id, carrier_organization_id)
+
+fulfillment:read - Set the missing carrier organization for a fulfillment order.
+
+Used to set the missing carrier organization for a fulfillment order. Currently it is not possible to change or remove an existing carrier from a fulfillment order.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: JWT Token
+configuration = floriday_supplier_client.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure API key authorization: X-Api-Key
+configuration = floriday_supplier_client.Configuration()
+configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = floriday_supplier_client.FulfillmentOrdersApi(floriday_supplier_client.ApiClient(configuration))
+fulfillment_order_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
+carrier_organization_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
+
+try:
+    # fulfillment:read - Set the missing carrier organization for a fulfillment order.
+    api_instance.set_fulfillment_order_carrier_organization(fulfillment_order_id, carrier_organization_id)
+except ApiException as e:
+    print("Exception when calling FulfillmentOrdersApi->set_fulfillment_order_carrier_organization: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **fulfillment_order_id** | [**str**](.md)|  | 
+ **carrier_organization_id** | [**str**](.md)|  | 
+
+### Return type
+
+void (empty response body)
 
 ### Authorization
 

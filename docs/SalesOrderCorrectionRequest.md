@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **number_of_pieces** | **int** |  | [optional] 
 **pieces_per_package** | **int** |  | [optional] 
 **incoterm** | [**Incoterm**](Incoterm.md) |  | [optional] 
+**should_return_packages** | **bool** |  | [optional] 
 **reason** | **str** |  | [optional] 
 **is_cancel_request** | **bool** |  | 
 **sales_order_version_after_correction** | **int** |  | [optional] 

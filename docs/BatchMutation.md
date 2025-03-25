@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **delta_number_of_pieces** | **int** |  | 
 **reason** | **str** |  | [optional] 
 **target_batch_id** | **str** |  | [optional] 
-**added_on** | **datetime** |  | 
+**creation_date_time** | **datetime** |  | 
 **type** | [**BatchMutationType**](BatchMutationType.md) |  | 
 **sales_order_id** | **str** |  | [optional] 
 **sequence_number** | **int** |  | 

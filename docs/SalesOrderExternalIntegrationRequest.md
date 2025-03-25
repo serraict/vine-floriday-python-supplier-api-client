@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **customer_organization_id** | **str** |  | 
 **trade_item_id** | **str** |  | 
 **despatch_warehouse_id** | **str** |  | 
+**batch_id** | **str** |  | [optional] 
 **number_of_pieces** | **int** |  | 
 **price_per_piece** | [**AddPrice**](AddPrice.md) |  | 
 **customer_order_id** | **str** |  | [optional] 

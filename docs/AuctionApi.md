@@ -1,12 +1,11 @@
 # floriday_supplier_client.AuctionApi
 
-All URIs are relative to *https://api.staging.floriday.io/suppliers-api-2024v1*
+All URIs are relative to *https://api.staging.floriday.io/suppliers-api-2024v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**add_clock_presales_supply_line**](AuctionApi.md#add_clock_presales_supply_line) | **POST** /clock-presales-supply-lines | supply:write - Creates a new clock presales supply line.
-[**add_clock_sales_from_nursery_supply_line**](AuctionApi.md#add_clock_sales_from_nursery_supply_line) | **POST** /clock-sales-from-nursery/supply-lines | supply:write - Creates a new clock sales from nursery supply line.
-[**delete_clock_sales_from_nursery_supply_line**](AuctionApi.md#delete_clock_sales_from_nursery_supply_line) | **DELETE** /clock-sales-from-nursery/supply-lines/{clockSalesFromNurserySupplyLineId} | supply:write - Deletes a clock sales from nursery supply line.
+[**add_clock_supply_line**](AuctionApi.md#add_clock_supply_line) | **POST** /clock-supply-lines | clock-supply:write - Adds a clock sales supply line with optional clock presales supply line.
 [**edit_clock_presales_supply_line**](AuctionApi.md#edit_clock_presales_supply_line) | **PUT** /clock-presales-supply-lines/{clockPresalesSupplyLineId} | sales-order:write - Updates a clock presales supply line.
 [**get_clock_presales_supply_line_by_id**](AuctionApi.md#get_clock_presales_supply_line_by_id) | **GET** /clock-presales-supply-lines/{clockPresalesSupplyLineId} | supply:read - Returns a clock presales supply line.
 [**get_clock_presales_supply_lines_by_sequence_number**](AuctionApi.md#get_clock_presales_supply_lines_by_sequence_number) | **GET** /clock-presales-supply-lines/sync/{sequenceNumber} | supply:read - Returns a list of max 1000 clock presales supply lines starting from a specified sequence number.
@@ -71,10 +70,12 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **add_clock_sales_from_nursery_supply_line**
-> add_clock_sales_from_nursery_supply_line(body)
+# **add_clock_supply_line**
+> add_clock_supply_line(body)
 
-supply:write - Creates a new clock sales from nursery supply line.
+clock-supply:write - Adds a clock sales supply line with optional clock presales supply line.
+
+In the current phase, this endpoint is only intended to indicate clock supply that is already available at FloraHolland stock locations (V&O). So there is always a goods movement preceding this clock allocation.
 
 ### Example
 ```python
@@ -97,20 +98,20 @@ configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = floriday_supplier_client.AuctionApi(floriday_supplier_client.ApiClient(configuration))
-body = floriday_supplier_client.AddClockSalesFromNurserySupplyLine() # AddClockSalesFromNurserySupplyLine | 
+body = floriday_supplier_client.AddClockSupplyLine() # AddClockSupplyLine | 
 
 try:
-    # supply:write - Creates a new clock sales from nursery supply line.
-    api_instance.add_clock_sales_from_nursery_supply_line(body)
+    # clock-supply:write - Adds a clock sales supply line with optional clock presales supply line.
+    api_instance.add_clock_supply_line(body)
 except ApiException as e:
-    print("Exception when calling AuctionApi->add_clock_sales_from_nursery_supply_line: %s\n" % e)
+    print("Exception when calling AuctionApi->add_clock_supply_line: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**AddClockSalesFromNurserySupplyLine**](AddClockSalesFromNurserySupplyLine.md)|  | 
+ **body** | [**AddClockSupplyLine**](AddClockSupplyLine.md)|  | 
 
 ### Return type
 
@@ -123,62 +124,6 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: text/plain, application/json, text/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **delete_clock_sales_from_nursery_supply_line**
-> delete_clock_sales_from_nursery_supply_line(clock_sales_from_nursery_supply_line_id)
-
-supply:write - Deletes a clock sales from nursery supply line.
-
-### Example
-```python
-from __future__ import print_function
-import time
-import floriday_supplier_client
-from floriday_supplier_client.rest import ApiException
-from pprint import pprint
-
-# Configure API key authorization: JWT Token
-configuration = floriday_supplier_client.Configuration()
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
-# Configure API key authorization: X-Api-Key
-configuration = floriday_supplier_client.Configuration()
-configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
-
-# create an instance of the API class
-api_instance = floriday_supplier_client.AuctionApi(floriday_supplier_client.ApiClient(configuration))
-clock_sales_from_nursery_supply_line_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
-
-try:
-    # supply:write - Deletes a clock sales from nursery supply line.
-    api_instance.delete_clock_sales_from_nursery_supply_line(clock_sales_from_nursery_supply_line_id)
-except ApiException as e:
-    print("Exception when calling AuctionApi->delete_clock_sales_from_nursery_supply_line: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **clock_sales_from_nursery_supply_line_id** | [**str**](.md)|  | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[JWT Token](../README.md#JWT Token), [X-Api-Key](../README.md#X-Api-Key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

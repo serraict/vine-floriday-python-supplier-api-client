@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **image_url** | **str** | Image URLs posted as Floriday media must conform with the following format https://image.floriday.io/. | [optional] 
 **number_of_packages** | **int** |  | 
 **clock_pre_sales_price** | **float** |  | [optional] 
-**clock_minimum_price** | **float** |  | [optional] 
+**clock_minimum_price** | **float** |  | 
 **delivery_remark** | **str** | Used as delivery remarks when creating a FulfillmentOrder. | [optional] 
 **auction_remark** | **str** | Used as a remark for the auctioneer. | [optional] 
 **service_code** | **int** |  | [optional] 

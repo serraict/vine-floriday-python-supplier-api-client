@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **additional_information** | **str** |  | [optional] 
 **sticker_size** | [**Size**](Size.md) |  | [optional] 
 **is_handled** | **bool** |  | 
+**creation_date_time** | **datetime** |  | 
 **last_requested_on** | **datetime** |  | [optional] 
 **is_deleted** | **bool** |  | 
 **sequence_number** | **int** |  | 

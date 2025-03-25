@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **last_modified_date_time** | **datetime** |  | 
 **creation_date_time** | **datetime** |  | 
 **sequence_number** | **int** |  | 
+**name** | **str** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

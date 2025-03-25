@@ -1,6 +1,6 @@
 # floriday_supplier_client.IdentitiesApi
 
-All URIs are relative to *https://api.staging.floriday.io/suppliers-api-2024v1*
+All URIs are relative to *https://api.staging.floriday.io/suppliers-api-2024v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
