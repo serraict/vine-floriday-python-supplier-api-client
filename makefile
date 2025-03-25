@@ -41,9 +41,10 @@ release:
 		exit 1; \
 	fi
 	@git tag v$$(python -m setuptools_scm --strip-dev)
+	@git tag -f floriday_api_v$(api_version)
 	@git push origin --tags
 
-api_version := 2024v1
+api_version := 2024v2
 url := https://api.staging.floriday.io/suppliers-api-$(api_version)/swagger/UUID/swagger.json
 target_dir := .
 spec_file := ./specs/floriday-suppliers-api-$(api_version)-swagger-UUID.json
