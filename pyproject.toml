@@ -2,3 +2,4 @@
 requires = ["setuptools", "wheel"]
 [tool.setuptools_scm]
 write_to = "floriday_supplier_client/_version.py"
+git_describe_command = ["git", "describe", "--tags", "--match", "v*"]
