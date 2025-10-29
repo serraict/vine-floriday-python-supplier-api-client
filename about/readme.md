@@ -146,3 +146,16 @@ make bootstrap
 ./venv/bin/activate
 make update
 python example.py
+```
+
+### Upgrade to a newer version of hte Floriday API
+
+The Floriday API changes roughly twice per year, see [Floriday docs](https://developer.floriday.io/docs/welcome).
+
+To update to a newer version:
+
+- change the `API_VERSION` in the makefile
+- change the `EXPECTED_API_VERSION` in api_factory.py
+- update the `FLORIDAY_BASE_URL` in .env.example
+
+Then regenerate the client and make a new release.
