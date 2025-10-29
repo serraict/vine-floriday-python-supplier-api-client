@@ -4,9 +4,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** |  | 
-**description** | **str** |  | [optional] 
-**image_url** | **str** | Image URLs posted as Floriday media must conform with the following format https://image.floriday.io/. | [optional] 
-**is_active** | **bool** |  | 
+**description** | **str** |  | 
+**photos** | [**list[EditCollectionPhoto]**](EditCollectionPhoto.md) |  | 
+**is_visible** | **bool** |  | 
+**is_highlighted** | **bool** |  | 
+**t17_theme_value_codes** | **list[str]** |  | 
+**uses_trade_item_specific_packing_configuration** | **bool** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

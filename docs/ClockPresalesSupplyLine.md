@@ -19,9 +19,10 @@ Name | Type | Description | Notes
 **sequence_number** | **int** |  | 
 **creation_date_time** | **datetime** |  | 
 **last_modified_date_time** | **datetime** |  | [optional] 
-**auction_date** | **datetime** |  | 
+**auction_date** | **date** |  | 
 **initial_auction_location** | [**AuctionLocation**](AuctionLocation.md) |  | 
 **photo_url** | **str** | Image URLs posted as Floriday media must conform with the following format https://image.floriday.io/. | 
+**sales_strategy_id** | **str** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

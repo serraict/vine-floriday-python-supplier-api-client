@@ -1,12 +1,14 @@
 # floriday_supplier_client.BatchesApi
 
-All URIs are relative to *https://api.staging.floriday.io/suppliers-api-2024v2*
+All URIs are relative to *https://api.staging.floriday.io/suppliers-api-2025v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**add_batch**](BatchesApi.md#add_batch) | **POST** /batches | fulfillment:write - rate limit: 3.4 per second - burst limit: 1000 - Creates a batch.
+[**add_batch_from_trade_item_properties**](BatchesApi.md#add_batch_from_trade_item_properties) | **POST** /batches/from-trade-item-properties | fulfillment:write - rate limit: 3.4 per second - burst limit: 1000 - Creates a batch with a trade item based on the given trade item properties.
 [**combine_and_transform_batches**](BatchesApi.md#combine_and_transform_batches) | **POST** /batches/combine-and-transform | fulfillment:write - rate limit: 3.4 per second - burst limit: 1000 - Merge and transform multiple existing batches into a single new batch with the given modifications.
 [**edit_batch**](BatchesApi.md#edit_batch) | **PUT** /batches/{batchId}/quantity-corrections | fulfillment:write - rate limit: 3.4 per second - burst limit: 1000 - Update the quantity of a batch.
+[**edit_batch_photo**](BatchesApi.md#edit_batch_photo) | **PATCH** /batches/{batchId}/photo | 
 [**get_batch_by_id**](BatchesApi.md#get_batch_by_id) | **GET** /batches/{batchId} | fulfillment:read - Returns a batch.
 [**get_batch_mutations_by_sequence_number**](BatchesApi.md#get_batch_mutations_by_sequence_number) | **GET** /batches/mutations/sync/{sequenceNumber} | fulfillment:read - rate limit: 3.4 per second - burst limit: 1000 - Returns a list of max 1000 batch mutations starting from a specified sequence number.
 [**get_batch_mutations_max_sequence**](BatchesApi.md#get_batch_mutations_max_sequence) | **GET** /batches/mutations/current-max-sequence | fulfillment:read - Returns the maximum sequence number found in batch mutations.
@@ -67,7 +69,63 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Content-Type**: application/json, text/json, application/*+json
+ - **Accept**: text/plain, application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **add_batch_from_trade_item_properties**
+> add_batch_from_trade_item_properties(body)
+
+fulfillment:write - rate limit: 3.4 per second - burst limit: 1000 - Creates a batch with a trade item based on the given trade item properties.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: JWT Token
+configuration = floriday_supplier_client.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure API key authorization: X-Api-Key
+configuration = floriday_supplier_client.Configuration()
+configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = floriday_supplier_client.BatchesApi(floriday_supplier_client.ApiClient(configuration))
+body = floriday_supplier_client.AddBatchFromTradeItemProperties() # AddBatchFromTradeItemProperties | 
+
+try:
+    # fulfillment:write - rate limit: 3.4 per second - burst limit: 1000 - Creates a batch with a trade item based on the given trade item properties.
+    api_instance.add_batch_from_trade_item_properties(body)
+except ApiException as e:
+    print("Exception when calling BatchesApi->add_batch_from_trade_item_properties: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**AddBatchFromTradeItemProperties**](AddBatchFromTradeItemProperties.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[JWT Token](../README.md#JWT Token), [X-Api-Key](../README.md#X-Api-Key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/json, application/*+json
  - **Accept**: text/plain, application/json, text/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -123,7 +181,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Content-Type**: application/json, text/json, application/*+json
  - **Accept**: text/plain, application/json, text/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -181,7 +239,64 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Content-Type**: application/json, text/json, application/*+json
+ - **Accept**: text/plain, application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **edit_batch_photo**
+> edit_batch_photo(body, batch_id)
+
+
+
+### Example
+```python
+from __future__ import print_function
+import time
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: JWT Token
+configuration = floriday_supplier_client.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure API key authorization: X-Api-Key
+configuration = floriday_supplier_client.Configuration()
+configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = floriday_supplier_client.BatchesApi(floriday_supplier_client.ApiClient(configuration))
+body = floriday_supplier_client.EditBatchPhoto() # EditBatchPhoto | 
+batch_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
+
+try:
+    api_instance.edit_batch_photo(body, batch_id)
+except ApiException as e:
+    print("Exception when calling BatchesApi->edit_batch_photo: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**EditBatchPhoto**](EditBatchPhoto.md)|  | 
+ **batch_id** | [**str**](.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[JWT Token](../README.md#JWT Token), [X-Api-Key](../README.md#X-Api-Key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/json, application/*+json
  - **Accept**: text/plain, application/json, text/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -587,7 +702,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: text/plain, application/json, text/json
+ - **Accept**: application/pdf, text/plain, application/json, text/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -644,7 +759,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Content-Type**: application/json, text/json, application/*+json
  - **Accept**: text/plain, application/json, text/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

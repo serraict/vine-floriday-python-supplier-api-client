@@ -1,6 +1,6 @@
 # floriday_supplier_client.TradeSettingsApi
 
-All URIs are relative to *https://api.staging.floriday.io/suppliers-api-2024v2*
+All URIs are relative to *https://api.staging.floriday.io/suppliers-api-2025v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_customer_trade_settings_by_sequence_number**
-> SyncResultOfCustomerTradeSettings get_customer_trade_settings_by_sequence_number(sequence_number, limit_result)
+> SyncResultOfCustomerTradeSettings get_customer_trade_settings_by_sequence_number(sequence_number, limit_result=limit_result)
 
 network:read - Returns a list of max 1000 customer trade settings starting from a specified sequence number.
 
@@ -97,11 +97,11 @@ configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = floriday_supplier_client.TradeSettingsApi(floriday_supplier_client.ApiClient(configuration))
 sequence_number = 789 # int | 
-limit_result = 56 # int | 
+limit_result = 1000 # int |  (optional) (default to 1000)
 
 try:
     # network:read - Returns a list of max 1000 customer trade settings starting from a specified sequence number.
-    api_response = api_instance.get_customer_trade_settings_by_sequence_number(sequence_number, limit_result)
+    api_response = api_instance.get_customer_trade_settings_by_sequence_number(sequence_number, limit_result=limit_result)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling TradeSettingsApi->get_customer_trade_settings_by_sequence_number: %s\n" % e)
@@ -112,7 +112,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **sequence_number** | **int**|  | 
- **limit_result** | **int**|  | 
+ **limit_result** | **int**|  | [optional] [default to 1000]
 
 ### Return type
 

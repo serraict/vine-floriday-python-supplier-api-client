@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **included_services** | [**list[CommercialService]**](CommercialService.md) |  | 
 **packing_configuration** | [**PackingConfigurationBase**](PackingConfigurationBase.md) |  | [optional] 
 **counter_id** | **str** |  | [optional] 
+**is_deleted** | **bool** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

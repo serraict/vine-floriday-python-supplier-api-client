@@ -1,6 +1,6 @@
 # floriday_supplier_client.DirectSalesApi
 
-All URIs are relative to *https://api.staging.floriday.io/suppliers-api-2024v2*
+All URIs are relative to *https://api.staging.floriday.io/suppliers-api-2025v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**delete_supply_line**](DirectSalesApi.md#delete_supply_line) | **DELETE** /supply-lines/{supplyLineId} | supply:write - Delete a supply line
 [**edit_base_supply**](DirectSalesApi.md#edit_base_supply) | **PUT** /batches/{batchId}/base-supply | supply:write - Set base supply for a batch. Supply lines will be generated based on pre-entered price groups.
 [**get_batch_base_supply**](DirectSalesApi.md#get_batch_base_supply) | **GET** /batches/base-supply | supply:read - Returns batch base supply from all batches with an order period within the give order date time.
+[**get_excluded_customer_organization_ids_for_general_direct_sales_supply**](DirectSalesApi.md#get_excluded_customer_organization_ids_for_general_direct_sales_supply) | **GET** /supply-lines/direct-sales-excluded-customers | supply:read - Returns a list of customer organization ids that are explicitly excluded from general direct sales supply lines (for all customers available).
 [**get_supply_line_by_id**](DirectSalesApi.md#get_supply_line_by_id) | **GET** /supply-lines/{supplyLineId} | supply:read - Returns a supply line.
 [**get_supply_lines**](DirectSalesApi.md#get_supply_lines) | **GET** /supply-lines | supply:read - rate limit: 3.4 per second - burst limit: 1000 - Returns supply lines created within the given timeframe
 [**get_supply_lines_by_sequence_number**](DirectSalesApi.md#get_supply_lines_by_sequence_number) | **GET** /supply-lines/sync/{sequenceNumber} | supply:read - rate limit: 3.4 per second - burst limit: 1000 - Returns a list of max 1000 supply lines starting from a specified sequence number.
@@ -66,7 +67,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Content-Type**: application/json, text/json, application/*+json
  - **Accept**: text/plain, application/json, text/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -182,7 +183,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Content-Type**: application/json, text/json, application/*+json
  - **Accept**: text/plain, application/json, text/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -232,6 +233,59 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**list[BatchBaseSupply]**](BatchBaseSupply.md)
+
+### Authorization
+
+[JWT Token](../README.md#JWT Token), [X-Api-Key](../README.md#X-Api-Key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_excluded_customer_organization_ids_for_general_direct_sales_supply**
+> ExcludedCustomerOrganizationIdsForGeneralSupply get_excluded_customer_organization_ids_for_general_direct_sales_supply()
+
+supply:read - Returns a list of customer organization ids that are explicitly excluded from general direct sales supply lines (for all customers available).
+
+### Example
+```python
+from __future__ import print_function
+import time
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: JWT Token
+configuration = floriday_supplier_client.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure API key authorization: X-Api-Key
+configuration = floriday_supplier_client.Configuration()
+configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = floriday_supplier_client.DirectSalesApi(floriday_supplier_client.ApiClient(configuration))
+
+try:
+    # supply:read - Returns a list of customer organization ids that are explicitly excluded from general direct sales supply lines (for all customers available).
+    api_response = api_instance.get_excluded_customer_organization_ids_for_general_direct_sales_supply()
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DirectSalesApi->get_excluded_customer_organization_ids_for_general_direct_sales_supply: %s\n" % e)
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ExcludedCustomerOrganizationIdsForGeneralSupply**](ExcludedCustomerOrganizationIdsForGeneralSupply.md)
 
 ### Authorization
 
@@ -531,7 +585,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Content-Type**: application/json, text/json, application/*+json
  - **Accept**: text/plain, application/json, text/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -589,7 +643,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Content-Type**: application/json, text/json, application/*+json
  - **Accept**: text/plain, application/json, text/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

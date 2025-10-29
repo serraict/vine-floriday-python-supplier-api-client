@@ -26,6 +26,7 @@ Name | Type | Description | Notes
 **contract_lines** | [**list[ContractLine]**](ContractLine.md) |  | 
 **attachment_details** | [**list[AttachmentDetail]**](AttachmentDetail.md) |  | [optional] 
 **sequence_number** | **int** |  | 
+**terms_and_conditions** | [**ContractTermsAndConditions**](ContractTermsAndConditions.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

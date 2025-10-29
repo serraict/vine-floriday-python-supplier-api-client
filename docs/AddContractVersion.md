@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **currency** | [**Currency**](Currency.md) |  | 
 **payment_provider** | [**PaymentProvider**](PaymentProvider.md) |  | 
 **contract_lines** | [**list[EditContractLine]**](EditContractLine.md) |  | 
+**terms_and_conditions** | [**ContractTermsAndConditions**](ContractTermsAndConditions.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

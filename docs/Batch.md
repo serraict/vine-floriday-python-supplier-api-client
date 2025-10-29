@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 **batch_date** | **datetime** |  | 
 **batch_id** | **str** |  | 
 **trade_item_id** | **str** |  | 
+**supplier_organization_id** | **str** |  | 
 **number_of_pieces** | **int** |  | 
 **initial_number_of_pieces** | **int** |  | 
 **packing_configuration** | [**BatchPackingConfiguration**](BatchPackingConfiguration.md) |  | 

@@ -1,6 +1,6 @@
 # floriday_supplier_client.WebhooksApi
 
-All URIs are relative to *https://api.staging.floriday.io/suppliers-api-2024v2*
+All URIs are relative to *https://api.staging.floriday.io/suppliers-api-2025v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**delete_webhook_subscription**](WebhooksApi.md#delete_webhook_subscription) | **DELETE** /webhooks/subscriptions | webhooks:write - Delete a events webhook.
 
 # **add_webhook_subscription**
-> Event add_webhook_subscription(body)
+> add_webhook_subscription(body)
 
 webhooks:write - Subscribe to a events webhook.
 
@@ -39,8 +39,7 @@ body = floriday_supplier_client.WebhookSubscription() # WebhookSubscription |
 
 try:
     # webhooks:write - Subscribe to a events webhook.
-    api_response = api_instance.add_webhook_subscription(body)
-    pprint(api_response)
+    api_instance.add_webhook_subscription(body)
 except ApiException as e:
     print("Exception when calling WebhooksApi->add_webhook_subscription: %s\n" % e)
 ```
@@ -53,7 +52,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Event**](Event.md)
+void (empty response body)
 
 ### Authorization
 
@@ -61,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Content-Type**: application/json, text/json, application/*+json
  - **Accept**: text/plain, application/json, text/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -117,7 +116,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Content-Type**: application/json, text/json, application/*+json
  - **Accept**: text/plain, application/json, text/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

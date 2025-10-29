@@ -1,6 +1,6 @@
 # floriday_supplier_client.WarehousesApi
 
-All URIs are relative to *https://api.staging.floriday.io/suppliers-api-2024v2*
+All URIs are relative to *https://api.staging.floriday.io/suppliers-api-2025v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------

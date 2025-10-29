@@ -1,6 +1,6 @@
 # floriday_supplier_client.CollectionsApi
 
-All URIs are relative to *https://api.staging.floriday.io/suppliers-api-2024v2*
+All URIs are relative to *https://api.staging.floriday.io/suppliers-api-2025v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 [**get_collection_by_id**](CollectionsApi.md#get_collection_by_id) | **GET** /collections/{collectionId} | catalog:read - Returns an collection.
 [**get_collections_by_sequence_number**](CollectionsApi.md#get_collections_by_sequence_number) | **GET** /collections/sync/{sequenceNumber} | catalog:read - rate limit: 3.4 per second - burst limit: 1000 - Returns a list of max 1000 collections starting from a specified sequence number.
 [**get_collections_max_sequence**](CollectionsApi.md#get_collections_max_sequence) | **GET** /collections/current-max-sequence | catalog:read - rate limit: 3.4 per second - burst limit: 1000 - Returns the maximum sequence number found in collections.
-[**set_sort_order_for_collection**](CollectionsApi.md#set_sort_order_for_collection) | **PATCH** /collections/{collectionId}/sort-order | catalog:write - Set sort order for collection.
+[**set_sort_index_for_collection**](CollectionsApi.md#set_sort_index_for_collection) | **PATCH** /collections/{collectionId}/sort-index | catalog:write - Set sort index for collection.
 
 # **add_collection**
 > add_collection(body)
@@ -65,7 +65,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Content-Type**: application/json, text/json, application/*+json
  - **Accept**: text/plain, application/json, text/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -96,7 +96,7 @@ configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = floriday_supplier_client.CollectionsApi(floriday_supplier_client.ApiClient(configuration))
-body = floriday_supplier_client.CollectionTradeItemIds() # CollectionTradeItemIds | 
+body = [floriday_supplier_client.AddCollectionTradeItem()] # list[AddCollectionTradeItem] | 
 collection_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
 
 try:
@@ -110,7 +110,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**CollectionTradeItemIds**](CollectionTradeItemIds.md)|  | 
+ **body** | [**list[AddCollectionTradeItem]**](AddCollectionTradeItem.md)|  | 
  **collection_id** | [**str**](.md)|  | 
 
 ### Return type
@@ -123,8 +123,8 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: */*
+ - **Content-Type**: application/json, text/json, application/*+json
+ - **Accept**: text/plain, application/json, text/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -237,8 +237,8 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: */*
+ - **Content-Type**: application/json, text/json, application/*+json
+ - **Accept**: text/plain, application/json, text/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -295,7 +295,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Content-Type**: application/json, text/json, application/*+json
  - **Accept**: text/plain, application/json, text/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -471,10 +471,10 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **set_sort_order_for_collection**
-> set_sort_order_for_collection(collection_id, sort_order)
+# **set_sort_index_for_collection**
+> set_sort_index_for_collection(collection_id, sort_index)
 
-catalog:write - Set sort order for collection.
+catalog:write - Set sort index for collection.
 
 ### Example
 ```python
@@ -498,13 +498,13 @@ configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = floriday_supplier_client.CollectionsApi(floriday_supplier_client.ApiClient(configuration))
 collection_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
-sort_order = 56 # int | 
+sort_index = 56 # int | 
 
 try:
-    # catalog:write - Set sort order for collection.
-    api_instance.set_sort_order_for_collection(collection_id, sort_order)
+    # catalog:write - Set sort index for collection.
+    api_instance.set_sort_index_for_collection(collection_id, sort_index)
 except ApiException as e:
-    print("Exception when calling CollectionsApi->set_sort_order_for_collection: %s\n" % e)
+    print("Exception when calling CollectionsApi->set_sort_index_for_collection: %s\n" % e)
 ```
 
 ### Parameters
@@ -512,7 +512,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **collection_id** | [**str**](.md)|  | 
- **sort_order** | **int**|  | 
+ **sort_index** | **int**|  | 
 
 ### Return type
 
@@ -525,7 +525,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: */*
+ - **Accept**: text/plain, application/json, text/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

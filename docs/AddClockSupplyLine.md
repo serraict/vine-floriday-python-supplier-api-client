@@ -4,9 +4,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **batch_id** | **str** | NB. batch should be allocated to RFH warehouse! | 
-**auction_date** | **datetime** |  | 
+**auction_date** | **date** |  | 
 **auction_remark** | **str** |  | [optional] 
-**minimum_number_of_pieces_reserved_for_auction** | **int** | The minimum quantity that should be sold at auction at the specified auctionDate. | 
 **minimum_price_per_piece** | [**AddPrice**](AddPrice.md) |  | 
 **number_of_pieces** | **int** | Quantity of the batch that is allocated for auction at the specified auctionDate. | 
 **auction_group_code** | **int** |  | [optional] 

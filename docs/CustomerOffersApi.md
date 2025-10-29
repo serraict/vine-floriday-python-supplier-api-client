@@ -1,14 +1,22 @@
 # floriday_supplier_client.CustomerOffersApi
 
-All URIs are relative to *https://api.staging.floriday.io/suppliers-api-2024v2*
+All URIs are relative to *https://api.staging.floriday.io/suppliers-api-2025v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**add_customer_offer**](CustomerOffersApi.md#add_customer_offer) | **POST** /customer-offers | supply:write - create a customer offer
-[**delete_customer_offers**](CustomerOffersApi.md#delete_customer_offers) | **DELETE** /customer-offers/{supplyLineId} | supply:write - delete a customer offer
-[**edit_customer_offer**](CustomerOffersApi.md#edit_customer_offer) | **PUT** /customer-offers/{supplyLineId} | supply:write - update a customer offer
+[**add_customer_offer_line**](CustomerOffersApi.md#add_customer_offer_line) | **POST** /customer-offers/v2/{customerOfferId}/customer-offer-lines | supply:write - add a new customer offer line to an existing customer offer
+[**add_customer_offer_v2**](CustomerOffersApi.md#add_customer_offer_v2) | **POST** /customer-offers/v2 | supply:write - create a customer offer with multiple lines
+[**delete_customer_offer**](CustomerOffersApi.md#delete_customer_offer) | **DELETE** /customer-offers/{supplyLineId} | supply:write - delete a customer offer
+[**delete_customer_offer2**](CustomerOffersApi.md#delete_customer_offer2) | **DELETE** /customer-offers/v2/{customerOfferId} | supply:write - delete a customer offer
+[**delete_customer_offer_line**](CustomerOffersApi.md#delete_customer_offer_line) | **DELETE** /customer-offers/v2/{customerOfferId}/customer-offer-lines/{customerOfferLineId} | supply:write - delete a customer offer line
+[**edit_customer_offer**](CustomerOffersApi.md#edit_customer_offer) | **PUT** /customer-offers/{supplyLineId} | supply:write - edit a customer offer
+[**edit_customer_offer_line**](CustomerOffersApi.md#edit_customer_offer_line) | **PUT** /customer-offers/v2/{customerOfferId}/customer-offer-lines/{customerOfferLineId} | supply:write - edit a customer offer line
+[**edit_customer_offer_v2**](CustomerOffersApi.md#edit_customer_offer_v2) | **PUT** /customer-offers/v2/{customerOfferId} | supply:write - edit a customer offer without editing the lines
 [**get_customer_offers_by_sequence_number**](CustomerOffersApi.md#get_customer_offers_by_sequence_number) | **GET** /customer-offers/sync/{sequenceNumber} | supply:read - rate limit: 3.4 per second - burst limit: 1000 - Returns a list of max 1000 customer offers starting from a specified sequence number.
 [**get_customer_offers_max_sequence**](CustomerOffersApi.md#get_customer_offers_max_sequence) | **GET** /customer-offers/current-max-sequence | supply:read - rate limit: 3.4 per second - burst limit: 1000 - Returns the maximum sequence number found in customer offers.
+[**set_number_of_pieces_of_customer_offer_line**](CustomerOffersApi.md#set_number_of_pieces_of_customer_offer_line) | **PATCH** /customer-offers/v2/{customerOfferId}/customer-offer-lines/{customerOfferLineId}/number-of-pieces | supply:write - edit the number of pieces of a customer offer line
+[**set_prices_of_customer_offer_line**](CustomerOffersApi.md#set_prices_of_customer_offer_line) | **PATCH** /customer-offers/v2/{customerOfferId}/customer-offer-lines/{customerOfferLineId}/prices | supply:write - edit the prices of a customer offer line
 
 # **add_customer_offer**
 > add_customer_offer(body)
@@ -61,13 +69,127 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Content-Type**: application/json, text/json, application/*+json
  - **Accept**: text/plain, application/json, text/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **delete_customer_offers**
-> delete_customer_offers(supply_line_id)
+# **add_customer_offer_line**
+> add_customer_offer_line(body, customer_offer_id)
+
+supply:write - add a new customer offer line to an existing customer offer
+
+### Example
+```python
+from __future__ import print_function
+import time
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: JWT Token
+configuration = floriday_supplier_client.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure API key authorization: X-Api-Key
+configuration = floriday_supplier_client.Configuration()
+configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = floriday_supplier_client.CustomerOffersApi(floriday_supplier_client.ApiClient(configuration))
+body = floriday_supplier_client.AddCustomerOfferLine() # AddCustomerOfferLine | 
+customer_offer_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
+
+try:
+    # supply:write - add a new customer offer line to an existing customer offer
+    api_instance.add_customer_offer_line(body, customer_offer_id)
+except ApiException as e:
+    print("Exception when calling CustomerOffersApi->add_customer_offer_line: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**AddCustomerOfferLine**](AddCustomerOfferLine.md)|  | 
+ **customer_offer_id** | [**str**](.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[JWT Token](../README.md#JWT Token), [X-Api-Key](../README.md#X-Api-Key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/json, application/*+json
+ - **Accept**: text/plain, application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **add_customer_offer_v2**
+> add_customer_offer_v2(body)
+
+supply:write - create a customer offer with multiple lines
+
+### Example
+```python
+from __future__ import print_function
+import time
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: JWT Token
+configuration = floriday_supplier_client.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure API key authorization: X-Api-Key
+configuration = floriday_supplier_client.Configuration()
+configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = floriday_supplier_client.CustomerOffersApi(floriday_supplier_client.ApiClient(configuration))
+body = floriday_supplier_client.AddCustomerOfferV2() # AddCustomerOfferV2 | 
+
+try:
+    # supply:write - create a customer offer with multiple lines
+    api_instance.add_customer_offer_v2(body)
+except ApiException as e:
+    print("Exception when calling CustomerOffersApi->add_customer_offer_v2: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**AddCustomerOfferV2**](AddCustomerOfferV2.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[JWT Token](../README.md#JWT Token), [X-Api-Key](../README.md#X-Api-Key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/json, application/*+json
+ - **Accept**: text/plain, application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_customer_offer**
+> delete_customer_offer(supply_line_id)
 
 supply:write - delete a customer offer
 
@@ -96,9 +218,9 @@ supply_line_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str |
 
 try:
     # supply:write - delete a customer offer
-    api_instance.delete_customer_offers(supply_line_id)
+    api_instance.delete_customer_offer(supply_line_id)
 except ApiException as e:
-    print("Exception when calling CustomerOffersApi->delete_customer_offers: %s\n" % e)
+    print("Exception when calling CustomerOffersApi->delete_customer_offer: %s\n" % e)
 ```
 
 ### Parameters
@@ -122,10 +244,124 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **delete_customer_offer2**
+> delete_customer_offer2(customer_offer_id)
+
+supply:write - delete a customer offer
+
+### Example
+```python
+from __future__ import print_function
+import time
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: JWT Token
+configuration = floriday_supplier_client.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure API key authorization: X-Api-Key
+configuration = floriday_supplier_client.Configuration()
+configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = floriday_supplier_client.CustomerOffersApi(floriday_supplier_client.ApiClient(configuration))
+customer_offer_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
+
+try:
+    # supply:write - delete a customer offer
+    api_instance.delete_customer_offer2(customer_offer_id)
+except ApiException as e:
+    print("Exception when calling CustomerOffersApi->delete_customer_offer2: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **customer_offer_id** | [**str**](.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[JWT Token](../README.md#JWT Token), [X-Api-Key](../README.md#X-Api-Key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_customer_offer_line**
+> delete_customer_offer_line(customer_offer_id, customer_offer_line_id)
+
+supply:write - delete a customer offer line
+
+### Example
+```python
+from __future__ import print_function
+import time
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: JWT Token
+configuration = floriday_supplier_client.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure API key authorization: X-Api-Key
+configuration = floriday_supplier_client.Configuration()
+configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = floriday_supplier_client.CustomerOffersApi(floriday_supplier_client.ApiClient(configuration))
+customer_offer_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
+customer_offer_line_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
+
+try:
+    # supply:write - delete a customer offer line
+    api_instance.delete_customer_offer_line(customer_offer_id, customer_offer_line_id)
+except ApiException as e:
+    print("Exception when calling CustomerOffersApi->delete_customer_offer_line: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **customer_offer_id** | [**str**](.md)|  | 
+ **customer_offer_line_id** | [**str**](.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[JWT Token](../README.md#JWT Token), [X-Api-Key](../README.md#X-Api-Key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **edit_customer_offer**
 > edit_customer_offer(body, supply_line_id)
 
-supply:write - update a customer offer
+supply:write - edit a customer offer
 
 ### Example
 ```python
@@ -152,7 +388,7 @@ body = floriday_supplier_client.EditCustomerOffer() # EditCustomerOffer |
 supply_line_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
 
 try:
-    # supply:write - update a customer offer
+    # supply:write - edit a customer offer
     api_instance.edit_customer_offer(body, supply_line_id)
 except ApiException as e:
     print("Exception when calling CustomerOffersApi->edit_customer_offer: %s\n" % e)
@@ -175,7 +411,125 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Content-Type**: application/json, text/json, application/*+json
+ - **Accept**: text/plain, application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **edit_customer_offer_line**
+> edit_customer_offer_line(body, customer_offer_id, customer_offer_line_id)
+
+supply:write - edit a customer offer line
+
+### Example
+```python
+from __future__ import print_function
+import time
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: JWT Token
+configuration = floriday_supplier_client.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure API key authorization: X-Api-Key
+configuration = floriday_supplier_client.Configuration()
+configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = floriday_supplier_client.CustomerOffersApi(floriday_supplier_client.ApiClient(configuration))
+body = floriday_supplier_client.EditCustomerOfferLine() # EditCustomerOfferLine | 
+customer_offer_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
+customer_offer_line_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
+
+try:
+    # supply:write - edit a customer offer line
+    api_instance.edit_customer_offer_line(body, customer_offer_id, customer_offer_line_id)
+except ApiException as e:
+    print("Exception when calling CustomerOffersApi->edit_customer_offer_line: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**EditCustomerOfferLine**](EditCustomerOfferLine.md)|  | 
+ **customer_offer_id** | [**str**](.md)|  | 
+ **customer_offer_line_id** | [**str**](.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[JWT Token](../README.md#JWT Token), [X-Api-Key](../README.md#X-Api-Key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/json, application/*+json
+ - **Accept**: text/plain, application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **edit_customer_offer_v2**
+> edit_customer_offer_v2(body, customer_offer_id)
+
+supply:write - edit a customer offer without editing the lines
+
+### Example
+```python
+from __future__ import print_function
+import time
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: JWT Token
+configuration = floriday_supplier_client.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure API key authorization: X-Api-Key
+configuration = floriday_supplier_client.Configuration()
+configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = floriday_supplier_client.CustomerOffersApi(floriday_supplier_client.ApiClient(configuration))
+body = floriday_supplier_client.EditCustomerOfferV2() # EditCustomerOfferV2 | 
+customer_offer_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
+
+try:
+    # supply:write - edit a customer offer without editing the lines
+    api_instance.edit_customer_offer_v2(body, customer_offer_id)
+except ApiException as e:
+    print("Exception when calling CustomerOffersApi->edit_customer_offer_v2: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**EditCustomerOfferV2**](EditCustomerOfferV2.md)|  | 
+ **customer_offer_id** | [**str**](.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[JWT Token](../README.md#JWT Token), [X-Api-Key](../README.md#X-Api-Key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/json, application/*+json
  - **Accept**: text/plain, application/json, text/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -290,6 +644,126 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **set_number_of_pieces_of_customer_offer_line**
+> set_number_of_pieces_of_customer_offer_line(body, customer_offer_id, customer_offer_line_id)
+
+supply:write - edit the number of pieces of a customer offer line
+
+### Example
+```python
+from __future__ import print_function
+import time
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: JWT Token
+configuration = floriday_supplier_client.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure API key authorization: X-Api-Key
+configuration = floriday_supplier_client.Configuration()
+configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = floriday_supplier_client.CustomerOffersApi(floriday_supplier_client.ApiClient(configuration))
+body = 56 # int | 
+customer_offer_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
+customer_offer_line_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
+
+try:
+    # supply:write - edit the number of pieces of a customer offer line
+    api_instance.set_number_of_pieces_of_customer_offer_line(body, customer_offer_id, customer_offer_line_id)
+except ApiException as e:
+    print("Exception when calling CustomerOffersApi->set_number_of_pieces_of_customer_offer_line: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**int**](int.md)|  | 
+ **customer_offer_id** | [**str**](.md)|  | 
+ **customer_offer_line_id** | [**str**](.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[JWT Token](../README.md#JWT Token), [X-Api-Key](../README.md#X-Api-Key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/json, application/*+json
+ - **Accept**: text/plain, application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **set_prices_of_customer_offer_line**
+> set_prices_of_customer_offer_line(body, customer_offer_id, customer_offer_line_id)
+
+supply:write - edit the prices of a customer offer line
+
+### Example
+```python
+from __future__ import print_function
+import time
+import floriday_supplier_client
+from floriday_supplier_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: JWT Token
+configuration = floriday_supplier_client.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure API key authorization: X-Api-Key
+configuration = floriday_supplier_client.Configuration()
+configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = floriday_supplier_client.CustomerOffersApi(floriday_supplier_client.ApiClient(configuration))
+body = floriday_supplier_client.SetCustomerOfferLinePrices() # SetCustomerOfferLinePrices | 
+customer_offer_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
+customer_offer_line_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
+
+try:
+    # supply:write - edit the prices of a customer offer line
+    api_instance.set_prices_of_customer_offer_line(body, customer_offer_id, customer_offer_line_id)
+except ApiException as e:
+    print("Exception when calling CustomerOffersApi->set_prices_of_customer_offer_line: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**SetCustomerOfferLinePrices**](SetCustomerOfferLinePrices.md)|  | 
+ **customer_offer_id** | [**str**](.md)|  | 
+ **customer_offer_line_id** | [**str**](.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[JWT Token](../README.md#JWT Token), [X-Api-Key](../README.md#X-Api-Key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/json, application/*+json
  - **Accept**: text/plain, application/json, text/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

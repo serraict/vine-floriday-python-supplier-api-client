@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **creation_date_time** | **datetime** |  | 
 **last_modified_date_time** | **datetime** |  | 
 **is_deleted** | **bool** |  | 
+**is_default** | **bool** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

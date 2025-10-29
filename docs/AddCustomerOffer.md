@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **warehouse_id** | **str** |  | 
 **included_services** | [**list[CommercialService]**](CommercialService.md) |  | [optional] 
 **allowed_customer_organization_ids** | **list[str]** |  | 
-**packing_configurations** | [**list[PackingConfigurationBase]**](PackingConfigurationBase.md) |  | [optional] 
+**packing_configurations** | [**list[PackingConfigurationBase]**](PackingConfigurationBase.md) | Only one packing configuration can be used. | [optional] 
 **sales_unit** | [**SalesUnit**](SalesUnit.md) |  | 
 **agreement_reference** | [**AgreementReference**](AgreementReference.md) |  | [optional] 
 **batch_id** | **str** |  | [optional] 
