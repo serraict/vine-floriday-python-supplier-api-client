@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **contract_line_trade_item_id** | **str** |  | 
-**contract_trade_item_group_id** | **str** |  | [optional] 
+**contract_trade_item_group_id** | **str** |  | 
 **trade_item_id** | **str** |  | 
 **trade_item_version** | **int** |  | 
 **packing_configuration** | [**PackingConfigurationBase**](PackingConfigurationBase.md) |  | 

@@ -1,6 +1,6 @@
 # floriday_supplier_client.ContractsApi
 
-All URIs are relative to *https://api.staging.floriday.io/suppliers-api-2025v1*
+All URIs are relative to *https://api.staging.floriday.io/suppliers-api-2025v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -12,8 +12,8 @@ Method | HTTP request | Description
 [**decline_contract**](ContractsApi.md#decline_contract) | **PATCH** /contracts/{contractId}/decline | contract:write - Sets the state of the contract to &#x27;DECLINED&#x27; if already finalized by the customer.
 [**decline_contract2**](ContractsApi.md#decline_contract2) | **PATCH** /contracts/reference/{contractReference}/decline-contract | contract:write - Sets the state of the contract to &#x27;DECLINED&#x27; if already finalized by the customer.
 [**decline_delete_contract**](ContractsApi.md#decline_delete_contract) | **DELETE** /contracts/reference/{contractReference}/decline-delete | contract:write - Declines contract delete request created by customer
-[**edit_contract**](ContractsApi.md#edit_contract) | **PUT** /contracts/{contractId} | contract:write - Updates a draft contract
-[**edit_contract_by_reference**](ContractsApi.md#edit_contract_by_reference) | **PUT** /contracts/reference/{contractReference} | contract:write - Updates a draft contract
+[**edit_contract**](ContractsApi.md#edit_contract) | **PUT** /contracts/{contractId} | contract:write - Updates a draft, finalized or declined contract
+[**edit_contract_by_reference**](ContractsApi.md#edit_contract_by_reference) | **PUT** /contracts/reference/{contractReference} | contract:write - Updates a draft, finalized or declined contract
 [**finalize_contract**](ContractsApi.md#finalize_contract) | **PATCH** /contracts/{contractId}/finalize | contract:write - Sets the contract status to &#x27;FINALIZED&#x27; and offers the contract to the customer for approval.
 [**finalize_contract_by_reference**](ContractsApi.md#finalize_contract_by_reference) | **PATCH** /contracts/reference/{contractReference}/finalize-contract | contract:write - Sets the contract status to &#x27;FINALIZED&#x27; and offers the contract to the customer for approval.
 [**get_contract_attachment_by_id**](ContractsApi.md#get_contract_attachment_by_id) | **GET** /contracts/attachments/{attachmentId} | contract:read - Returns a contract attachment.
@@ -479,7 +479,7 @@ void (empty response body)
 # **edit_contract**
 > edit_contract(body, contract_id)
 
-contract:write - Updates a draft contract
+contract:write - Updates a draft, finalized or declined contract
 
 ### Example
 ```python
@@ -506,7 +506,7 @@ body = floriday_supplier_client.EditContract() # EditContract |
 contract_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
 
 try:
-    # contract:write - Updates a draft contract
+    # contract:write - Updates a draft, finalized or declined contract
     api_instance.edit_contract(body, contract_id)
 except ApiException as e:
     print("Exception when calling ContractsApi->edit_contract: %s\n" % e)
@@ -537,7 +537,7 @@ void (empty response body)
 # **edit_contract_by_reference**
 > edit_contract_by_reference(body, contract_reference)
 
-contract:write - Updates a draft contract
+contract:write - Updates a draft, finalized or declined contract
 
 ### Example
 ```python
@@ -564,7 +564,7 @@ body = floriday_supplier_client.EditContract() # EditContract |
 contract_reference = 'contract_reference_example' # str | 
 
 try:
-    # contract:write - Updates a draft contract
+    # contract:write - Updates a draft, finalized or declined contract
     api_instance.edit_contract_by_reference(body, contract_reference)
 except ApiException as e:
     print("Exception when calling ContractsApi->edit_contract_by_reference: %s\n" % e)

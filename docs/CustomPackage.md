@@ -19,8 +19,8 @@ Name | Type | Description | Notes
 **last_modified_date_time** | **datetime** |  | 
 **sequence_number** | **int** |  | 
 **material_type** | [**MaterialType**](MaterialType.md) |  | [optional] 
-**floricode_vrs_packaging_id** | **str** |  | [optional] 
-**default_pieces_per_package** | **int** |  | [optional] 
+**floricode_vrs_packaging_id** | **str** |  | 
+**default_pieces_per_package** | **int** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

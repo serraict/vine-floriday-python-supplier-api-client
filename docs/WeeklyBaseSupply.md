@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 **trade_item_id** | **str** |  | 
 **week** | **int** |  | 
 **year** | **int** |  | 
-**base_price_per_piece** | [**Price**](Price.md) |  | [optional] 
+**base_price_per_piece** | [**Price**](Price.md) |  | 
 **number_of_pieces** | **int** |  | 
 **price_group_prices** | [**list[WeeklyBaseSupplyPriceGroupPrice]**](WeeklyBaseSupplyPriceGroupPrice.md) |  | 
 

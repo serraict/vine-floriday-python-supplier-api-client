@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **is_deleted** | **bool** |  | 
 **number_of_packages** | **int** |  | 
-**packing_agent_organization_id** | **str** |  | [optional] 
+**packing_agent_organization_id** | **str** |  | 
 **delivery_note_code** | **str** |  | 
 **delivery_note_letter** | **str** |  | 
 

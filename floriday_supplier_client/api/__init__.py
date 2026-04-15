@@ -4,6 +4,7 @@ from __future__ import absolute_import
 
 # import apis into api package
 from floriday_supplier_client.api.additional_services_api import AdditionalServicesApi
+from floriday_supplier_client.api.admin_api import AdminApi
 from floriday_supplier_client.api.auction_api import AuctionApi
 from floriday_supplier_client.api.base_items_api import BaseItemsApi
 from floriday_supplier_client.api.batches_api import BatchesApi

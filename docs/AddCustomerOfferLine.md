@@ -8,14 +8,15 @@ Name | Type | Description | Notes
 **despatch_warehouse_id** | **str** |  | 
 **number_of_pieces** | **int** |  | 
 **price_per_piece** | [**Price**](Price.md) |  | 
-**volume_prices** | [**list[AddVolumePrice]**](AddVolumePrice.md) |  | [optional] 
+**volume_prices** | [**list[AddVolumePrice]**](AddVolumePrice.md) |  | 
 **sales_unit** | [**SalesUnit**](SalesUnit.md) |  | 
 **order_period** | [**TradePeriod**](TradePeriod.md) |  | 
 **delivery_period** | [**TradePeriod**](TradePeriod.md) |  | 
 **uses_catalog_availability** | **bool** | Determines if the offer line number of pieces is limited or if the trade item availability is used. | 
-**batch_id** | **str** |  | [optional] 
-**packing_configuration** | [**PackingConfigurationBase**](PackingConfigurationBase.md) |  | [optional] 
-**included_services** | [**list[CommercialService]**](CommercialService.md) |  | [optional] 
+**batch_id** | **str** |  | 
+**packing_configuration** | [**PackingConfigurationBase**](PackingConfigurationBase.md) |  | 
+**included_services** | [**list[CommercialService]**](CommercialService.md) |  | 
+**included_additional_service_ids** | **list[str]** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -4,8 +4,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **collection_id** | **str** |  | 
-**name** | **str** |  | [optional] 
-**description** | **str** |  | [optional] 
+**name** | **str** |  | 
+**description** | **str** |  | 
 **photos** | [**list[CollectionPhoto]**](CollectionPhoto.md) |  | 
 **trade_items** | [**list[CollectionTradeItem]**](CollectionTradeItem.md) |  | 
 **sort_index** | **int** |  | 

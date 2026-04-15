@@ -1,10 +1,10 @@
 # floriday_supplier_client.IdentitiesApi
 
-All URIs are relative to *https://api.staging.floriday.io/suppliers-api-2025v1*
+All URIs are relative to *https://api.staging.floriday.io/suppliers-api-2025v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_identity**](IdentitiesApi.md#get_identity) | **GET** /auth/key | Provides the identity associated with an api key.
+[**get_identity**](IdentitiesApi.md#get_identity) | **GET** /identities | Provides the identity associated with an api key.
 
 # **get_identity**
 > Identity get_identity()

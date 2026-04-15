@@ -7,13 +7,13 @@ Name | Type | Description | Notes
 **contract_id** | **str** |  | 
 **delivery_date_time** | **datetime** |  | 
 **customer_organization_id** | **str** |  | 
-**carrier_organization_id** | **str** |  | [optional] 
+**carrier_organization_id** | **str** |  | 
 **status** | [**BlanketOrderStatus**](BlanketOrderStatus.md) |  | 
 **blanket_order_lines** | [**list[BlanketOrderLine]**](BlanketOrderLine.md) |  | 
 **is_initiated_by_supplier** | **bool** |  | 
 **creation_date_time** | **datetime** |  | 
 **last_modified_date_time** | **datetime** |  | 
-**is_last_modified_by_supplier** | **bool** |  | [optional] 
+**is_last_modified_by_supplier** | **bool** |  | 
 **sales_channel_interface** | [**SalesChannelInterface**](SalesChannelInterface.md) |  | 
 **sequence_number** | **int** |  | 
 

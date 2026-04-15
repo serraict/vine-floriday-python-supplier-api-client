@@ -4,10 +4,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **title** | **str** |  | 
-**description** | **str** |  | [optional] 
+**description** | **str** |  | 
 **start_date_time** | **datetime** |  | 
 **end_date_time** | **datetime** |  | 
-**sub_supplier_organization_ids** | **list[str]** |  | [optional] 
+**sub_supplier_organization_ids** | **list[str]** |  | 
 **allow_trade_item_variants** | **bool** | Allow the use of variants from the chosen trade item when creating a blanket order. | 
 **allow_automatic_blanket_order_approval** | **bool** |  | 
 **delivery** | [**EditContractDelivery**](EditContractDelivery.md) |  | 

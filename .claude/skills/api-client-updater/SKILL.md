@@ -11,7 +11,7 @@ This skill walks a maintainer through bumping this library to a new Floriday Sup
 
 1. A regenerated `floriday_supplier_client/` and `test/` against the new spec.
 2. Three version bumps committed in step with the regeneration.
-3. `about/UPDATE_GUIDE_<new_version>.md` — a consumer-facing migration note focused on the public surface (API classes, model fields, method signatures, config/env, auth scopes).
+3. `about/update_guides/UPDATE_GUIDE_<new_version>.md` — a consumer-facing migration note focused on the public surface (API classes, model fields, method signatures, config/env, auth scopes).
 4. A short maintainer punch list of anything that needs human attention before cutting a release (failing tests, codegen warnings, suspicious diffs).
 
 Do **not** commit or tag a release yourself. Leave that to the maintainer.
@@ -112,7 +112,7 @@ If the diff is huge (a major Floriday release often is), don't try to enumerate 
 
 ### 7. Write the update guide
 
-Write to `about/UPDATE_GUIDE_<new_version>.md`. Structure:
+Write to `about/update_guides/UPDATE_GUIDE_<new_version>.md` (create the directory if it does not exist). Structure:
 
 ```markdown
 # Update guide: Floriday Supplier API <old_version> → <new_version>

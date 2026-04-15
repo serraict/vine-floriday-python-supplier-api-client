@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **deliver_separately** | **bool** |  | 
 **sticker_provided_by** | [**StickerProvidedBy**](StickerProvidedBy.md) |  | 
 **should_be_printed** | **bool** |  | 
-**parent_id** | **str** |  | [optional] 
+**parent_id** | **str** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

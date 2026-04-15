@@ -3,13 +3,13 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**batch_reference** | **str** |  | [optional] 
+**batch_reference** | **str** |  | 
 **batch_id** | **str** |  | 
 **batch_date** | **datetime** |  | 
 **order_period** | [**TradePeriod**](TradePeriod.md) |  | 
 **creation_date_time** | **datetime** |  | 
 **last_modified_date_time** | **datetime** |  | 
-**base_price_per_piece** | [**Price**](Price.md) |  | [optional] 
+**base_price_per_piece** | [**Price**](Price.md) |  | 
 **trade_item_id** | **str** |  | 
 **warehouse_id** | **str** |  | 
 **initial_number_of_pieces** | **int** |  | 

@@ -4,8 +4,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **approval_status** | [**ApprovalStatus**](ApprovalStatus.md) |  | 
-**approved_on_date_time** | **datetime** |  | [optional] 
-**decline_description** | **str** |  | [optional] 
+**approved_on_date_time** | **datetime** |  | 
+**decline_description** | **str** |  | 
 **is_delete_requested_by_supplier** | **bool** |  | 
 **is_deleted** | **bool** |  | 
 

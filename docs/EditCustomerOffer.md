@@ -3,14 +3,13 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**number_of_pieces** | **int** |  | 
-**price_per_piece** | [**Price**](Price.md) |  | 
-**warehouse_id** | **str** |  | 
-**packing_configurations** | [**list[PackingConfigurationBase]**](PackingConfigurationBase.md) |  | [optional] 
-**sales_unit** | [**SalesUnit**](SalesUnit.md) |  | [optional] 
-**agreement_reference** | [**AgreementReference**](AgreementReference.md) |  | [optional] 
-**allowed_customers** | **list[str]** |  | 
-**volume_prices** | [**list[AddVolumePrice]**](AddVolumePrice.md) |  | [optional] 
+**title** | **str** |  | 
+**description** | **str** |  | 
+**agreement_reference** | [**AgreementReference**](AgreementReference.md) |  | 
+**image_id** | **str** | The recommended dimension is 800 × 800px. | 
+**despatch_warehouse_id** | **str** |  | 
+**allowed_customer_organization_ids** | **list[str]** |  | 
+**included_services** | [**list[CommercialService]**](CommercialService.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

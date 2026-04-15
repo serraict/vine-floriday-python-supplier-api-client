@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **name** | **str** |  | 
 **trade_items** | [**list[ContractTradeItemGroupTradeItem]**](ContractTradeItemGroupTradeItem.md) |  | 
 **creation_date_time** | **datetime** |  | 
-**last_modified_date_time** | **datetime** |  | [optional] 
+**last_modified_date_time** | **datetime** |  | 
 **is_deleted** | **bool** |  | 
 **sequence_number** | **int** |  | 
 

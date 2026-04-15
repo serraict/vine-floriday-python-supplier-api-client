@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 **price_group_id** | **str** |  | 
 **name** | **str** |  | 
 **type** | [**PriceGroupType**](PriceGroupType.md) |  | 
+**currency** | [**Currency**](Currency.md) |  | 
 **sales_unit** | [**SalesUnit**](SalesUnit.md) |  | 
 **included_services** | [**list[CommercialService]**](CommercialService.md) |  | 
 **customers** | **list[str]** |  | 

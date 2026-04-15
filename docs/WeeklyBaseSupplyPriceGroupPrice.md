@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **price_group_id** | **str** |  | 
-**price_perpiece** | **float** |  | 
+**price_per_piece** | **float** |  | 
 **price_group_type** | [**PriceGroupType**](PriceGroupType.md) |  | 
 **price_per_piece_last_modified** | **datetime** | This field is set when the price has been changed by the supplier. Catalog prices in a closed week can only be changed once per 24 hours. | [optional] 
 

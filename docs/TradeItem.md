@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 **last_modified_date_time** | **datetime** |  | 
 **is_deleted** | **bool** |  | [optional] 
 **has_invalid_floricode_data** | **bool** |  | 
-**additional_packaging_information_floricode_vrs_packaging_ids** | **list[str]** |  | [optional] 
+**additional_packaging_information_floricode_vrs_packaging_ids** | **list[str]** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

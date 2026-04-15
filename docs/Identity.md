@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**organization_id** | **str** |  | 
+**organization** | [**Organization**](Organization.md) |  | 
 **client_id** | **str** |  | 
 **api_version** | **str** |  | 
 

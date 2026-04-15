@@ -5,10 +5,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **delivery_condition_set_id** | **str** |  | 
 **delivery_condition_set_name** | **str** |  | 
-**warehouse_ids** | **list[str]** |  | [optional] 
-**customers** | **list[str]** |  | [optional] 
+**delivery_condition_set_commercial_name** | **str** |  | 
+**warehouse_ids** | **list[str]** |  | 
+**customers** | **list[str]** |  | 
 **delivery_conditions** | [**list[DeliveryCondition]**](DeliveryCondition.md) |  | 
-**additional_services** | [**list[AdditionalService]**](AdditionalService.md) |  | [optional] 
 **is_deleted** | **bool** |  | 
 **is_customer_specific** | **bool** |  | 
 **sequence_number** | **int** |  | 

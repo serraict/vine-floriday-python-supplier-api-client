@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **fulfillment_order_id** | **str** |  | 
-**carrier_organization_id** | **str** |  | [optional] 
+**carrier_organization_id** | **str** |  | 
 **latest_delivery_date_time** | **datetime** |  | 
 **destination** | [**Destination**](Destination.md) |  | 
 **despatch_warehouse_id** | **str** |  | 
