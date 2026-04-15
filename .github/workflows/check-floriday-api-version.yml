@@ -33,29 +33,35 @@ jobs:
           echo "Client is on $client_version"
           echo "version=$client_version" >> "$GITHUB_OUTPUT"
 
-      - name: Discover latest Floriday Supplier API version
+      - name: Discover latest Main Floriday Supplier API version
         id: floriday
-        # Probe the staging swagger endpoint for each candidate. An existing
-        # version returns 200; non-existent versions return 403 (edge) or
-        # 404. Walk candidates in descending order and take the first that
-        # returns 200.
+        # Probe the staging swagger spec for each candidate. Floriday marks
+        # each version's lifecycle stage in the spec's `info.title`
+        # ("Main - ...", "Alpha/Beta - ...", "Deprecated - ..."). We only
+        # care about Main: Alpha/Beta versions are intentionally staged for
+        # early adopters and shouldn't force a client bump. Walk candidates
+        # in descending order and take the first with a Main-labelled spec.
         run: |
           year=$(date +%Y)
           latest=""
           for candidate in $((year+1))v1 ${year}v3 ${year}v2 ${year}v1 $((year-1))v2; do
             url="https://api.staging.floriday.io/suppliers-api-${candidate}/swagger/UUID/swagger.json"
-            code=$(curl -sS -o /dev/null -w "%{http_code}" "$url")
-            echo "$candidate -> HTTP $code"
-            if [ "$code" = "200" ]; then
-              latest="$candidate"
-              break
-            fi
+            title=$(curl -sS --max-time 15 "$url" \
+              | python3 -c 'import json,sys; d=json.load(sys.stdin); print(d.get("info",{}).get("title",""))' \
+              2>/dev/null || true)
+            echo "$candidate -> title: '${title}'"
+            case "$title" in
+              "Main - "*)
+                latest="$candidate"
+                break
+                ;;
+            esac
           done
           if [ -z "$latest" ]; then
-            echo "::error::Could not determine the latest Floriday Supplier API version from any candidate."
+            echo "::error::Could not determine the latest Main Floriday Supplier API version from any candidate."
             exit 1
           fi
-          echo "Latest Floriday version: $latest"
+          echo "Latest Main Floriday version: $latest"
           echo "version=$latest" >> "$GITHUB_OUTPUT"
 
       - name: Compare versions
