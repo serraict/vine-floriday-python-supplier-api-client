@@ -11,15 +11,15 @@ Name | Type | Description | Notes
 **initial_number_of_pieces** | **int** |  | 
 **packing_configuration** | [**BatchPackingConfiguration**](BatchPackingConfiguration.md) |  | 
 **warehouse_id** | **str** |  | 
-**image_url** | **str** |  | 
+**image_id** | **str** |  | [optional] 
 **batch_reference** | **str** |  | 
-**custom_reference** | **str** |  | 
+**custom_reference** | **str** |  | [optional] 
 **sequence_number** | **int** |  | 
-**transit_status** | [**TransitStatus**](TransitStatus.md) |  | 
+**transit_status** | [**TransitStatus**](TransitStatus.md) |  | [optional] 
 **trade_item_version** | **int** |  | 
 **is_deleted** | **bool** |  | 
-**creation_date_time** | **datetime** |  | 
-**last_modified_date_time** | **datetime** |  | 
+**creation_date_time** | **datetime** |  | [optional] 
+**last_modified_date_time** | **datetime** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **number_of_pieces** | **int** |  | 
 **packing_configuration** | [**AddBatchPackingConfiguration**](AddBatchPackingConfiguration.md) |  | 
 **warehouse_id** | **str** |  | 
-**image_url** | **str** | Image URLs posted as Floriday media must conform with the following format https://image.floriday.io/. | [optional] 
+**image_id** | **str** |  | [optional] 
 **batch_reference** | **str** |  | [optional] 
 **custom_reference** | **str** |  | [optional] 
 **transit_status** | [**TransitStatus**](TransitStatus.md) |  | [optional] 

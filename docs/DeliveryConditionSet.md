@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **delivery_condition_set_id** | **str** |  | 
 **delivery_condition_set_name** | **str** |  | 
-**delivery_condition_set_commercial_name** | **str** |  | 
+**delivery_condition_set_commercial_name** | **str** |  | [optional] 
 **warehouse_ids** | **list[str]** |  | 
 **customers** | **list[str]** |  | 
 **delivery_conditions** | [**list[DeliveryCondition]**](DeliveryCondition.md) |  | 

@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **accepts_supply_of_type_purchase_tip** | **AllOfCustomerTradeSettingsAcceptsSupplyOfTypePurchaseTip** | Organization works with purchase tips. | 
 **uses_contracts** | **AllOfCustomerTradeSettingsUsesContracts** | Organization works with contracts. | 
 **accepts_transport_cost** | **AllOfCustomerTradeSettingsAcceptsTransportCost** | Organization works with transport costs. Please note: when deactivating this setting, orders can only be placed on supply where transport costs are included in the price. | 
+**trades_exclusively_with_fsi_compliant_suppliers** | **AllOfCustomerTradeSettingsTradesExclusivelyWithFsiCompliantSuppliers** | Organization only works with suppliers that are FSI compliant. | 
 **sequence_number** | **int** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

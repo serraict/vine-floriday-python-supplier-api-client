@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **trade_item_id** | **str** |  | 
+**seller_organization_id** | **str** |  | [optional] 
 **supplier_article_code** | **str** | Supplier article code cannot contain leading, trailing or duplicate whitespaces. | 
 **article_gtin** | **str** |  | [optional] 
 **vbn_product_code** | **int** |  | 

@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 **batch_reference** | **str** |  | [optional] 
 **delivery_note_code** | **str** |  | [optional] 
 **delivery_note_letter** | **str** |  | [optional] 
-**sort_index** | **int** | The index related to the item&#x27;s position on the loadcarrier | 
-**delivery_remarks** | **str** |  | 
+**sort_index** | **int** | The index related to the item&#x27;s position on the loadcarrier | [optional] 
+**delivery_remarks** | **str** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -1,6 +1,6 @@
 # floriday_supplier_client.CustomerStickersApi
 
-All URIs are relative to *https://api.staging.floriday.io/suppliers-api-2025v2*
+All URIs are relative to *https://api.staging.floriday.io/suppliers-api-2026v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------

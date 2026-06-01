@@ -6,12 +6,12 @@ Name | Type | Description | Notes
 **contract_id** | **str** |  | 
 **reference** | **str** | The reference of a contract remains the same between the different versions. | 
 **title** | **str** |  | 
-**description** | **str** |  | 
+**description** | **str** |  | [optional] 
 **start_date_time** | **datetime** |  | 
 **end_date_time** | **datetime** |  | 
 **customer_organization_id** | **str** |  | 
 **supplier_organization_id** | **str** |  | 
-**sub_supplier_organization_ids** | **list[str]** |  | 
+**sub_supplier_organization_ids** | **list[str]** |  | [optional] 
 **contract_period_kind** | [**ContractPeriodKind**](ContractPeriodKind.md) |  | 
 **is_initiated_by_supplier** | **bool** |  | 
 **allow_trade_item_variants** | **bool** | Allow the use of variants from the chosen trade item when creating a blanket order. | 
@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 **creation_date_time** | **datetime** |  | 
 **last_modified_date_time** | **datetime** |  | 
 **contract_lines** | [**list[ContractLine]**](ContractLine.md) |  | 
-**attachment_details** | [**list[AttachmentDetail]**](AttachmentDetail.md) |  | 
+**attachment_details** | [**list[AttachmentDetail]**](AttachmentDetail.md) |  | [optional] 
 **sequence_number** | **int** |  | 
 **terms_and_conditions** | [**ContractTermsAndConditions**](ContractTermsAndConditions.md) |  | 
 

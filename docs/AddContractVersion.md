@@ -6,10 +6,10 @@ Name | Type | Description | Notes
 **contract_id** | **str** |  | 
 **reason_for_version_update** | **str** |  | 
 **title** | **str** |  | 
-**description** | **str** |  | 
+**description** | **str** |  | [optional] 
 **start_date_time** | **datetime** |  | 
 **end_date_time** | **datetime** |  | 
-**sub_supplier_organization_ids** | **list[str]** |  | 
+**sub_supplier_organization_ids** | **list[str]** |  | [optional] 
 **allow_trade_item_variants** | **bool** | Allow the use of variants from the chosen trade item when creating a blanket order. | 
 **allow_automatic_blanket_order_approval** | **bool** |  | 
 **delivery** | [**EditContractDelivery**](EditContractDelivery.md) |  | 

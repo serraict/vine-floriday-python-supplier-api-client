@@ -1,11 +1,11 @@
 # floriday_supplier_client.DeliveryLocationsApi
 
-All URIs are relative to *https://api.staging.floriday.io/suppliers-api-2025v2*
+All URIs are relative to *https://api.staging.floriday.io/suppliers-api-2026v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**get_delivery_location_max_sequence**](DeliveryLocationsApi.md#get_delivery_location_max_sequence) | **GET** /delivery-locations/current-max-sequence | organization:read - rate limit: 2.0 per second - burst limit: 200 - Returns the maximum sequence number found in warehouses.
-[**get_delivery_locations_by_sequence_number**](DeliveryLocationsApi.md#get_delivery_locations_by_sequence_number) | **GET** /delivery-locations/sync/{sequenceNumber} | organization:read - rate limit: 2.0 per second - burst limit: 200 - Returns a list of max 1000 customer delivery locations starting from a specified sequence number.
+[**get_delivery_locations_by_sequence_number**](DeliveryLocationsApi.md#get_delivery_locations_by_sequence_number) | **GET** /delivery-locations/sync/{sequenceNumber} | organization:read - rate limit: 1.0 per second - burst limit: 200 - Returns a list of max 1000 customer delivery locations starting from a specified sequence number.
 
 # **get_delivery_location_max_sequence**
 > int get_delivery_location_max_sequence()
@@ -63,7 +63,7 @@ This endpoint does not need any parameter.
 # **get_delivery_locations_by_sequence_number**
 > SyncResultOfDeliveryLocation get_delivery_locations_by_sequence_number(sequence_number, limit_result=limit_result)
 
-organization:read - rate limit: 2.0 per second - burst limit: 200 - Returns a list of max 1000 customer delivery locations starting from a specified sequence number.
+organization:read - rate limit: 1.0 per second - burst limit: 200 - Returns a list of max 1000 customer delivery locations starting from a specified sequence number.
 
 **Synchronization endpoint** Fetches the succeeding modified records (including deleted records) based on `Limit` and the given `SequenceNumber`.  **Note** Your data is up to date when your given `SequenceNumber` is equal to the received `MaximumSequenceNumber`.
 
@@ -92,7 +92,7 @@ sequence_number = 789 # int |
 limit_result = 1000 # int |  (optional) (default to 1000)
 
 try:
-    # organization:read - rate limit: 2.0 per second - burst limit: 200 - Returns a list of max 1000 customer delivery locations starting from a specified sequence number.
+    # organization:read - rate limit: 1.0 per second - burst limit: 200 - Returns a list of max 1000 customer delivery locations starting from a specified sequence number.
     api_response = api_instance.get_delivery_locations_by_sequence_number(sequence_number, limit_result=limit_result)
     pprint(api_response)
 except ApiException as e:

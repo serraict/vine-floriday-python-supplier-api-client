@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **packing_configurations** | [**list[SupplyLinePackingConfigurationCreate]**](SupplyLinePackingConfigurationCreate.md) |  | 
 **agreement_reference** | [**AgreementReference**](AgreementReference.md) |  | [optional] 
 **assigned_number_of_pieces** | **int** |  | [optional] 
+**only_asap_delivery** | **bool** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

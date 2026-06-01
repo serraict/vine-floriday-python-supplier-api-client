@@ -18,16 +18,16 @@ Name | Type | Description | Notes
 **country_of_origin_iso_codes** | **list[str]** |  | [optional] 
 **is_hidden_in_catalog** | **bool** |  | 
 **sequence_number** | **int** |  | 
-**is_parent_for_variant** | **bool** |  | [optional] 
+**is_parent_for_variant** | **bool** |  | 
 **parent_id** | **str** |  | [optional] 
 **trade_item_components** | [**list[TradeItemComponent]**](TradeItemComponent.md) |  | [optional] 
 **trade_item_reference** | **str** |  | [optional] 
-**trade_item_version** | **int** |  | [optional] 
+**trade_item_version** | **int** |  | 
 **creation_date_time** | **datetime** |  | 
 **last_modified_date_time** | **datetime** |  | 
-**is_deleted** | **bool** |  | [optional] 
+**is_deleted** | **bool** |  | 
 **has_invalid_floricode_data** | **bool** |  | 
-**additional_packaging_information_floricode_vrs_packaging_ids** | **list[str]** |  | 
+**additional_packaging_information_floricode_vrs_packaging_ids** | **list[str]** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

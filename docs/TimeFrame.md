@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**delivery_days_offset** | **int** |  | 
+**delivery_days_offset** | **int** |  | [optional] 
 **latest_order_time** | **str** |  | 
 **latest_delivery_time** | **str** |  | 
 

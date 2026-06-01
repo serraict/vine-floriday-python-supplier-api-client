@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **customer_organization_ids** | **list[str]** |  | [optional] 
 **is_customer_specific** | **bool** | The additional service is customer-specific for one or more customers. | 
 **sticker_information** | **AllOfAdditionalServiceStickerInformation** | Optional information related to stickers. | [optional] 
-**floricode_vrs_packaging_id** | **str** |  | 
+**floricode_vrs_packaging_id** | **str** |  | [optional] 
 **is_available** | **bool** | Indicates if the additional service is currently available for use | 
 **is_deleted** | **bool** |  | 
 **sequence_number** | **int** |  | 

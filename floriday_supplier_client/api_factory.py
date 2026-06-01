@@ -6,7 +6,7 @@ import floriday_supplier_client
 
 class ApiFactory:
     # The API version this client was generated for
-    EXPECTED_API_VERSION = "2025v2"
+    EXPECTED_API_VERSION = "2026v1"
 
     def __init__(self):
         self.client_id = os.getenv("FLORIDAY_CLIENT_ID")

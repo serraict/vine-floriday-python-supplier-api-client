@@ -4,9 +4,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **correction_id** | **str** |  | 
-**delivery_location_gln** | **str** |  | 
+**delivery_location_gln** | **str** |  | [optional] 
 **load_carrier_corrections** | [**list[LoadCarrierCorrection]**](LoadCarrierCorrection.md) |  | 
-**status** | [**CorrectionStatus**](CorrectionStatus.md) |  | 
+**status** | [**CorrectionStatus**](CorrectionStatus.md) |  | [optional] 
 **creation_date_time** | **datetime** |  | 
 **last_modified_date_time** | **datetime** |  | 
 

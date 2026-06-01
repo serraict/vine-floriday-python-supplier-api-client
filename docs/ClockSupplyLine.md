@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 **delivery_note_reference** | **str** | DeliveryNoteCode + letter of the original clock delivery | [optional] 
 **auction_status** | [**AuctionStatusName**](AuctionStatusName.md) |  | [optional] 
 **is_deleted** | **bool** |  | 
-**sales_strategy_id** | **str** |  | 
+**sales_strategy_id** | **str** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

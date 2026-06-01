@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**seller_organization_id** | **str** |  | [optional] 
 **article_gtin** | **str** |  | [optional] 
 **vbn_product_code** | **int** |  | [optional] 
 **trade_item_name** | [**TradeItemName**](TradeItemName.md) |  | 

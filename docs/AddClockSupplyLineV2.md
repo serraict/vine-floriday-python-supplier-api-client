@@ -6,9 +6,9 @@ Name | Type | Description | Notes
 **supply_line_id** | **str** |  | 
 **auction_date** | **date** |  | 
 **latest_delivery_date_time** | **datetime** |  | 
-**auction_group_code** | **int** |  | 
+**auction_group_code** | **int** |  | [optional] 
 **auction_location** | [**AuctionLocation**](AuctionLocation.md) |  | 
-**auction_remark** | **str** |  | 
+**auction_remark** | **str** |  | [optional] 
 **minimum_number_of_pieces_reserved_for_auction** | **int** |  | 
 **minimum_price_per_piece** | [**Price**](Price.md) |  | 
 **number_of_pieces** | **int** |  | 

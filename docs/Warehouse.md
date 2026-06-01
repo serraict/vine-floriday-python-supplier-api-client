@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 **warehouse_id** | **str** |  | 
 **organization_id** | **str** |  | 
 **name** | **str** |  | 
-**services** | [**list[WareHouseServiceType]**](WareHouseServiceType.md) |  | 
+**services** | [**list[WareHouseServiceType]**](WareHouseServiceType.md) |  | [optional] 
 **location** | [**Location**](Location.md) |  | 
 **sequence_number** | **int** |  | 
 **creation_date_time** | **datetime** |  | 
