@@ -1,7 +1,8 @@
-# Fail when Floriday publishes a Supplier API version newer than the one
-# this client is generated against. Run on a schedule so a stale client
-# surfaces as a failing workflow rather than something a human has to
-# remember to check.
+# Open a tracking issue when Floriday publishes a Supplier API version newer
+# than the one this client is generated against. Runs on a schedule so a stale
+# client surfaces as an "Update to <version>" issue (labelled `next`) rather
+# than something a human has to remember to check. The run itself stays green
+# once the issue exists.
 name: Check Floriday API version
 
 on:
@@ -13,6 +14,7 @@ on:
 
 permissions:
   contents: read
+  issues: write
 
 jobs:
   check:
@@ -64,12 +66,38 @@ jobs:
           echo "Latest Main Floriday version: $latest"
           echo "version=$latest" >> "$GITHUB_OUTPUT"
 
-      - name: Compare versions
+      - name: Open an update issue if the client is behind
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           client="${{ steps.client.outputs.version }}"
           latest="${{ steps.floriday.outputs.version }}"
-          if [ "$client" != "$latest" ]; then
-            echo "::error::Client is generated for $client but Floriday's latest is $latest. Run the /api-client-updater skill to regenerate."
-            exit 1
+          if [ "$client" = "$latest" ]; then
+            echo "Client is up-to-date with Floriday ($client)."
+            exit 0
           fi
-          echo "Client is up-to-date with Floriday ($client)."
+
+          echo "Client is on $client but Floriday's latest Main is $latest."
+          title="Update to $latest"
+
+          # Make sure the 'next' label exists (idempotent).
+          gh label create next --color "0e8a16" \
+            --description "Queued as the next thing to work on" 2>/dev/null || true
+
+          # Only open an issue if an open one with this exact title doesn't exist.
+          existing=$(gh issue list --state open --limit 100 --json number,title \
+            --jq ".[] | select(.title == \"$title\") | .number" | head -n1)
+          if [ -n "$existing" ]; then
+            echo "Issue #$existing already tracks \"$title\" - nothing to do."
+            exit 0
+          fi
+
+          body=$(printf '%s\n' \
+            "Floriday published Supplier API $latest as the current Main version, but this client is generated for $client." \
+            "" \
+            "Run the /api-client-updater skill to regenerate against $latest and write the update guide." \
+            "" \
+            "- Floriday versions: https://developer.floriday.io/docs/welcome" \
+            "- Detected by .github/workflows/check-floriday-api-version.yml")
+          gh issue create --title "$title" --label next --body "$body"
+          echo "Opened issue \"$title\"."
