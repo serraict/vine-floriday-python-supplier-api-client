@@ -1,4 +1,4 @@
-.phony : tests, bootstrap, update, console, build, documentation, printversion, release, local_specs, client
+.phony : tests, bootstrap, update, console, build, documentation, printversion, release, local_specs, client, versions, surface-diff, remote-version
 
 VERSION := $(shell git describe --tags)
 ifeq ($(VERSION),)
@@ -53,6 +53,21 @@ spec_file := ./specs/floriday-suppliers-api-$(api_version)-swagger-UUID.json
 local_specs:
 	mkdir -p ./specs
 	curl $(url) > $(spec_file)
+
+# Read-only release diagnostics (safe to run any time).
+# versions       - print the API version in every source and flag disagreements
+# surface-diff   - report public-surface changes BASE..working tree (default BASE=HEAD,
+#                  includes untracked files; run after `make client`, before committing)
+# remote-version - probe staging for a candidate version (default V=$(api_version))
+BASE ?= HEAD
+V ?= $(api_version)
+versions:
+	@python3 scripts/show_versions.py
+surface-diff:
+	@python3 scripts/surface_diff.py $(BASE)
+remote-version:
+	@curl -sI -o /dev/null -w "suppliers-api-$(V): HTTP %{http_code}\n" \
+		https://api.staging.floriday.io/suppliers-api-$(V)/swagger/index.html
 
 floriday_supplier_client/api_client.py: $(spec_file)
 	swagger-codegen generate -i $(spec_file) -l python -o $(target_dir) -DpackageName=floriday_supplier_client
