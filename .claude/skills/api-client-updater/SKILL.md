@@ -14,7 +14,7 @@ This skill walks a maintainer through bumping this library to a new Floriday Sup
 3. `about/update_guides/UPDATE_GUIDE_<new_version>.md` — a consumer-facing migration note focused on the public surface (API classes, model fields, method signatures, config/env, auth scopes).
 4. A short maintainer punch list of anything that needs human attention before cutting a release (failing tests, codegen warnings, suspicious diffs).
 
-Do **not** commit or tag a release yourself. Leave that to the maintainer.
+Do **not** commit or tag a release on your own initiative — leave that to the maintainer, unless they explicitly direct you through it (see step 8).
 
 ## The public surface that matters to consumers
 
@@ -32,18 +32,15 @@ Consumers of this library depend on a narrow set of things. Diff with these in m
 
 ### 1. Find the target version and confirm with the maintainer
 
-Current version lives in two places — read both and sanity-check they agree:
+Run `make versions` to print the API version recorded everywhere that matters — `Makefile` `api_version`, `api_factory.py` `EXPECTED_API_VERSION`, `.env.example`, the local `.env`, and the spec's `info.version` — and to flag disagreements automatically.
 
-- `Makefile` line with `api_version := <NNNNvN>`
-- `floriday_supplier_client/api_factory.py` → `EXPECTED_API_VERSION`
-
-If they disagree, stop and tell the maintainer — that's a pre-existing bug and you shouldn't paper over it with a bump.
+The two committed sources that must agree are `Makefile` `api_version` and `api_factory.py` `EXPECTED_API_VERSION`; `make versions` exits non-zero if they disagree. If it does, stop and tell the maintainer — that's a pre-existing bug and you shouldn't paper over it with a bump.
 
 Then discover what Floriday currently offers. Check these sources in order and cross-reference them — any single page can lag, so corroborate before committing to a target version:
 
 1. **Welcome / changelog**: https://developer.floriday.io/docs/welcome — usually lists the current and upcoming API versions with release dates and deprecation timelines.
 2. **Release notes / versioning pages**: follow links from the welcome page (typically "API versioning", "Release notes", or a "What's new in YYYYvN" article). The changelog often names the version that is *currently recommended* vs. versions that are still available but deprecated.
-3. **The live swagger endpoint**: the Makefile's URL template is `https://api.staging.floriday.io/suppliers-api-<version>/swagger/UUID/swagger.json`. Try the candidate new version against staging with a `HEAD` or `curl -I` — a 200 confirms the version exists and is reachable with the current URL shape; a 404 means either the version is wrong or Floriday changed the URL template (the latter is a bigger problem and needs maintainer attention).
+3. **The live swagger endpoint**: run `make remote-version V=<candidate>` (e.g. `make remote-version V=2026v1`) to probe staging. A `200` or `401` confirms the version exists and the URL shape is unchanged (`401` just means the endpoint needs auth — that still confirms it resolves); a `404` means either the version is wrong or Floriday changed the URL template (the latter is a bigger problem and needs maintainer attention).
 4. **Spec `info.version`**: if you can pull the spec (step 4 fetches it), the spec's own `info.version` field is ground truth for what you're about to generate against. If it disagrees with what the docs advertised, trust the spec and flag the mismatch.
 
 Produce a short report for the maintainer before touching any files:
@@ -58,16 +55,15 @@ Format the recommendation as: "Currently on `<old>`. Floriday's latest is `<new>
 
 If the maintainer names a specific version (e.g. "bump to 2025v2"), still do the doc check and confirm the named version actually exists and isn't already deprecated before proceeding.
 
-### 2. Snapshot the current public surface
+### 2. Make sure the working tree is clean
 
-Before regenerating, capture the current surface so you can diff afterwards. The regenerated code will overwrite `floriday_supplier_client/` and `test/` (except what's in `.swagger-codegen-ignore`), so snapshot to a scratch location outside those dirs:
+No `/tmp` snapshot is needed — `make surface-diff` (step 6) diffs the committed code at `HEAD` against the regenerated working tree, *including untracked files*. For that to give a true before/after, `HEAD` must hold the current (pre-bump) generated client, so start from a clean tree:
 
 ```bash
-mkdir -p /tmp/floriday-client-pre-<old_version>
-cp -r floriday_supplier_client /tmp/floriday-client-pre-<old_version>/
+git status --porcelain   # expect no output
 ```
 
-This is cheap and gives you a precise before/after without relying on git (the working tree may already have other uncommitted changes you shouldn't mix into the diff).
+If there are unrelated uncommitted changes, stop and check with the maintainer rather than mixing them into the regeneration diff.
 
 ### 3. Apply the three version bumps
 
@@ -94,21 +90,28 @@ Capture and surface any codegen warnings. Swagger-codegen warnings about unmappe
 make tests         # unit tests (not integration)
 ```
 
-Report failures with their context. Do **not** run `make test-integration` — it hits the live Floriday API and calls `example.py`. That's a maintainer decision.
+Report failures with their context. Do **not** run `make test-integration` unless the maintainer asks — it hits the live Floriday API and calls `example.py`.
+
+If the maintainer does ask you to run it, it (and `example.py`) requires `FLORIDAY_BASE_URL` to point at `suppliers-api-<new_version>`, matching `EXPECTED_API_VERSION`, or `ApiFactory` raises a version-mismatch `ValueError` before any request goes out. Update the version segment in the local `.env` (gitignored), and on this harness *also* pass it inline because the shell's direnv-exported value can be stale after editing `.env`:
+
+```bash
+FLORIDAY_BASE_URL="https://api.staging.floriday.io/suppliers-api-<new_version>" make test-integration
+```
 
 ### 6. Diff the public surface
 
-Compare the snapshot at `/tmp/floriday-client-pre-<old_version>/floriday_supplier_client/` against the regenerated `floriday_supplier_client/`. Focus on the items listed in "The public surface that matters to consumers" above.
+Run `make surface-diff` (defaults to comparing `HEAD` against the working tree). It reports, grouped into **BREAKING** and **ADDITIVE**, every item in "The public surface that matters to consumers" above:
 
-Useful probes:
+- added/removed API class files — *including untracked ones*, which `git diff` hides (this masked a whole new API class during the 2026v1 bump)
+- added/removed methods per API class
+- changed `get_*_by_sequence_number` / `*_max_sequence` signatures (sync-callback breakages)
+- added/removed model classes
+- added/removed/renamed model attributes (a rename shows as a removed **and** an added attribute on the same model — read those pairs as renames)
+- OAuth scopes the spec references but `ApiFactory` does not request (informational)
 
-- `ls floriday_supplier_client/models/` on both sides → added/removed model classes.
-- `ls floriday_supplier_client/` and look for `*_api.py` → added/removed API classes.
-- For each API class that exists on both sides, grep `def ` to list methods and compare signatures. Pay attention to required vs optional parameters and renamed parameters — those are silent breakages for consumers.
-- For each model class that exists on both sides, compare the `attribute_map` / `openapi_types` dicts (or the `__init__` signature) to spot added/removed/renamed attributes.
-- Check `api_factory.py` scope string for added/removed scopes.
+To review what a specific commit changed instead of the working tree, pass a base ref: `make surface-diff BASE=<ref>`.
 
-If the diff is huge (a major Floriday release often is), don't try to enumerate every model attribute change by hand. Group changes by theme — e.g. "all `*Batch*` models gained a `lot_code` field", "`SalesOrdersApi` gained 3 methods around order amendments" — and enumerate only the breakages precisely.
+Treat everything under BREAKING as a migration item and verify each by hand — open the model/API file to confirm the rename or removed method, since the tool reports symbol changes, not intent. The ADDITIVE list feeds the "New capabilities" section of the guide. If a major release produces a long ADDITIVE list, group it by theme — e.g. "all `*Batch*` models gained `lot_code`", "`SalesOrdersApi` gained 3 amendment methods" — and enumerate only the breakages precisely.
 
 ### 7. Write the update guide
 
@@ -152,7 +155,12 @@ End your final message with a short checklist of things the maintainer still nee
 - Follow the release steps in `about/readme.md` (tag, push)
 - Resolve any test failures or codegen warnings you surfaced
 
-Do not run the release steps yourself. `make release` pushes tags and is not reversible.
+By default, do not run the release steps yourself — leave them to the maintainer. But if the maintainer explicitly directs you to commit and release, here is the mechanism (learned the hard way):
+
+- **The shipped version is driven by the git tag, not a file.** `make release` auto-tags `v$(python -m setuptools_scm --strip-dev)`, which is always a **patch** bump from the last tag. For a **minor or major** bump, do NOT run `make release` verbatim — tag `vX.Y.0` explicitly, then push the tags the same way the target does.
+- **Pushing any `v*` tag triggers `.github/workflows/python-publish.yml`, which publishes to PyPI** — irreversible (a version can be yanked but never reused). Confirm the exact version with the maintainer before pushing the tag.
+- The `release` target's preconditions are: clean tree, `main` checked out, and `origin/main == HEAD`. So commit, then `git push origin main`, *then* tag and push tags.
+- Run git commands one at a time (not chained with `&&`) so each matches its permission allowlist entry and doesn't trigger a prompt.
 
 ## Things to avoid
 
